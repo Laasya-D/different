@@ -2751,6 +2751,42 @@ button:hover {
 }
 </style>
 
+
+<style id="connect-red-numbers-black-hover">
+/* Connect faculty cards: red numbered/index text becomes black when
+   the faculty tile itself turns red on hover. */
+.professor-card:hover .professor-index,
+.professor-card:hover .professor-number,
+.professor-card:hover .faculty-index,
+.professor-card:hover .faculty-number,
+.professor-card:hover .card-index,
+.professor-card:hover .index,
+.professor-card:hover .number,
+.professor-card:hover .eyebrow,
+.professor-card:hover .faculty-eyebrow,
+.professor-card:hover .meta,
+.professor-card:hover .faculty-meta {
+  color: #000 !important;
+}
+
+/* Catch the numbered prefix/label even when it is a direct text wrapper. */
+.professor-card:hover [class*="index"],
+.professor-card:hover [class*="number"],
+.professor-card:hover [class*="eyebrow"],
+.professor-card:hover [class*="meta"] {
+  color: #000 !important;
+}
+
+/* Keep the Connect faculty red number black even if an inline style
+   originally sets it to the accent color. */
+.professor-card:hover [style*="color:var(--accent)"],
+.professor-card:hover [style*="color: var(--accent)"],
+.professor-card:hover [style*="#900c20"],
+.professor-card:hover [style*="#b11"] {
+  color: #000 !important;
+}
+</style>
+
 </head>
 <body>
 
