@@ -2787,6 +2787,60 @@ button:hover {
 }
 </style>
 
+
+<style id="connect-team-red-numbers-black-hover">
+/* Connect team-member cards: when the tile turns red, every red
+   number/index/role/meta label inside it becomes black too. */
+.team-card:hover .team-index,
+.team-card:hover .team-number,
+.team-card:hover .member-index,
+.team-card:hover .member-number,
+.team-card:hover .card-index,
+.team-card:hover .index,
+.team-card:hover .number,
+.team-card:hover .eyebrow,
+.team-card:hover .team-eyebrow,
+.team-card:hover .meta,
+.team-card:hover .team-meta,
+.member-card:hover .team-index,
+.member-card:hover .team-number,
+.member-card:hover .member-index,
+.member-card:hover .member-number,
+.member-card:hover .card-index,
+.member-card:hover .index,
+.member-card:hover .number,
+.member-card:hover .eyebrow,
+.member-card:hover .team-eyebrow,
+.member-card:hover .meta,
+.member-card:hover .team-meta {
+  color: #000 !important;
+}
+
+/* Covers dynamically named index/number/eyebrow/meta classes. */
+.team-card:hover [class*="index"],
+.team-card:hover [class*="number"],
+.team-card:hover [class*="eyebrow"],
+.team-card:hover [class*="meta"],
+.member-card:hover [class*="index"],
+.member-card:hover [class*="number"],
+.member-card:hover [class*="eyebrow"],
+.member-card:hover [class*="meta"] {
+  color: #000 !important;
+}
+
+/* Inline accent-red styles also switch to black on red hover. */
+.team-card:hover [style*="color:var(--accent)"],
+.team-card:hover [style*="color: var(--accent)"],
+.team-card:hover [style*="#900c20"],
+.team-card:hover [style*="#b11"],
+.member-card:hover [style*="color:var(--accent)"],
+.member-card:hover [style*="color: var(--accent)"],
+.member-card:hover [style*="#900c20"],
+.member-card:hover [style*="#b11"] {
+  color: #000 !important;
+}
+</style>
+
 </head>
 <body>
 
