@@ -2841,6 +2841,477 @@ button:hover {
 }
 </style>
 
+
+<style id="connect-local-navbar">
+/* =========================================================
+   CONNECT LOCAL NAVBAR
+   ========================================================= */
+.connect-local-nav{
+  border-bottom:1px solid var(--border);
+  background:var(--bg);
+  position:relative;
+  z-index:10;
+}
+
+.connect-local-brand{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  min-height:72px;
+  border-bottom:1px solid var(--border);
+}
+
+.connect-local-brand a{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  color:var(--text);
+  text-decoration:none;
+}
+
+.connect-local-brand img{
+  width:34px;
+  height:34px;
+  object-fit:contain;
+}
+
+.connect-local-brand span{
+  font-family:var(--font-mono);
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.connect-local-links{
+  display:flex;
+  align-items:stretch;
+  gap:0;
+  overflow-x:auto;
+}
+
+.connect-local-link{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:130px;
+  padding:18px 24px;
+  border-right:1px solid var(--border);
+  color:var(--text-dim);
+  text-decoration:none;
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  transition:background .22s ease,color .22s ease,border-color .22s ease;
+}
+
+.connect-local-link:first-child{
+  border-left:1px solid var(--border);
+}
+
+.connect-local-link:hover{
+  background:var(--accent);
+  color:#000 !important;
+  border-color:var(--accent);
+}
+
+.connect-local-link.active{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+}
+
+@media(max-width:600px){
+  .connect-local-link{
+    min-width:105px;
+    padding:15px 16px;
+  }
+}
+
+/* =========================================================
+   CONNECT CARDS — ALL RED TEXT TURNS BLACK ON RED HOVER
+   ========================================================= */
+.team-card:hover .team-number,
+.team-card:hover .role,
+.finalized-team-card:hover .team-number,
+.finalized-team-card:hover .role,
+.professor-card:hover .professor-index,
+.professor-card:hover .faculty-title,
+.professor-card:hover .faculty-research summary::before{
+  color:#000 !important;
+}
+
+/* Also cover direct accent-color declarations/classes. */
+.team-card:hover [class*="number"],
+.team-card:hover [class*="index"],
+.team-card:hover [class*="role"],
+.professor-card:hover [class*="number"],
+.professor-card:hover [class*="index"],
+.professor-card:hover [class*="role"],
+.professor-card:hover [class*="title"]{
+  color:#000 !important;
+}
+</style>
+
+
+<style id="connect-view-switching">
+/* Team/Faculty buttons show the exact content already used by All. */
+.connect-team-section,
+.connect-team-content,
+.connect-faculty-section,
+.connect-faculty-content,
+.connect-divider {
+  transition: none;
+}
+
+.connect-view-team .connect-faculty-section,
+.connect-view-team .connect-faculty-content,
+.connect-view-team .connect-divider,
+.connect-view-faculty .connect-team-section,
+.connect-view-faculty .connect-team-content,
+.connect-view-faculty .connect-divider {
+  display: none !important;
+}
+
+/* Keep the All view exactly as before. */
+.connect-view-all .connect-team-section,
+.connect-view-all .connect-team-content,
+.connect-view-all .connect-faculty-section,
+.connect-view-all .connect-faculty-content {
+  display: block;
+}
+.connect-local-link {
+  border-top: 0;
+  border-bottom: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.connect-local-link.active {
+  background: var(--accent);
+  color: #fff !important;
+}
+</style>
+
+
+<style id="connect-navbar-clean-final">
+/* =========================================================
+   CONNECT NAV — match the compact dark/red UI
+   ========================================================= */
+.connect-local-nav{
+  width:100%;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:#050505 !important;
+}
+
+.connect-local-brand{
+  min-height:64px !important;
+  padding:0 0 !important;
+  border-bottom:1px solid var(--border) !important;
+}
+
+.connect-local-brand a{
+  color:var(--text) !important;
+}
+
+.connect-local-brand span{
+  color:var(--text) !important;
+  font-family:var(--font-mono) !important;
+  font-size:13px !important;
+  letter-spacing:.12em !important;
+}
+
+.connect-local-links{
+  width:100%;
+  display:grid !important;
+  grid-template-columns:repeat(4, minmax(0, 1fr));
+  gap:0 !important;
+  overflow:visible !important;
+}
+
+.connect-local-link,
+.connect-local-link[type="button"]{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  min-width:0 !important;
+  min-height:52px !important;
+  margin:0 !important;
+  padding:12px 14px !important;
+  border:0 !important;
+  border-right:1px solid var(--border) !important;
+  border-radius:0 !important;
+  outline:0 !important;
+  background:#050505 !important;
+  color:#929292 !important;
+  box-shadow:none !important;
+  font-family:var(--font-mono) !important;
+  font-size:10px !important;
+  font-weight:400 !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+  text-decoration:none !important;
+  cursor:pointer !important;
+  transform:none !important;
+  transition:background .18s ease,color .18s ease,border-color .18s ease !important;
+}
+
+.connect-local-link:first-child{
+  border-left:1px solid var(--border) !important;
+}
+
+.connect-local-link:hover{
+  background:var(--accent) !important;
+  color:#000 !important;
+  border-color:var(--accent) !important;
+  transform:none !important;
+}
+
+.connect-local-link.active{
+  background:var(--accent) !important;
+  color:#fff !important;
+  border-color:var(--accent) !important;
+}
+
+/* Prevent the browser's default light button appearance. */
+.connect-local-link:focus,
+.connect-local-link:focus-visible{
+  background:#050505 !important;
+  color:#929292 !important;
+  outline:1px solid var(--accent) !important;
+  outline-offset:-2px !important;
+}
+
+.connect-local-link.active:focus,
+.connect-local-link.active:focus-visible{
+  background:var(--accent) !important;
+  color:#fff !important;
+}
+
+/* =========================================================
+   FACULTY CATEGORY TABS — same visual language
+   ========================================================= */
+.faculty-category-tabs{
+  display:flex !important;
+  gap:14px !important;
+  flex-wrap:wrap !important;
+  margin:0 0 30px !important;
+}
+
+.faculty-category-btn,
+.faculty-category-btn[type="button"]{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  background:#050505 !important;
+  color:#929292 !important;
+  border:1px solid var(--border) !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  transform:none !important;
+  padding:13px 22px !important;
+  font-family:var(--font-mono) !important;
+  font-size:11px !important;
+  letter-spacing:.09em !important;
+  text-transform:uppercase !important;
+  cursor:pointer !important;
+  transition:background .18s ease,color .18s ease,border-color .18s ease !important;
+}
+
+.faculty-category-btn:hover{
+  background:var(--accent) !important;
+  border-color:var(--accent) !important;
+  color:#000 !important;
+  transform:none !important;
+}
+
+.faculty-category-btn.active,
+.faculty-category-btn[aria-selected="true"]{
+  background:var(--accent) !important;
+  border-color:var(--accent) !important;
+  color:#fff !important;
+}
+
+.faculty-category-btn:focus,
+.faculty-category-btn:focus-visible{
+  outline:1px solid var(--accent) !important;
+  outline-offset:-2px !important;
+}
+
+/* =========================================================
+   RED CARD TEXT — black whenever the card becomes red
+   ========================================================= */
+.team-card:hover,
+.team-card:hover *,
+.finalized-team-card:hover,
+.finalized-team-card:hover *,
+.professor-card:hover,
+.professor-card:hover *{
+  /* individual rules below preserve normal light text */
+}
+
+.team-card:hover .team-number,
+.team-card:hover .role,
+.team-card:hover .dept,
+.finalized-team-card:hover .team-number,
+.finalized-team-card:hover .role,
+.finalized-team-card:hover .dept,
+.professor-card:hover .professor-index,
+.professor-card:hover .faculty-title,
+.professor-card:hover .faculty-research summary::before{
+  color:#000 !important;
+}
+
+@media(max-width:700px){
+  .connect-local-links{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .connect-local-link,
+  .connect-local-link[type="button"]{
+    min-height:48px !important;
+  }
+}
+</style>
+
+
+<style id="club-social-about-page">
+.club-social-page{
+  min-height:70vh;
+  padding:80px 0 120px;
+  background:var(--bg);
+}
+
+.club-social-hero{
+  max-width:900px;
+  border-top:1px solid var(--accent);
+  padding-top:28px;
+}
+
+.club-social-kicker{
+  color:var(--accent);
+  font-size:11px;
+  letter-spacing:.12em;
+  margin-bottom:24px;
+}
+
+.club-social-hero h1{
+  margin:0 0 20px;
+  font-size:clamp(42px,7vw,82px);
+  line-height:.95;
+}
+
+.club-social-hero p{
+  max-width:680px;
+  color:var(--text-dim);
+  font-size:16px;
+  line-height:1.8;
+  margin:0 0 44px;
+}
+
+.club-social-links{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  border-top:1px solid var(--border);
+  border-left:1px solid var(--border);
+}
+
+.club-social-link{
+  min-height:100px;
+  display:grid;
+  grid-template-columns:55px 1fr 30px;
+  align-items:center;
+  gap:12px;
+  padding:0 24px;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  color:var(--text);
+  text-decoration:none;
+  background:var(--bg);
+  transition:background .2s ease,color .2s ease;
+}
+
+.club-social-link span:first-child{
+  color:var(--accent);
+}
+
+.club-social-link strong{
+  font-family:var(--font-mono);
+  font-size:14px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.club-social-link:hover{
+  background:var(--accent);
+  color:#000 !important;
+}
+
+.club-social-link:hover span:first-child,
+.club-social-link:hover span:last-child{
+  color:#000 !important;
+}
+
+@media(max-width:700px){
+  .club-social-links{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+
+<style id="club-page-navbar-final">
+.club-page-nav{
+  margin-top:0 !important;
+}
+
+.club-page-nav .connect-local-link{
+  text-decoration:none !important;
+}
+
+.club-page-nav .connect-local-link.active{
+  background:var(--accent) !important;
+  color:#fff !important;
+}
+
+.club-page-nav .connect-local-link:hover{
+  background:var(--accent) !important;
+  color:#000 !important;
+}
+</style>
+
+
+<style id="connect-nav-restored-final">
+.connect-local-link[type="button"]{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  cursor:pointer !important;
+  font:inherit !important;
+}
+.connect-local-link[type="button"]:hover{
+  background:var(--accent) !important;
+  color:#000 !important;
+}
+.connect-local-link[type="button"].active{
+  background:var(--accent) !important;
+  color:#fff !important;
+}
+</style>
+
+
+<style id="larger-connect-tabs">
+.connect-local-link,
+.connect-local-link[type="button"]{
+  min-height:62px !important;
+  height:62px !important;
+  padding:12px 18px !important;
+  font-size:11px !important;
+  letter-spacing:.12em !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -3340,9 +3811,70 @@ function compilePattern(pattern){
   const regexStr = '^' + pattern.replace(/:[^/]+/g, m => { paramNames.push(m.slice(1)); return '([^/]+)'; }) + '$';
   return { regex: new RegExp(regexStr), paramNames };
 }
+
+function ClubSocialPage(){
+  return `
+    ${NavBar('#/about')}
+
+
+    <main class="club-social-page">
+      <div class="container">
+        <section class="club-social-hero">
+          <div class="mono club-social-kicker">BLOCKCHAIN CLUB // ABOUT</div>
+          <h1>Blockchain Club</h1>
+          <p>
+            Follow the Blockchain Club and stay connected with our community,
+            events, projects, and updates.
+          </p>
+
+          <section class="connect-local-nav club-page-nav" aria-label="Club navigation">
+            <div class="container">
+              <div class="connect-local-brand">
+                <a href="#/" aria-label="Blockchain Club home">
+                  <img src="logo.jpeg" alt="Blockchain Club logo">
+                  <span>Blockchain Club</span>
+                </a>
+              </div>
+
+              <nav class="connect-local-links" aria-label="Club sections">
+                <a class="connect-local-link" href="#/team">All</a>
+                <a class="connect-local-link" href="#/team">Team</a>
+                <a class="connect-local-link" href="#/team">Faculty</a>
+                <a class="connect-local-link active" href="#/about">Club</a>
+              </nav>
+            </div>
+          </section>
+
+          <div class="club-social-links">
+            <a
+              class="club-social-link"
+              href="https://www.linkedin.com/company/mu-blockchain-club/about/?viewAsMember=true"
+              target="_blank"
+              rel="noopener noreferrer">
+              <span class="mono">01</span>
+              <strong>LinkedIn</strong>
+              <span class="mono">↗</span>
+            </a>
+
+            <a
+              class="club-social-link"
+              href="https://www.instagram.com/blockchain_mu?igsh=YnZ1ajZ1cG9odXI2&utm_source=qr"
+              target="_blank"
+              rel="noopener noreferrer">
+              <span class="mono">02</span>
+              <strong>Instagram</strong>
+              <span class="mono">↗</span>
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+  `;
+}
+
 const routes = [
   { path:'/', view: HomePage },
-  { path:'/about', view: AboutPage },
+  { path:'/about', view: ClubSocialPage },
   { path:'/blogs', view: BlogsPage },
   { path:'/blogs/:id', view: BlogDetailPage },
   { path:'/events', view: EventsPage },
@@ -4559,14 +5091,71 @@ async function TeamPage(){
   const facultyCategories = ['All','Cyber Security','Blockchain','Cryptography'];
 
   return `${NavBar('#/team')}
-  ${PageHead('04 / CONNECT','Connect','Meet the faculty and the student teams building the Blockchain Club.')}
 
-  <section class="section professor-section">
+  ${PageHead('04 / CONNECT','Connect','Meet the faculty and the student teams building the Blockchain Club.')}
+<section class="connect-local-nav" aria-label="Connect navigation">
+  <div class="container">
+    <div class="connect-local-brand">
+      <a href="#/" aria-label="Blockchain Club home">
+        <img src="logo.jpeg" alt="Blockchain Club logo">
+        <span>Blockchain Club</span>
+      </a>
+    </div>
+
+    <nav class="connect-local-links" aria-label="Connect sections">
+      <button type="button" class="connect-local-link active" data-connect-view="all">All</button>
+      <button type="button" class="connect-local-link" data-connect-view="team">Team</button>
+      <button type="button" class="connect-local-link" data-connect-view="faculty">Faculty</button>
+      <a class="connect-local-link" href="#/about">Club</a>
+    </nav>
+  </div>
+</section>
+
+
+  <!-- ALL: Team first, Faculty below -->
+  <section class="section professor-section connect-view-all" id="connect-all">
     <div class="container">
 
-      <div class="connect-subheading mono">Faculty</div>
+      <div id="connect-team" class="connect-subheading mono connect-team-section">Team</div>
 
-      <div class="faculty-category-tabs" role="tablist" aria-label="Faculty research areas">
+      <div class="connect-team-groups connect-team-content">
+        ${[
+          'Leadership',
+          'Tech',
+          'Design',
+          'Finance',
+          'Social Media',
+          'Logistics',
+          'Content'
+        ].map(dept=>{
+          const members=finalizedTeam.filter(t=>t.department===dept);
+          return `
+            <section class="connect-team-group">
+              <div class="connect-team-heading">
+                <span class="mono">${esc(dept)}</span>
+                <span class="mono">${String(members.length).padStart(2,'0')}</span>
+              </div>
+
+              <div class="grid grid-4 connect-member-grid">
+                ${members.map((t,i)=>`
+                  <article class="team-card finalized-team-card">
+                    <div class="team-number mono">${String(i+1).padStart(2,'0')}</div>
+                    <h3>${esc(t.name)}</h3>
+                    <div class="role mono">${esc(t.role)}</div>
+                    <div class="dept mono">${esc(t.department)}</div>
+                  </article>
+                `).join('')}
+              </div>
+            </section>
+          `;
+        }).join('')}
+      </div>
+
+      <div class="connect-divider"></div>
+
+      <div id="connect-faculty" class="connect-subheading mono connect-faculty-section">Faculty</div>
+
+      <div class="faculty-category-tabs connect-faculty-content" role="tablist" aria-label="Faculty research areas">
         ${facultyCategories.map((category,i)=>`
           <button
             type="button"
@@ -4579,7 +5168,7 @@ async function TeamPage(){
         `).join('')}
       </div>
 
-      <div class="professor-grid faculty-grid">
+      <div class="professor-grid faculty-grid connect-faculty-content">
         ${professors.map((prof,i)=>`
           <article
             class="professor-card faculty-card"
@@ -4611,43 +5200,6 @@ async function TeamPage(){
             </div>
           </article>
         `).join('')}
-      </div>
-
-      <div class="connect-divider"></div>
-
-      <div class="connect-subheading mono">Finalized Team</div>
-
-      <div class="connect-team-groups">
-        ${[
-          'Leadership',
-          'Tech',
-          'Design',
-          'Finance',
-          'Social Media',
-          'Logistics',
-          'Content'
-        ].map(dept=>{
-          const members=finalizedTeam.filter(t=>t.department===dept);
-          return `
-            <section class="connect-team-group">
-              <div class="connect-team-heading">
-                <span class="mono">${esc(dept)}</span>
-                <span class="mono">${String(members.length).padStart(2,'0')}</span>
-              </div>
-
-              <div class="grid grid-4 connect-member-grid">
-                ${members.map((t,i)=>`
-                  <article class="team-card finalized-team-card">
-                    <div class="team-number mono">${String(i+1).padStart(2,'0')}</div>
-                    <h3>${esc(t.name)}</h3>
-                    <div class="role mono">${esc(t.role)}</div>
-                    <div class="dept mono">${esc(t.department)}</div>
-                  </article>
-                `).join('')}
-              </div>
-            </section>
-          `;
-        }).join('')}
       </div>
 
     </div>
@@ -5856,6 +6408,84 @@ function initChallengeGame(){
       || tabs[0];
     applyFacultyFilter(active.dataset.facultyFilter);
   }).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script id="connect-local-nav-js">
+(function(){
+  function setupConnectNav(){
+    const nav = document.querySelector('.connect-local-links');
+    const root = document.querySelector('#connect-all');
+    if(!nav || !root) return;
+
+    const buttons = nav.querySelectorAll('[data-connect-view]');
+
+    function setView(view, scroll){
+      if(!['all','team','faculty'].includes(view)) view = 'all';
+
+      root.classList.remove(
+        'connect-view-all',
+        'connect-view-team',
+        'connect-view-faculty'
+      );
+      root.classList.add('connect-view-' + view);
+
+      buttons.forEach(btn => {
+        const active = btn.dataset.connectView === view;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+
+      if(scroll){
+        let target = root;
+        if(view === 'team'){
+          target = document.getElementById('connect-team') || root;
+        }else if(view === 'faculty'){
+          target = document.getElementById('connect-faculty') || root;
+        }
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
+
+    buttons.forEach(btn => {
+      if(btn.dataset.connectBound === '1') return;
+      btn.dataset.connectBound = '1';
+
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+        setView(this.dataset.connectView, true);
+      }, true);
+    });
+
+    setView('all', false);
+  }
+
+  function watch(){
+    setupConnectNav();
+    new MutationObserver(() => setupConnectNav())
+      .observe(document.body, {childList:true, subtree:true});
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', watch);
+  }else{
+    watch();
+  }
 })();
 </script>
 
