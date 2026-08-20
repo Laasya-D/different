@@ -2302,6 +2302,455 @@ img{max-width:100%;display:block;}
   *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;}
 }
 </style>
+
+<style id="final-ui-fixes">
+/* =========================================================
+   FINAL OVERRIDE
+   Restore the site's original hover animations everywhere.
+   Crypto graph cards are the ONLY exception.
+   ========================================================= */
+
+/* Keep homepage crypto cards/graphs completely static on hover. */
+.home-crypto-card,
+.home-crypto-card::before {
+  transition: none !important;
+}
+
+.home-crypto-card:hover {
+  transform: none !important;
+  border-color: var(--border) !important;
+  background-image: none !important;
+  background-size: 0 !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+.home-crypto-card:hover::before {
+  transform: translateX(-102%) !important;
+}
+
+.home-crypto-card:hover h3,
+.home-crypto-card:hover p,
+.home-crypto-card:hover .home-crypto-price,
+.home-crypto-card:hover .home-crypto-change {
+  color: inherit !important;
+}
+
+.home-crypto-chart,
+.home-crypto-chart svg,
+.home-crypto-chart path,
+.home-crypto-chart polyline,
+.home-crypto-chart polygon,
+.home-crypto-chart circle {
+  transform: none !important;
+  filter: none !important;
+}
+
+/* Restore normal hover behavior for buttons. */
+.btn:hover,
+.btn-primary:hover,
+.btn-outline:hover,
+.link-btn:hover,
+.packet-difficulty-btn:hover,
+.crypto-selector-btn:hover,
+.admin-nav a:hover,
+button:hover {
+  /* Let the original stylesheet's hover rules control the animation. */
+}
+
+/* Ripple-all is intentionally disabled: original button hover animations
+   are restored instead. */
+</style>
+
+
+<style id="calendar-today-black-fix">
+/* Present date: make the small date box black when hovered or selected. */
+.calendar-day.today:hover .calendar-number,
+.calendar-day.today.selected .calendar-number,
+.calendar-day.today:focus .calendar-number {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #000 !important;
+  box-shadow: none !important;
+}
+
+/* Keep the black date box visible if the selected/today cell has the red hover fill. */
+.calendar-day.today:hover,
+.calendar-day.today.selected {
+  color: #fff !important;
+}
+
+.calendar-day.today:hover .calendar-number,
+.calendar-day.today.selected .calendar-number {
+  opacity: 1 !important;
+}
+</style>
+
+
+
+
+
+<style id="connect-faculty-team-styles">
+/* =========================================================
+   CONNECT — FACULTY FILTER + FINALIZED TEAM
+   ========================================================= */
+
+.faculty-category-tabs{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  margin:0 0 30px;
+}
+
+.faculty-category-btn{
+  appearance:none;
+  border:1px solid var(--border);
+  background:transparent;
+  color:var(--text-dim);
+  padding:13px 22px;
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:background .22s ease,color .22s ease,border-color .22s ease,transform .22s ease;
+}
+
+.faculty-category-btn:hover{
+  border-color:var(--accent-bright);
+  color:var(--text);
+  transform:translateY(-2px);
+}
+
+.faculty-category-btn.active{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+
+.professor-grid.faculty-grid{
+  grid-template-columns:repeat(2,1fr);
+}
+
+.faculty-card{
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+}
+
+.faculty-title{
+  color:var(--accent-bright);
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  margin:-2px 0 14px;
+}
+
+.faculty-bio{
+  color:var(--text-dim);
+  font-size:13.5px;
+  line-height:1.7;
+  margin:0 0 18px;
+}
+
+.faculty-research{
+  border-top:1px solid var(--border);
+  margin-top:auto;
+  padding-top:15px;
+}
+
+.faculty-research summary{
+  cursor:pointer;
+  list-style:none;
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--text);
+}
+
+.faculty-research summary::-webkit-details-marker{
+  display:none;
+}
+
+.faculty-research summary::before{
+  content:'+ ';
+  color:var(--accent-bright);
+}
+
+.faculty-research[open] summary::before{
+  content:'− ';
+}
+
+.faculty-research ul{
+  margin:14px 0 0 18px;
+  color:var(--text-dim);
+  font-size:13px;
+  line-height:1.75;
+}
+
+.faculty-research li{
+  margin:3px 0;
+}
+
+.faculty-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+
+.connect-team-groups{
+  display:flex;
+  flex-direction:column;
+  gap:52px;
+}
+
+.connect-team-group{
+  border-top:1px solid var(--border);
+  padding-top:22px;
+}
+
+.connect-team-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:20px;
+  color:var(--text-dim);
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.connect-member-grid{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.finalized-team-card{
+  border:1px solid var(--border);
+  padding:24px;
+  min-height:145px;
+}
+
+.finalized-team-card .team-number{
+  color:var(--accent-bright);
+  font-size:10px;
+  margin-bottom:20px;
+}
+
+.finalized-team-card h3{
+  margin:0 0 9px;
+  font-size:17px;
+}
+
+.finalized-team-card .role{
+  margin-top:0;
+}
+
+@media(max-width:900px){
+  .professor-grid.faculty-grid,
+  .connect-member-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:600px){
+  .faculty-category-tabs{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+
+  .faculty-category-btn{
+    width:100%;
+  }
+
+  .professor-grid.faculty-grid,
+  .connect-member-grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+
+<style id="red-tile-black-text-fix">
+/* =========================================================
+   RED HOVER TILES — RED TEXT BECOMES BLACK
+   Whenever a tile/card turns red on hover, red text inside it
+   becomes black for readable contrast.
+   ========================================================= */
+
+/* Generic red-hover cards/tiles */
+.card:hover,
+.tile:hover,
+.team-card:hover,
+.professor-card:hover,
+.member-card:hover,
+.wwd-item:hover,
+.resource-card:hover,
+.project-card:hover,
+.blog-card:hover,
+.calendar-event:hover,
+.games-page-card:hover,
+.labs-feature:hover,
+.labs-project-card:hover,
+.labs-game-card:hover,
+.lab-game-card-full:hover {
+  color: #000 !important;
+}
+
+/* Any red text inside a red-hover tile */
+.card:hover .red,
+.card:hover .text-red,
+.card:hover .accent,
+.card:hover .accent-text,
+.card:hover .label,
+.card:hover .role,
+.card:hover .team-role,
+.card:hover .member-role,
+.tile:hover .red,
+.tile:hover .text-red,
+.tile:hover .accent,
+.tile:hover .accent-text,
+.tile:hover .label,
+.tile:hover .role,
+.tile:hover .team-role,
+.tile:hover .member-role,
+.team-card:hover .red,
+.team-card:hover .text-red,
+.team-card:hover .accent,
+.team-card:hover .accent-text,
+.team-card:hover .label,
+.team-card:hover .role,
+.team-card:hover .team-role,
+.team-card:hover .member-role,
+.professor-card:hover .red,
+.professor-card:hover .text-red,
+.professor-card:hover .accent,
+.professor-card:hover .accent-text,
+.professor-card:hover .label,
+.professor-card:hover .role,
+.professor-card:hover .team-role,
+.professor-card:hover .member-role {
+  color: #000 !important;
+}
+
+/* Catch red inline text/classes used by the Connect page. */
+.team-card:hover span,
+.team-card:hover strong,
+.team-card:hover small,
+.member-card:hover span,
+.member-card:hover strong,
+.member-card:hover small,
+.professor-card:hover span,
+.professor-card:hover strong,
+.professor-card:hover small {
+  color: #000 !important;
+}
+
+/* Keep links/buttons readable when their parent tile turns red. */
+.card:hover a,
+.tile:hover a,
+.team-card:hover a,
+.member-card:hover a,
+.professor-card:hover a,
+.card:hover button,
+.tile:hover button,
+.team-card:hover button,
+.member-card:hover button,
+.professor-card:hover button {
+  color: #000 !important;
+}
+
+/* Preserve white text where it is explicitly meant to remain white
+   (images/icons/controls can still override this with their own rules). */
+.card:hover img,
+.tile:hover img,
+.team-card:hover img,
+.member-card:hover img,
+.professor-card:hover img {
+  color: initial !important;
+}
+</style>
+
+
+<style id="faculty-red-hover-black-fix">
+/* Faculty cards: red labels must turn black when the card itself turns red. */
+.professor-card:hover .professor-index,
+.professor-card:hover .faculty-title {
+  color: #000 !important;
+}
+
+/* Also cover the red research-toggle accent on the same red tile. */
+.professor-card:hover .faculty-research summary::before {
+  color: #000 !important;
+}
+
+/* Any red/accent text specifically used in faculty cards becomes black. */
+.professor-card:hover [style*="color"],
+.professor-card:hover .accent,
+.professor-card:hover .accent-text,
+.professor-card:hover .text-red,
+.professor-card:hover .red {
+  color: #000 !important;
+}
+</style>
+
+
+<style id="faculty-filter-display-fix">
+.faculty-card[hidden] {
+  display: none !important;
+}
+
+.faculty-category-tabs {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+</style>
+
+
+<style id="faculty-all-tab-fix">
+.faculty-category-tabs {
+  display: flex !important;
+  gap: 18px !important;
+  flex-wrap: wrap !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.faculty-category-btn {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+</style>
+
+
+<style id="final-transition-visibility-fix">
+#page-transition {
+  z-index: 99999 !important;
+}
+
+#page-transition .transition-art {
+  z-index: 2 !important;
+  visibility: visible !important;
+  display: flex !important;
+  white-space: pre !important;
+  color: #900c20 !important;
+  opacity: 0;
+}
+
+#page-transition .transition-label {
+  z-index: 3 !important;
+  visibility: visible !important;
+}
+
+#page-transition.active .transition-art {
+  opacity: 1 !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -3048,7 +3497,28 @@ const TRANSITION_ART = {
           │      ┌───▼───┐
           └──────┤ BUILD │
                  └───────┘`,
+  projectsLab: `       ╭──────────╮
+───────┤  BUILD   ├───────
+       ╰────┬─────╯
+            │
+       ┌────┴────┐
+       │  CODE   │
+       └────┬────┘
+            │
+         ◇──┴──◇`,
+  gamesLab: `        ◇──────◇
+       /          \\
+      ◇   PLAY     ◇
+       \\          /
+        ◇───┬────◇
+            │
+         ▶  ◀  ▶`,
   team: `          ●
+         / \\
+        ●   ●
+       / \\ / \\
+      ●   ●   ●`,
+  connect: `          ●
          / \\
         ●   ●
        / \\ / \\
@@ -3060,6 +3530,11 @@ const TRANSITION_ART = {
          ◉──┴──◉`,
   courses: `      ╭──────────────╮
 ──────┤  LEARN / BUILD ├──────
+      ╰───────┬──────╯
+              │
+        ──────┴──────`,
+  resources: `      ╭──────────────╮
+──────┤   RESOURCES  ├──────
       ╰───────┬──────╯
               │
         ──────┴──────`,
@@ -3089,10 +3564,21 @@ const TRANSITION_ART = {
 };
 
 function transitionKey(path){
-  const p = String(path || '/').replace(/^\//,'').split('/')[0].toLowerCase();
-  if(!p) return 'home';
-  if(p === 'admin') return 'lab';
-  return TRANSITION_ART[p] ? p : 'lab';
+  const p = String(path || '/').replace(/^\//,'').split('/').filter(Boolean).map(x => x.toLowerCase());
+
+  if(!p.length) return 'home';
+  if(p[0] === 'admin') return 'admin';
+
+  /* Connect gets the original ASCII tree. */
+  if(p[0] === 'team') return 'connect';
+
+  /* Projects and Games are Labs sub-pages, so give each its own artwork. */
+  if(p[0] === 'labs' && p[1] === 'projects') return 'projectsLab';
+  if(p[0] === 'labs' && p[1] === 'games') return 'gamesLab';
+
+  if(p[0] === 'courses' || p[0] === 'resources') return 'resources';
+
+  return TRANSITION_ART[p[0]] ? p[0] : 'home';
 }
 
 function startPageTransition(path){
@@ -3107,8 +3593,13 @@ function startPageTransition(path){
 
   if(art) art.textContent = TRANSITION_ART[key];
   if(label){
-    const pageName = key.toUpperCase();
-    label.textContent = `BLOCKCHAIN CLUB // ${pageName}`;
+    const transitionLabels = {
+      connect: 'BLOCKCHAIN CLUB // CONNECT',
+      projectsLab: 'BLOCKCHAIN // LABS // PROJECT',
+      gamesLab: 'BLOCKCHAIN // LABS // GAMES',
+      resources: 'BLOCKCHAIN CLUB // RESOURCES'
+    };
+    label.textContent = transitionLabels[key] || `BLOCKCHAIN CLUB // ${key.toUpperCase()}`;
   }
 
   transition.classList.remove('reveal');
@@ -3153,7 +3644,7 @@ async function render(){
   try{ html = await route.view(params); }
   catch(e){ console.error(e); html = NotFoundPage(); }
 
-  app.innerHTML = `<div class="page-fade">${html}</div>`;
+  app.innerHTML = `<div class="page-fade">${html}${route.admin ? '' : SiteFooter()}</div>`;
   window.scrollTo(0,0);
 
   if(route.after) route.after(params);
@@ -3176,13 +3667,56 @@ async function render(){
 window.addEventListener('hashchange', render);
 window.addEventListener('DOMContentLoaded', async () => { await ensureSeed(); await render(); });
 
+
+function SiteFooter(){
+  return `
+    <footer class="site-footer" id="site-footer">
+      <div class="container footer-inner">
+
+        <div class="footer-col">
+          <a href="#/" class="nav-logo" aria-label="Blockchain Club home">
+            <img src="logo.jpeg" alt="Blockchain Club logo">
+            <span class="brand-name">Blockchain Club</span>
+          </a>
+          <p>
+            A student-run collective exploring blockchain,
+            cybersecurity, distributed systems, and applied cryptography.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading mono">NAVIGATE</div>
+          <a href="#/">Home</a>
+          <a href="#/about">About</a>
+          <a href="#/events">Events</a>
+          <a href="#/blogs">Blogs</a>
+          <a href="#/labs">Labs</a>
+          <a href="#/courses">Resources</a>
+          <a href="#/team">Connect</a>
+          <a href="#/contact">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-heading mono">CLUB</div>
+          <a href="#/admin/login">Admin Access</a>
+        </div>
+
+      </div>
+
+      <div class="container footer-bottom">
+        <span>© ${new Date().getFullYear()} Blockchain Club</span>
+        <span class="mono">BLOCKCHAIN_CLUB // CONNECT // BUILD // LEARN</span>
+      </div>
+    </footer>
+  `;
+}
+
 function NavBar(active){
   const links = [
   ['#/events','Events'],
   ['#/blogs','Blogs'],
   ['#/team','Connect'],
-  ['#/courses','Resources'],
-  ['#/admin/login','Admin']
+  ['#/courses','Resources']
 ];
   const labsActive=active.startsWith('#/labs');
   return `
@@ -3597,25 +4131,58 @@ function initHomeCrypto(){
     const changeEl=document.getElementById(`home-${c.id}-change`);
     const chartEl=document.getElementById(`home-crypto-chart-${c.id}`);
     if(!priceEl || !changeEl || !chartEl) return;
+
     chartEl.innerHTML='<div class="home-crypto-loading">LOADING GRAPH</div>';
+
+    async function fetchJson(url, attempts=3){
+      let lastError;
+      for(let attempt=0; attempt<attempts; attempt++){
+        try{
+          const res=await fetch(url,{cache:'no-store'});
+          if(!res.ok) throw new Error(`HTTP ${res.status}`);
+          return await res.json();
+        }catch(err){
+          lastError=err;
+          if(attempt < attempts-1){
+            await new Promise(r=>setTimeout(r,700*(attempt+1)));
+          }
+        }
+      }
+      throw lastError || new Error('Request failed');
+    }
+
     try{
-      const [marketRes,chartRes]=await Promise.all([
-        fetch(`${apiBase}/coins/markets?vs_currency=inr&ids=${c.id}&price_change_percentage=24h`),
-        fetch(`${apiBase}/coins/${c.id}/market_chart?vs_currency=inr&days=1`)
-      ]);
-      if(!marketRes.ok || !chartRes.ok) throw new Error('Market request failed');
-      const market=(await marketRes.json())[0];
-      const chart=await chartRes.json();
+      /* Load market data and chart independently so one endpoint
+         failing does not break the entire crypto card. */
+      const market=(
+        await fetchJson(
+          `${apiBase}/coins/markets?vs_currency=inr&ids=${c.id}&price_change_percentage=24h`
+        )
+      )[0];
+
       if(!market) throw new Error('Coin not found');
+
       state[c.id].price=Number(market.current_price);
       priceEl.textContent=`₹${fmtINR(state[c.id].price)}`;
+
       const change=Number(market.price_change_percentage_24h)||0;
       changeEl.textContent=`${change>=0?'+':'−'}${Math.abs(change).toFixed(2)}% / 24H`;
       changeEl.className=`home-crypto-change ${change>=0?'positive':'negative'}`;
-      drawChart(c.id,chart.prices||[]);
+
       updateConverter(c.id,'crypto');
+
+      try{
+        const chart=await fetchJson(
+          `${apiBase}/coins/${c.id}/market_chart?vs_currency=inr&days=1&interval=hourly`
+        );
+        drawChart(c.id,chart.prices||[]);
+      }catch(chartErr){
+        console.error(`Chart request failed for ${c.id}:`,chartErr);
+        chartEl.innerHTML='<div class="home-crypto-loading">CHART TEMPORARILY UNAVAILABLE</div>';
+      }
+
     }catch(err){
-      console.error(err);
+      console.error(`Market request failed for ${c.id}:`,err);
       changeEl.textContent='MARKET DATA UNAVAILABLE';
       changeEl.className='home-crypto-change negative';
       chartEl.innerHTML='<div class="home-crypto-loading">MARKET DATA UNAVAILABLE</div>';
@@ -3829,40 +4396,175 @@ function CourseRowFull(c,i){
 }
 
 async function TeamPage(){
-  const team = (await teamService.getAll()).sort((a,b)=>(+a.order||99)-(+b.order||99));
+  /*
+   * CONNECT / FACULTY
+   * Faculty is grouped by research area instead of a search bar.
+   * Raghu Kishore is placed under Cyber Security as requested.
+   */
   const professors = [
     {
-      name:'Raghu Kishore Neelisetti',
-      email:'raghukishore.neelisetti@mahindrauniversity.edu.in'
+      id:'raghu',
+      name:'Dr. N. Raghu Kishore',
+      title:'Associate Professor — Computer Science',
+      category:'Cyber Security',
+      email:'raghukishore.neelisetti@mahindrauniversity.edu.in',
+      profile:'https://www.mahindrauniversity.edu.in/faculty/n-raghu-kishore/',
+      bio:'Associate Professor at Mahindra University with a Ph.D. in Computer Science from Auburn University and an M.Tech. from IIT Madras. His work spans information and system security, wireless and vehicular networks, security analytics, and applied machine learning.',
+      interests:[
+        'Security analytics',
+        'Precision agriculture',
+        'Abstractive text summarization',
+        'Buffer-overflow protection and software security',
+        'Wireless, sensor and vehicular networks'
+      ]
     },
     {
-      name:'Divija Swetha Gadiraju',
-      email:'divija.gadiraju@mahindrauniversity.edu.in'
+      id:'divija',
+      name:'Dr. Divija Swetha Gadiraju',
+      title:'Faculty Advisor',
+      category:'Blockchain',
+      email:'divija.gadiraju@mahindrauniversity.edu.in',
+      profile:'',
+      bio:'Faculty advisor associated with the Blockchain Club and the blockchain-focused faculty track.',
+      interests:[
+        'Blockchain technology',
+        'Distributed systems',
+        'Applied cryptography'
+      ]
     }
   ];
+
+  const finalizedTeam = [
+  {name:'Divyam Bafna', role:'Head', department:'Leadership'},
+  {name:'Laasya Dasika', role:'Vice Head', department:'Leadership'},
+  {name:'Dhriti Jhunjhunwala', role:'Secretary', department:'Leadership'},
+
+  {name:'TVNS Charon', role:'Head', department:'Tech'},
+  {name:'Tejas Kushagra', role:'Vice Head', department:'Tech'},
+  {name:'Jahnavi', role:'Member', department:'Tech'},
+  {name:'Lavlesh Sharma', role:'Member', department:'Tech'},
+  {name:'Arnav Kothari', role:'Member', department:'Tech'},
+  {name:'Harshit Chhegondi', role:'Member', department:'Tech'},
+  {name:'Nihal', role:'Member', department:'Tech'},
+  {name:'Harshith Nayakonthi', role:'Member', department:'Tech'},
+
+  {name:'Tanushka Sharma', role:'Head', department:'Design'},
+  {name:'Monshika Reniwal', role:'Vice Head', department:'Design'},
+  {name:'Someeksha', role:'Member', department:'Design'},
+
+  {name:'Hem Shah', role:'Head', department:'Finance'},
+  {name:'Advik Prasad', role:'Vice Head', department:'Finance'},
+
+  {name:'Khushboo Sharma', role:'Head', department:'Social Media'},
+  {name:'Tane Pandey', role:'Vice Head', department:'Social Media'},
+
+  {name:'Harsh Tiwari', role:'Head', department:'Logistics'},
+  {name:'Likhitha', role:'Vice Head', department:'Logistics'},
+
+  {name:'Mahathi', role:'Head', department:'Content'},
+  {name:'Hasini Nayani', role:'Vice Head', department:'Content'},
+  {name:'Manya Goyal', role:'Member', department:'Content'}
+];
+
+  const facultyCategories = ['All','Cyber Security','Blockchain','Cryptography'];
+
   return `${NavBar('#/team')}
-  ${PageHead('04 / CONNECT','Connect','Connect with the professors and student team behind the club.')}
+  ${PageHead('04 / CONNECT','Connect','Meet the faculty and the student teams building the Blockchain Club.')}
+
   <section class="section professor-section">
     <div class="container">
-      <div class="connect-subheading mono">Professors</div>
-      <div class="professor-grid">
-        ${professors.map((p,i)=>`
-          <article class="professor-card">
-            <div class="professor-index">0${i+1} / PROFESSOR</div>
-            <h3>${esc(p.name)}</h3>
-            <a href="mailto:${esc(p.email)}">${esc(p.email)}</a>
+
+      <div class="connect-subheading mono">Faculty</div>
+
+      <div class="faculty-category-tabs" role="tablist" aria-label="Faculty research areas">
+        ${facultyCategories.map((category,i)=>`
+          <button
+            type="button"
+            class="faculty-category-btn ${i===0?'active':''}"
+            data-faculty-filter="${esc(category === "All" ? "all" : category)}"
+            role="tab"
+            aria-selected="${i===0?'true':'false'}">
+            ${esc(category)}
+          </button>
+        `).join('')}
+      </div>
+
+      <div class="professor-grid faculty-grid">
+        ${professors.map((prof,i)=>`
+          <article
+            class="professor-card faculty-card"
+            data-faculty-category="${esc(prof.category)}">
+
+            <div class="professor-index mono">
+              0${i+1} / FACULTY · ${esc(prof.category)}
+            </div>
+
+            <h3>${esc(prof.name)}</h3>
+            <div class="faculty-title">${esc(prof.title)}</div>
+
+            <p class="faculty-bio">${esc(prof.bio)}</p>
+
+            <details class="faculty-research">
+              <summary>Research interests</summary>
+              <ul>
+                ${prof.interests.map(x=>`<li>${esc(x)}</li>`).join('')}
+              </ul>
+            </details>
+
+            <div class="faculty-links">
+              ${prof.profile
+                ? `<a href="${esc(prof.profile)}" target="_blank" rel="noopener noreferrer" class="link-btn mono">MU PROFILE ↗</a>`
+                : ''}
+              ${prof.email
+                ? `<a href="mailto:${esc(prof.email)}" class="link-btn mono">EMAIL</a>`
+                : ''}
+            </div>
           </article>
         `).join('')}
       </div>
+
       <div class="connect-divider"></div>
-      <div class="connect-subheading mono">Team</div>
-      <div class="grid grid-4">
-        ${team.length ? team.map(t=>TeamCardFull(t)).join('') : EmptyState({title:'No team members listed', msg:'Team profiles will appear here once published.'})}
+
+      <div class="connect-subheading mono">Finalized Team</div>
+
+      <div class="connect-team-groups">
+        ${[
+          'Leadership',
+          'Tech',
+          'Design',
+          'Finance',
+          'Social Media',
+          'Logistics',
+          'Content'
+        ].map(dept=>{
+          const members=finalizedTeam.filter(t=>t.department===dept);
+          return `
+            <section class="connect-team-group">
+              <div class="connect-team-heading">
+                <span class="mono">${esc(dept)}</span>
+                <span class="mono">${String(members.length).padStart(2,'0')}</span>
+              </div>
+
+              <div class="grid grid-4 connect-member-grid">
+                ${members.map((t,i)=>`
+                  <article class="team-card finalized-team-card">
+                    <div class="team-number mono">${String(i+1).padStart(2,'0')}</div>
+                    <h3>${esc(t.name)}</h3>
+                    <div class="role mono">${esc(t.role)}</div>
+                    <div class="dept mono">${esc(t.department)}</div>
+                  </article>
+                `).join('')}
+              </div>
+            </section>
+          `;
+        }).join('')}
       </div>
+
     </div>
   </section>
   `;
 }
+
 function TeamCardFull(t){
   return `<div class="team-card">
     ${ImgOrPlaceholder(t.image, t.name, true)}
@@ -4979,5 +5681,93 @@ function initChallengeGame(){
   requestAnimationFrame(update);
 })();
 </script>
+
+<script id="final-ripple-fix">
+(function(){
+  function triggerRipple(button, event){
+    if(!button || button.dataset.rippleBound === '1') return;
+    button.dataset.rippleBound = '1';
+
+    button.addEventListener('pointerenter', function(e){
+      const rect = button.getBoundingClientRect();
+      button.style.setProperty('--ripple-x', (e.clientX - rect.left) + 'px');
+      button.style.setProperty('--ripple-y', (e.clientY - rect.top) + 'px');
+      button.classList.remove('ripple-active');
+      void button.offsetWidth;
+      button.classList.add('ripple-active');
+    });
+
+    button.addEventListener('animationend', function(e){
+      if(e.animationName === 'selectedButtonRipple'){
+        button.classList.remove('ripple-active');
+      }
+    });
+  }
+
+  function bind(){
+    document.querySelectorAll('.btn-primary, .labs-action, .ripple-button')
+      .forEach(triggerRipple);
+  }
+
+  document.addEventListener('DOMContentLoaded', bind);
+  new MutationObserver(bind).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+
+
+
+
+<script id="connect-faculty-filter">
+(function(){
+  function applyFacultyFilter(category){
+    const tabs=document.querySelectorAll('[data-faculty-filter]');
+    const cards=document.querySelectorAll('.faculty-card');
+
+    tabs.forEach(tab=>{
+      const active=tab.dataset.facultyFilter===category;
+      tab.classList.toggle('active',active);
+      tab.setAttribute('aria-selected',active?'true':'false');
+    });
+
+    cards.forEach(card=>{
+      const show=category==='all' || card.dataset.facultyCategory===category;
+      card.hidden=!show;
+      card.style.display=show?'':'none';
+    });
+  }
+
+  /* Event delegation makes the filter work even when Connect is
+     rendered dynamically after navigation. */
+  document.addEventListener('click',function(e){
+    const tab=e.target.closest('[data-faculty-filter]');
+    if(!tab) return;
+
+    e.preventDefault();
+    applyFacultyFilter(tab.dataset.facultyFilter);
+  });
+
+  function initFacultyFilter(){
+    const tabs=document.querySelectorAll('[data-faculty-filter]');
+    if(!tabs.length) return;
+
+    const active=[...tabs].find(t=>t.dataset.facultyFilter==='all')||tabs[0];
+    applyFacultyFilter(active.dataset.facultyFilter);
+  }
+
+  document.addEventListener('DOMContentLoaded',initFacultyFilter);
+
+  new MutationObserver(function(){
+    const tabs=document.querySelectorAll('[data-faculty-filter]');
+    if(!tabs.length) return;
+    const active=[...tabs].find(t=>t.getAttribute('aria-selected')==='true')
+      || [...tabs].find(t=>t.classList.contains('active'))
+      || [...tabs].find(t=>t.dataset.facultyFilter==='all')
+      || tabs[0];
+    applyFacultyFilter(active.dataset.facultyFilter);
+  }).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
 </body>
 </html>
