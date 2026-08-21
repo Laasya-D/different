@@ -3218,30 +3218,89 @@ button:hover {
   border-left:1px solid var(--border);
 }
 
+/* Social cards inspired by hover effect #16 from Prismic:
+   the circular background rises from below while the icon flips. */
 .club-social-link{
-  min-height:100px;
-  display:grid;
-  grid-template-columns:55px 1fr 30px;
+  min-height:150px;
+  display:flex;
   align-items:center;
-  gap:12px;
-  padding:0 24px;
+  gap:18px;
+  padding:26px 28px;
+  position:relative;
+  overflow:hidden;
   border-right:1px solid var(--border);
   border-bottom:1px solid var(--border);
   color:var(--text);
   text-decoration:none;
   background:var(--bg);
-  transition:background .2s ease,color .2s ease;
+  transition:color .25s ease, background .25s ease;
 }
 
-.club-social-link span:first-child{
-  color:var(--accent);
+.club-social-icon-wrap{
+  position:relative;
+  width:68px;
+  height:68px;
+  flex:0 0 68px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--border);
+  border-radius:50%;
+  overflow:hidden;
+  isolation:isolate;
 }
 
-.club-social-link strong{
+.club-social-icon-wrap::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:var(--accent);
+  border-radius:50%;
+  transform:translateY(100%);
+  transition:transform .35s ease;
+  z-index:-1;
+}
+
+.club-social-icon{
+  width:38px;
+  height:38px;
+  fill:currentColor;
+  color:var(--text);
+  transform:rotateY(0deg);
+  transition:transform .55s ease, color .25s ease;
+}
+
+.club-social-copy{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.club-social-copy strong{
   font-family:var(--font-mono);
-  font-size:14px;
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--text-dim);
+  transition:color .25s ease;
+}
+
+.club-social-copy small{
+  font-family:var(--font-mono);
+  font-size:10px;
+  line-height:1.2;
   letter-spacing:.12em;
   text-transform:uppercase;
+  color:var(--text-dim);
+  transition:color .25s ease;
+}
+
+.club-social-arrow{
+  margin-left:auto;
+  font-size:20px;
+  color:var(--text-dim);
+  transition:color .25s ease, transform .35s ease;
 }
 
 .club-social-link:hover{
@@ -3249,36 +3308,96 @@ button:hover {
   color:#000 !important;
 }
 
-.club-social-link:hover span:first-child,
-.club-social-link:hover span:last-child{
+.club-social-link:hover .club-social-icon-wrap::before{
+  transform:translateY(0);
+}
+
+.club-social-link:hover .club-social-icon{
+  transform:rotateY(360deg);
+  color:#000;
+}
+
+.club-social-link:hover .club-social-copy small,
+.club-social-link:hover .club-social-arrow{
   color:#000 !important;
+}
+
+.club-social-link:hover .club-social-arrow{
+  transform:translateX(5px);
 }
 
 @media(max-width:700px){
   .club-social-links{
     grid-template-columns:1fr;
   }
+
+  .club-social-link{
+    min-height:125px;
+    padding:22px;
+  }
 }
 </style>
 
 
 <style id="club-page-navbar-final">
+/* Club page uses the exact same tab geometry as Connect. */
 .club-page-nav{
+  width:100% !important;
   margin-top:0 !important;
+  border-top:1px solid var(--border) !important;
+  border-bottom:1px solid var(--border) !important;
+  background:#050505 !important;
+}
+
+.club-page-nav .connect-local-links{
+  width:100% !important;
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:0 !important;
+  overflow:visible !important;
 }
 
 .club-page-nav .connect-local-link{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  min-width:0 !important;
+  min-height:62px !important;
+  height:62px !important;
+  margin:0 !important;
+  padding:12px 18px !important;
+  border:0 !important;
+  border-right:1px solid var(--border) !important;
+  border-radius:0 !important;
+  background:#050505 !important;
+  color:#929292 !important;
+  box-shadow:none !important;
+  font-family:var(--font-mono) !important;
+  font-size:11px !important;
+  font-weight:400 !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
   text-decoration:none !important;
+  cursor:pointer !important;
+  transform:none !important;
+  transition:background .18s ease,color .18s ease,border-color .18s ease !important;
 }
 
-.club-page-nav .connect-local-link.active{
-  background:var(--accent) !important;
-  color:#fff !important;
+.club-page-nav .connect-local-link:first-child{
+  border-left:1px solid var(--border) !important;
 }
 
 .club-page-nav .connect-local-link:hover{
   background:var(--accent) !important;
   color:#000 !important;
+  border-color:var(--accent) !important;
+}
+
+.club-page-nav .connect-local-link.active{
+  background:var(--accent) !important;
+  color:#fff !important;
+  border-color:var(--accent) !important;
 }
 </style>
 
@@ -3312,6 +3431,113 @@ button:hover {
 }
 </style>
 
+<style id="connect-club-tab-final">
+.connect-local-nav:not(.club-page-nav) .connect-local-link{
+  box-sizing:border-box !important;
+}
+.connect-local-nav:not(.club-page-nav) .connect-local-link[href="#/about"]{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+</style>
+
+
+<style id="final-unified-tab-size">
+.connect-local-nav .connect-local-links{
+  width:100% !important;
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:0 !important;
+  overflow:visible !important;
+}
+
+.connect-local-nav .connect-local-link,
+.connect-local-nav .connect-local-link[type="button"]{
+  box-sizing:border-box !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  min-width:0 !important;
+  min-height:54px !important;
+  height:54px !important;
+  margin:0 !important;
+  padding:10px 16px !important;
+  border:0 !important;
+  border-right:1px solid var(--border) !important;
+  border-radius:0 !important;
+  background:#050505 !important;
+  color:#929292 !important;
+  box-shadow:none !important;
+  font-family:var(--font-mono) !important;
+  font-size:11px !important;
+  font-weight:400 !important;
+  line-height:1 !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+  text-decoration:none !important;
+  transform:none !important;
+}
+
+.connect-local-nav .connect-local-link:first-child{
+  border-left:1px solid var(--border) !important;
+}
+
+.connect-local-nav .connect-local-link:hover{
+  background:var(--accent) !important;
+  color:#000 !important;
+  border-color:var(--accent) !important;
+}
+
+.connect-local-nav .connect-local-link.active{
+  background:var(--accent) !important;
+  color:#fff !important;
+  border-color:var(--accent) !important;
+}
+
+/* Keep the Club page tabs identical to the Connect tabs. */
+.club-page-nav .connect-local-links{
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+}
+
+.club-page-nav .connect-local-link{
+  min-height:54px !important;
+  height:54px !important;
+}
+</style>
+
+<style id="connect-tabs-thinner-final">
+/* FINAL: make the Connect navigation tabs noticeably thinner */
+.connect-local-nav .connect-local-link,
+.connect-local-nav .connect-local-link[type="button"],
+.club-page-nav .connect-local-link{
+  min-height:40px !important;
+  height:40px !important;
+  padding:6px 16px !important;
+  line-height:1 !important;
+}
+
+.connect-local-nav .connect-local-link:hover{
+  background:var(--accent) !important;
+  color:#000 !important;
+}
+
+.connect-local-nav .connect-local-link.active{
+  background:var(--accent) !important;
+  color:#fff !important;
+}
+
+@media(max-width:600px){
+  .connect-local-nav .connect-local-link,
+  .connect-local-nav .connect-local-link[type="button"],
+  .club-page-nav .connect-local-link{
+    min-height:40px !important;
+    height:40px !important;
+    padding:6px 10px !important;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -3850,20 +4076,36 @@ function ClubSocialPage(){
               class="club-social-link"
               href="https://www.linkedin.com/company/mu-blockchain-club/about/?viewAsMember=true"
               target="_blank"
-              rel="noopener noreferrer">
-              <span class="mono">01</span>
-              <strong>LinkedIn</strong>
-              <span class="mono">↗</span>
+              rel="noopener noreferrer"
+              aria-label="Open Blockchain Club LinkedIn">
+              <span class="club-social-icon-wrap" aria-hidden="true">
+                <svg class="club-social-icon" viewBox="0 0 24 24">
+                  <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2 2 0 1 0 5.25 7.01 2 2 0 0 0 5.25 3ZM20.44 13.42c0-3.47-1.85-5.09-4.32-5.09-1.99 0-2.88 1.1-3.38 1.87V8.5H9.36V20h3.38v-5.69c0-1.5.28-2.95 2.14-2.95 1.83 0 1.85 1.71 1.85 3.05V20h3.38l.33-6.58Z"/>
+                </svg>
+              </span>
+              <span class="club-social-copy">
+                <small>linkedin</small>
+              </span>
+              <span class="club-social-arrow" aria-hidden="true">↗</span>
             </a>
 
             <a
               class="club-social-link"
               href="https://www.instagram.com/blockchain_mu?igsh=YnZ1ajZ1cG9odXI2&utm_source=qr"
               target="_blank"
-              rel="noopener noreferrer">
-              <span class="mono">02</span>
-              <strong>Instagram</strong>
-              <span class="mono">↗</span>
+              rel="noopener noreferrer"
+              aria-label="Open Blockchain Club Instagram">
+              <span class="club-social-icon-wrap" aria-hidden="true">
+                <svg class="club-social-icon" viewBox="0 0 24 24" fill="none">
+                  <rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+                  <circle cx="17.4" cy="6.7" r="1.15" fill="currentColor"/>
+                </svg>
+              </span>
+              <span class="club-social-copy">
+                <small>instagram</small>
+              </span>
+              <span class="club-social-arrow" aria-hidden="true">↗</span>
             </a>
           </div>
         </section>
@@ -4487,9 +4729,8 @@ async function HomePage(){
         <div>
           <h2>ABOUT</h2>
           <p class="section-copy">
-            A community for students who want to understand
-            distributed systems and security as one connected discipline —
-            not two separate tracks.
+            This semester, we’ll focus on exploring cybersecurity and blockchain,
+            with an introduction to cryptography and related concepts.
           </p>
         </div>
       </div>
@@ -4498,17 +4739,17 @@ async function HomePage(){
         <div class="wwd-item">
           <div class="wwd-num mono">01 /</div>
           <h3>BUILD</h3>
-          <p>Build practical systems, prototypes and experiments around blockchain and cybersecurity.</p>
+          <p>Build real projects and put your cybersecurity and blockchain skills into practice.</p>
         </div>
         <div class="wwd-item">
           <div class="wwd-num mono">02 /</div>
           <h3>LEARN</h3>
-          <p>Learn through workshops, challenges, technical sessions and hands-on projects.</p>
+          <p>Learn cybersecurity, cryptography, and blockchain through practical sessions and challenges.</p>
         </div>
         <div class="wwd-item">
           <div class="wwd-num mono">03 /</div>
           <h3>EXPLORE</h3>
-          <p>Explore emerging technologies with a community that values curiosity and experimentation.</p>
+          <p>Explore blockchain technologies, security concepts, and new ideas.</p>
         </div>
       </div>
     </div>
