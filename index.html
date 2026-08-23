@@ -5155,6 +5155,265 @@ header nav a:hover{
 }
 </style>
 
+
+<style id="iphone-events-scroll-artifact-fix">
+/* =========================================================
+   iPHONE / iOS SAFARI SCROLL FIX
+   Prevent the grey compositing artifact that can appear
+   when scrolling the Events page back toward the top.
+   ========================================================= */
+
+@media (max-width:700px){
+  html,
+  body{
+    background:#070707 !important;
+    overflow-x:hidden !important;
+  }
+
+  /* iOS Safari can briefly composite a grey layer when a
+     fixed element uses backdrop-filter during scroll. */
+  .nav{
+    background:#070707 !important;
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+    transform:translateZ(0) !important;
+    -webkit-transform:translateZ(0) !important;
+  }
+
+  /* Keep the Events page itself on an opaque layer. */
+  .calendar-section,
+  .screenshot-upcoming-events{
+    background:#070707 !important;
+    position:relative !important;
+    isolation:isolate !important;
+  }
+
+  .calendar,
+  .calendar-details,
+  .upcoming-events-empty{
+    -webkit-transform:translateZ(0);
+    transform:translateZ(0);
+  }
+
+  /* Prevent Safari's rubber-band/compositing area from
+     exposing a different background colour. */
+  #app{
+    background:#070707 !important;
+    min-height:100vh !important;
+  }
+}
+</style>
+
+
+<style id="homepage-about-copy-size-match">
+/* Homepage: About description should be larger and match the
+   Cryptocurrency description exactly. */
+.home-about-section .section-copy,
+.home-crypto-section .section-copy{
+  font-size:17px !important;
+  line-height:1.7 !important;
+}
+</style>
+
+
+<style id="contact-socials-new-design">
+/* =========================================================
+   CONTACT PAGE — SOCIALS
+   A distinct contact-page treatment using the same Club
+   social destinations/icons, but with a new stacked-card
+   design.
+   ========================================================= */
+
+.contact-layout{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:72px;
+  align-items:start;
+}
+
+.contact-intro{
+  min-width:0;
+}
+
+.contact-intro > h2{
+  margin:12px 0 10px;
+  font-size:clamp(24px,3vw,38px);
+  line-height:1.1;
+  overflow-wrap:anywhere;
+}
+
+.contact-intro > p{
+  color:var(--text-dim);
+  margin:0;
+  line-height:1.7;
+}
+
+.contact-socials{
+  margin-top:52px;
+  border-top:1px solid var(--border);
+}
+
+.contact-social-heading{
+  padding:15px 0 12px;
+  color:var(--accent-bright);
+  font-size:10px;
+  letter-spacing:.14em;
+}
+
+.contact-social-card{
+  min-height:76px;
+  display:grid;
+  grid-template-columns:52px minmax(0,1fr) auto;
+  align-items:center;
+  gap:16px;
+  padding:12px 14px;
+  border-top:1px solid var(--border);
+  color:var(--text-dim);
+  text-decoration:none;
+  position:relative;
+  overflow:hidden;
+  transition:color .2s ease, background .2s ease, border-color .2s ease;
+}
+
+.contact-social-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:2px;
+  height:0;
+  background:var(--accent);
+  transition:height .25s ease;
+}
+
+.contact-social-card:hover{
+  color:var(--text);
+  background:rgba(126,31,37,.12);
+  border-color:var(--accent);
+}
+
+.contact-social-card:hover::before{
+  height:100%;
+}
+
+.contact-social-icon{
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--border);
+  color:currentColor;
+  transition:background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.contact-social-icon svg{
+  width:25px;
+  height:25px;
+  display:block;
+  fill:currentColor;
+}
+
+.contact-social-card:hover .contact-social-icon{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+}
+
+.contact-social-card > span:nth-child(2){
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.contact-social-card small{
+  font:10px var(--font-mono);
+  letter-spacing:.14em;
+  color:var(--accent-bright);
+}
+
+.contact-social-card strong{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.05em;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.contact-social-arrow{
+  font-size:18px;
+  transition:transform .2s ease;
+}
+
+.contact-social-card:hover .contact-social-arrow{
+  transform:translate(3px,-3px);
+}
+
+.contact-form{
+  border:1px solid var(--border);
+  padding:28px;
+  background:rgba(255,255,255,.012);
+}
+
+.contact-form-head{
+  border-bottom:1px solid var(--border);
+  padding-bottom:22px;
+  margin-bottom:24px;
+}
+
+.contact-form-head h3{
+  margin:8px 0 0;
+  font-size:clamp(24px,3vw,38px);
+  line-height:1;
+}
+
+.contact-form .btn{
+  width:100%;
+  margin-top:8px;
+}
+
+@media(max-width:800px){
+  .contact-layout{
+    grid-template-columns:1fr;
+    gap:46px;
+  }
+
+  .contact-socials{
+    margin-top:38px;
+  }
+
+  .contact-form{
+    padding:20px;
+  }
+}
+</style>
+
+
+<style id="standalone-labs-projects-games-mobile-cleanup">
+/* Projects and Games are standalone pages.
+   They must not show the old Labs platform tab strip
+   (HOME / GAMES / LEADERBOARD / EVENTS / PROJECTS / ...). */
+body:has(.projects-tile-grid) .labs-nav,
+body:has(.games-page) .labs-nav{
+  display:none !important;
+}
+</style>
+
+
+<style id="standalone-games-clean-layout">
+/* Standalone Projects/Games pages: no secondary Labs platform navigation. */
+.games-standalone-page .standalone-game-grid{
+  margin-top:0 !important;
+}
+@media(max-width:800px){
+  .games-standalone-page{
+    padding-top:18px !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -5781,6 +6040,8 @@ const routes = [
   { path:'/team', view: TeamPage },
   { path:'/contact', view: ContactPage },
   { path:'/labs', view: LabsPage, after: initLabsPage },
+  { path:'/labs/projects', view: ProjectsPage },
+  { path:'/labs/games', view: GamesPage, after: initStandaloneGamesPage },
   { path:'/labs/:section', view: LabsPage, after: initLabsPage },
   { path:'/admin/login', view: AdminLoginPage, after: bindLoginForm, admin:true, skipGuard:true },
   { path:'/admin/dashboard', view: AdminDashboardPage, admin:true, key:'dashboard' },
@@ -6211,7 +6472,8 @@ function SiteFooter(){
           <a href="#/about">About</a>
           <a href="#/events">Events</a>
           <a href="#/blogs">Blogs</a>
-          <a href="#/labs">Labs</a>
+          <a href="#/labs/projects">Projects</a>
+          <a href="#/labs/games">Games</a>
           <a href="#/courses">Resources</a>
           <a href="#/team">Connect</a>
           <a href="#/contact">Contact</a>
@@ -6865,9 +7127,71 @@ async function LabsPage(){
   </section>`;
 }
 
+function initStandaloneGamesPage(){
+  document.querySelectorAll('.lab-play-game').forEach(btn => {
+    btn.addEventListener('click', () => labOpenGame(btn.dataset.gameId));
+  });
+  const closeBtn = document.getElementById('lab-game-close');
+  if(closeBtn) closeBtn.addEventListener('click', labCloseGame);
+  const modal = document.getElementById('lab-game-modal');
+  if(modal) modal.addEventListener('click', e => {
+    if(e.target === modal) labCloseGame();
+  });
+}
+
+async function GamesPage(){
+  const games = [
+    ['01 / BLOCKCHAIN','Hash Hunt','Find a nonce that creates a valid hash.','hash'],
+    ['02 / BLOCKCHAIN','Chain Reaction','Find the corrupted block in a chain.','chain'],
+    ['03 / CYBERSECURITY','Phish or Legit?','Spot the suspicious email before you click.','phish'],
+    ['04 / CTF','Mini CTF','Solve three tiny flags from a fake lab terminal.','ctf'],
+    ['05 / ESCAPE ROOM','Cyber Escape Room','Unlock the room by solving a sequence of security puzzles.','escape'],
+    ['06 / CYBERSECURITY','Trace the Intruder','Locate the compromised node using limited scans.','trace'],
+    ['07 / NETWORKING','Packet Panic','Intercept malicious network packets without blocking safe traffic.','packet'],
+    ['08 / CRYPTO','Decode the Chain','Decode short pieces of data used around computing.','decode'],
+    ['09 / BLOCKCHAIN','Build the Block','Mine and add a new block to a tiny chain.','build'],
+    ['10 / BLOCKCHAIN','Block Builder','Assemble the pieces required for a valid block.','builder'],
+    ['11 / SIMULATION','Chain Market','Trade fictional tokens as network events change prices.','market'],
+    ['12 / BLOCKCHAIN','Consensus Clash','Reach consensus before conflicting nodes split the network.','consensus'],
+    ['13 / SECURITY','Smart Contract Audit','Find the dangerous line in a tiny contract.','smart'],
+    ['14 / CRYPTO','Wallet Heist','Recover a fictional wallet using clues without revealing the seed.','wallet']
+  ];
+
+  return `${NavBar('#/labs/games')}
+  ${PageHead('06 / GAMES','Games & Challenges','Interactive blockchain, cybersecurity, and cryptography prototypes.')}
+  <section class="section games-standalone-page">
+    <div class="container">
+      <div class="lab-game-grid-full standalone-game-grid">
+        ${games.map(g => `
+          <article class="lab-game-card-full">
+            <div class="lab-game-number mono">${g[0]}</div>
+            <h3>${g[1]}</h3>
+            <p>${g[2]}</p>
+            <button class="labs-action lab-play-game" type="button" data-game-id="${g[3]}">PLAY PROTOTYPE →</button>
+          </article>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="lab-game-modal" id="lab-game-modal" aria-hidden="true">
+      <div class="lab-game-modal-inner">
+        <div class="lab-game-modal-head">
+          <div>
+            <div class="labs-kicker mono" id="lab-game-modal-num"></div>
+            <h2 id="lab-game-modal-title"></h2>
+            <p class="text-dim" id="lab-game-modal-desc"></p>
+          </div>
+          <button class="btn btn-outline" type="button" id="lab-game-close">CLOSE</button>
+        </div>
+        <div class="lab-game-demo" id="lab-game-demo"></div>
+      </div>
+    </div>
+  </section>`;
+}
+
 async function ProjectsPage(){
   const projects = (await projectService.getAll()).filter(p => (p.visibility||'draft') === 'published' && !['Campus Credential Ledger','Threat Intel Aggregator','Zero-Knowledge Attendance'].includes(p.title));
-  return `${NavBar('#/labs')}
+  return `${NavBar('#/labs/projects')}
   ${PageHead('07 / PROJECTS','Projects','A space for club projects. The admin can add and publish project tiles later.')}
   <section class="section">
     <div class="container">
@@ -7334,27 +7658,81 @@ async function ContactPage(){
   const c = await contactService.get();
   return `${NavBar('#/contact')}
   ${PageHead('CONTACT','Contact the Club','Questions, collaborations, workshops, and anything else — send us a message.')}
-  <section class="section">
+  <section class="section contact-page-section">
     <div class="container">
-      <div class="grid grid-2">
-        <div class="prose">
+      <div class="contact-layout">
+        <div class="contact-intro">
           <div class="eyebrow mono">GET IN TOUCH</div>
           <h2>${esc(c.email)}</h2>
           <p>${esc(c.location)}</p>
+
+          <div class="contact-socials">
+            <div class="contact-social-heading mono">FOLLOW THE CLUB</div>
+
+            <a class="contact-social-card" href="https://www.linkedin.com/company/mu-blockchain-club/about/?viewAsMember=true"
+               target="_blank" rel="noopener noreferrer">
+              <span class="contact-social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2 2 0 1 0 5.25 7.01 2 2 0 0 0 5.25 3ZM20.44 13.42c0-3.47-1.85-5.09-4.32-5.09-1.99 0-2.88 1.1-3.38 1.87V8.5H9.36V20h3.38v-5.69c0-1.5.28-2.95 2.14-2.95 1.83 0 1.85 1.71 1.85 3.05V20h3.38l.33-6.58Z"/>
+                </svg>
+              </span>
+              <span><small>LINKEDIN</small><strong>MU BLOCKCHAIN CLUB</strong></span>
+              <span class="contact-social-arrow">↗</span>
+            </a>
+
+            <a class="contact-social-card" href="https://www.instagram.com/blockchain_mu?igsh=YnZ1ajZ1cG9odXI2&utm_source=qr"
+               target="_blank" rel="noopener noreferrer">
+              <span class="contact-social-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64">
+                  <rect x="8" y="8" width="48" height="48" rx="14" fill="none" stroke="currentColor" stroke-width="6"/>
+                  <circle cx="32" cy="32" r="11" fill="none" stroke="currentColor" stroke-width="6"/>
+                  <circle cx="47" cy="17" r="3.5" fill="currentColor"/>
+                </svg>
+              </span>
+              <span><small>INSTAGRAM</small><strong>@BLOCKCHAIN_MU</strong></span>
+              <span class="contact-social-arrow">↗</span>
+            </a>
+
+            <a class="contact-social-card" href="https://x.com/blockchain_mu?s=11"
+               target="_blank" rel="noopener noreferrer">
+              <span class="contact-social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 4h4.1l3.05 4.36L15.85 4H19l-5.38 6.14L19.45 20h-4.1l-3.48-4.98L7.2 20H4.05l5.65-6.47L5 4Zm3.15 1.75h-.85l8.95 12.5h.85L8.15 5.75Z"/>
+                </svg>
+              </span>
+              <span><small>X</small><strong>@BLOCKCHAIN_MU</strong></span>
+              <span class="contact-social-arrow">↗</span>
+            </a>
+
+            <a class="contact-social-card" href="mailto:blockchainclub@mahindrauniversity.edu.in">
+              <span class="contact-social-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64">
+                  <rect x="7" y="13" width="50" height="38" rx="5" fill="none" stroke="currentColor" stroke-width="5"/>
+                  <path d="M9 17 L32 36 L55 17" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 49 L25 34 M55 49 L39 34" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span><small>OUTLOOK</small><strong>${esc(c.email)}</strong></span>
+              <span class="contact-social-arrow">↗</span>
+            </a>
+          </div>
         </div>
-        <form id="public-contact-form" class="admin-form">
+
+        <form id="public-contact-form" class="admin-form contact-form">
+          <div class="contact-form-head">
+            <div class="eyebrow mono">SEND A MESSAGE</div>
+            <h3>LET'S CONNECT.</h3>
+          </div>
           <div class="field"><label>Name</label><input name="name" required></div>
           <div class="field"><label>Email</label><input type="email" name="email" required></div>
           <div class="field"><label>Subject</label><input name="subject" required></div>
           <div class="field"><label>Message</label><textarea name="message" rows="7" required></textarea></div>
-          <button class="btn btn-primary" type="submit">SEND MESSAGE</button>
+          <button class="btn btn-primary" type="submit">SEND MESSAGE ↗</button>
         </form>
       </div>
     </div>
   </section>`;
-}
-
-async function AdminContactDetailsPage(){
+} async function AdminContactDetailsPage(){
   const c = await contactService.get();
   return adminShell(`
     <div class="admin-topbar"><h1>Contact Details</h1></div>
