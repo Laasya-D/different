@@ -6077,6 +6077,402 @@ header nav a:hover{
 }
 </style>
 
+
+<style id="ios-events-scroll-fix-final">
+@media (max-width:700px){
+  /* iOS Safari can expose the page's compositor layer during rubber-band
+     scrolling. Keep every layer involved in Events on the same solid color. */
+  html.events-page{
+    background-color:#070707 !important;
+    color-scheme:dark;
+    overflow-x:hidden !important;
+  }
+
+  html.events-page body{
+    background-color:#070707 !important;
+    background-image:none !important;
+    min-height:100% !important;
+    overflow-x:hidden !important;
+    overscroll-behavior:none !important;
+  }
+
+  html.events-page #app{
+    width:100% !important;
+    max-width:100% !important;
+    min-height:100% !important;
+    background-color:#070707 !important;
+    background-image:none !important;
+    overflow-x:hidden !important;
+  }
+
+  /* The fixed blurred navigation is a common source of grey compositor
+     flashes on iOS while the page is being rubber-banded. */
+  html.events-page .nav{
+    background:#070707 !important;
+    background-color:#070707 !important;
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+  }
+
+  html.events-page .page-fade{
+    animation:none !important;
+    transform:none !important;
+    -webkit-transform:none !important;
+    opacity:1 !important;
+    background:#070707 !important;
+    will-change:auto !important;
+  }
+
+  html.events-page .events-page-heading,
+  html.events-page .calendar-section,
+  html.events-page .calendar,
+  html.events-page .upcoming-events-section,
+  html.events-page .screenshot-upcoming-events,
+  html.events-page .site-footer{
+    background:#070707 !important;
+    background-color:#070707 !important;
+    background-image:none !important;
+    transform:none !important;
+    -webkit-transform:none !important;
+    will-change:auto !important;
+  }
+
+  html.events-page #page-transition,
+  html.events-page .ascii-transition{
+    display:none !important;
+    visibility:hidden !important;
+    opacity:0 !important;
+  }
+
+  /* Prevent a fractional-width child from creating a horizontal
+     rubber-band area on narrow iPhone viewports. */
+  html.events-page .container,
+  html.events-page .calendar,
+  html.events-page .upcoming-events-empty{
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+}
+</style>
+
+
+<style id="events-heading-events-only-final">
+.events-page-heading{
+  padding:120px 0 55px !important;
+}
+
+.events-page-heading h1{
+  margin:0 !important;
+  font-size:clamp(42px,5.5vw,78px) !important;
+  line-height:.95 !important;
+  letter-spacing:-.04em !important;
+  white-space:nowrap !important;
+}
+
+.events-upcoming-title{
+  display:none !important;
+}
+
+@media(max-width:700px){
+  .events-page-heading{
+    padding:105px 0 42px !important;
+  }
+
+  .events-page-heading h1{
+    font-size:clamp(36px,10vw,58px) !important;
+  }
+}
+</style>
+
+
+<style id="events-heading-final-size">
+.events-page-heading{
+  padding:105px 0 48px !important;
+}
+
+.events-page-heading h1{
+  margin:20px 0 0 !important;
+  font-size:clamp(42px,5.2vw,74px) !important;
+  line-height:.95 !important;
+  letter-spacing:-.04em !important;
+  white-space:nowrap !important;
+}
+
+.events-page-kicker{
+  display:block;
+  color:var(--text-dim);
+  font-family:var(--font-mono);
+  font-size:clamp(14px,1.5vw,19px);
+  line-height:1;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+@media(max-width:700px){
+  .events-page-heading{
+    padding:90px 0 38px !important;
+  }
+
+  .events-page-heading h1{
+    margin-top:16px !important;
+    font-size:clamp(34px,9vw,58px) !important;
+  }
+
+  .events-page-kicker{
+    font-size:13px;
+    letter-spacing:.1em;
+  }
+}
+</style>
+
+
+<style id="events-only-final-heading">
+.events-page-heading{
+  padding:105px 0 50px !important;
+}
+
+.events-page-heading h1{
+  margin:0 !important;
+  color:var(--text) !important;
+  font-size:clamp(42px,5.2vw,74px) !important;
+  line-height:.95 !important;
+  letter-spacing:-.04em !important;
+  font-weight:600 !important;
+  text-transform:uppercase !important;
+  white-space:nowrap !important;
+}
+
+.events-page-kicker,
+.events-upcoming-title{
+  display:none !important;
+}
+
+@media(max-width:700px){
+  .events-page-heading{
+    padding:90px 0 38px !important;
+  }
+
+  .events-page-heading h1{
+    font-size:clamp(36px,9vw,58px) !important;
+  }
+}
+</style>
+
+
+<style id="events-upcoming-events-one-line-final">
+.events-page-heading{
+  padding:105px 0 50px !important;
+}
+
+.events-page-heading h1{
+  margin:0 !important;
+  color:var(--text) !important;
+  font-size:clamp(42px,5.2vw,74px) !important;
+  line-height:.95 !important;
+  letter-spacing:-.04em !important;
+  font-weight:600 !important;
+  text-transform:uppercase !important;
+  white-space:nowrap !important;
+}
+
+@media(max-width:700px){
+  .events-page-heading{
+    padding:90px 0 38px !important;
+  }
+
+  .events-page-heading h1{
+    font-size:clamp(32px,8vw,56px) !important;
+    white-space:nowrap !important;
+  }
+}
+</style>
+
+
+<style id="events-heading-final-correct-layout">
+/* TOP OF EVENTS PAGE */
+.events-page-heading{
+  padding:105px 0 50px !important;
+  background:var(--bg) !important;
+}
+
+.events-page-heading h1{
+  margin:0 !important;
+  color:var(--text) !important;
+  font-family:var(--font-display) !important;
+  font-size:clamp(42px,5.2vw,74px) !important;
+  line-height:.95 !important;
+  letter-spacing:-.04em !important;
+  font-weight:600 !important;
+  text-transform:uppercase !important;
+  white-space:nowrap !important;
+}
+
+/* BELOW CALENDAR */
+.upcoming-events-top{
+  display:flex !important;
+  align-items:flex-end !important;
+  justify-content:space-between !important;
+  gap:24px !important;
+}
+
+#upcoming-events-title{
+  margin:0 !important;
+  color:var(--text) !important;
+  font-family:var(--font-display) !important;
+  font-size:clamp(42px,5.2vw,74px) !important;
+  line-height:.95 !important;
+  letter-spacing:-.04em !important;
+  font-weight:600 !important;
+  text-transform:uppercase !important;
+  white-space:nowrap !important;
+}
+
+.upcoming-events-kicker{
+  display:none !important;
+}
+
+@media(max-width:700px){
+  .events-page-heading{
+    padding:90px 0 38px !important;
+  }
+
+  .events-page-heading h1,
+  #upcoming-events-title{
+    font-size:clamp(34px,9vw,58px) !important;
+    white-space:nowrap !important;
+  }
+
+  .upcoming-events-top{
+    align-items:center !important;
+  }
+}
+</style>
+
+
+<style id="mobile-nav-single-row-final">
+@media (max-width:900px){
+  /* Mobile menu: keep Events, Labs, Connect, Blogs and Resources
+     on one properly aligned horizontal row. */
+  .nav.nav-open .nav-links{
+    position:fixed !important;
+    top:72px !important;
+    left:0 !important;
+    right:0 !important;
+    width:100% !important;
+    height:58px !important;
+    max-height:none !important;
+    overflow-x:auto !important;
+    overflow-y:visible !important;
+    flex-direction:row !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    gap:0 !important;
+    flex-wrap:nowrap !important;
+    white-space:nowrap !important;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+
+  .nav.nav-open .nav-links::-webkit-scrollbar{
+    display:none;
+  }
+
+  .nav.nav-open .nav-links > .nav-link,
+  .nav.nav-open .nav-links > .nav-dropdown{
+    flex:0 0 auto !important;
+    width:auto !important;
+    min-width:auto !important;
+    height:58px !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    border-top:0 !important;
+    border-right:1px solid var(--border) !important;
+    display:flex !important;
+    align-items:center !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-link{
+    padding:0 24px !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown{
+    position:relative !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown > .nav-dropdown-toggle{
+    height:58px !important;
+    padding:0 24px !important;
+    width:auto !important;
+    min-width:120px !important;
+    box-sizing:border-box !important;
+    justify-content:center !important;
+    gap:12px !important;
+  }
+
+  /* Dropdown opens below its item, rather than becoming a vertical
+     full-width block and disturbing the row. */
+  .nav.nav-open .nav-dropdown-menu{
+    position:absolute !important;
+    top:calc(100% + 1px) !important;
+    left:0 !important;
+    right:auto !important;
+    width:290px !important;
+    margin:0 !important;
+    padding:8px !important;
+    background:#080808 !important;
+    border:1px solid rgba(184,24,48,.3) !important;
+    box-shadow:0 24px 60px rgba(0,0,0,.48) !important;
+  }
+
+  .nav.nav-open .nav-dropdown-menu::before{
+    display:block !important;
+    top:-6px !important;
+    left:28px !important;
+    right:auto !important;
+  }
+
+  .nav.nav-open .nav-dropdown-item{
+    width:100% !important;
+    height:auto !important;
+    min-height:58px !important;
+    box-sizing:border-box !important;
+    padding:14px !important;
+    border:0 !important;
+  }
+
+  .nav.nav-open .nav-dropdown.open .nav-dropdown-menu{
+    display:block !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    transform:translateY(0) !important;
+  }
+}
+</style>
+
+
+<style id="events-headings-much-smaller">
+/* Smaller Events headings */
+.events-page-heading h1{
+  font-size:clamp(32px,3.8vw,54px) !important;
+  line-height:1 !important;
+  letter-spacing:-.025em !important;
+}
+
+#upcoming-events-title{
+  font-size:clamp(32px,3.8vw,54px) !important;
+  line-height:1 !important;
+  letter-spacing:-.025em !important;
+}
+
+@media(max-width:700px){
+  .events-page-heading h1,
+  #upcoming-events-title{
+    font-size:clamp(26px,7vw,42px) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -7459,7 +7855,6 @@ async function EventsPage(){
   <div class="events-page-heading">
     <div class="container">
       <h1>EVENTS</h1>
-      <div class="events-upcoming-title">UPCOMING EVENTS</div>
     </div>
   </div>
 
@@ -7519,10 +7914,7 @@ async function EventsPage(){
   <section class="upcoming-events-section screenshot-upcoming-events" aria-labelledby="upcoming-events-title">
     <div class="container">
       <div class="upcoming-events-top">
-        <div>
-          <div class="upcoming-events-kicker mono">UPCOMING</div>
-          <h2 id="upcoming-events-title">EVENTS</h2>
-        </div>
+        <h2 id="upcoming-events-title">UPCOMING EVENTS</h2>
 
         <a href="#/events" class="upcoming-events-view-all mono">
           VIEW ALL →
