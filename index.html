@@ -3538,6 +3538,849 @@ button:hover {
   }
 }
 </style>
+
+<style id="site-social-footer-style">
+.site-social-footer{
+  width:100%;
+  margin-top:80px;
+  padding:34px 0 42px;
+  border-top:1px solid var(--border);
+  background:#050505;
+}
+.site-social-icons{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:34px;
+}
+.social-icon-link{
+  width:54px;
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text);
+  text-decoration:none;
+  border:1px solid transparent;
+  border-radius:50%;
+  transition:background .22s ease,color .22s ease,transform .22s ease,border-color .22s ease;
+}
+.social-icon-link svg{
+  width:30px;
+  height:30px;
+  display:block;
+  fill:currentColor;
+}
+.social-icon-link:hover{
+  background:var(--accent);
+  color:#000 !important;
+  border-color:var(--accent);
+  transform:translateY(-3px);
+}
+.social-icon-link:hover svg{
+  transform:rotate(360deg);
+  transition:transform .55s ease;
+}
+@media(max-width:600px){
+  .site-social-footer{margin-top:50px;padding:28px 0 34px;}
+  .site-social-icons{gap:22px;}
+  .social-icon-link{width:48px;height:48px;}
+  .social-icon-link svg{width:27px;height:27px;}
+}
+</style>
+
+
+<style id="crimson-hover-final">
+.connect-local-nav .connect-local-link:hover,
+.connect-local-nav .connect-local-link[type="button"]:hover,
+.social-icon-link:hover,
+.club-social-link:hover {
+  background: var(--navbar-hover-red) !important;
+  border-color: var(--navbar-hover-red) !important;
+}
+
+.connect-local-nav .connect-local-link:hover,
+.connect-local-nav .connect-local-link[type="button"]:hover,
+.social-icon-link:hover,
+.club-social-link:hover,
+.club-social-link:hover span,
+.club-social-link:hover strong,
+.club-social-link:hover svg {
+  color: #000 !important;
+}
+</style>
+
+
+<style id="instagram-crimson-hover-final">
+/* Normal state: neutral dark/white. Crimson appears only on hover. */
+.club-social-link{
+  background:var(--bg) !important;
+  color:var(--text) !important;
+}
+
+.club-social-link:hover{
+  background:var(--navbar-hover-red) !important;
+  color:#000 !important;
+}
+
+.club-social-link:hover .club-social-icon-wrap{
+  border-color:rgba(0,0,0,.55) !important;
+}
+
+.club-social-link:hover .club-social-icon{
+  color:#000 !important;
+}
+
+.instagram-mark{
+  width:46px !important;
+  height:46px !important;
+}
+
+.social-icon-link:hover{
+  background:var(--navbar-hover-red) !important;
+  border-color:var(--navbar-hover-red) !important;
+  color:#000 !important;
+}
+</style>
+
+
+<style id="club-social-four-grid">
+.club-social-links{
+  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+}
+.club-social-icon.x-mark,
+.club-social-icon.mail-mark{
+  width:38px !important;
+  height:38px !important;
+}
+@media(max-width:700px){
+  .club-social-links{
+    grid-template-columns:1fr !important;
+  }
+}
+</style>
+
+
+<style id="uploaded-social-logo-final">
+.club-social-icon.instagram-uploaded{
+  width:46px !important;
+  height:46px !important;
+  object-fit:contain !important;
+  display:block !important;
+  filter:none !important;
+  transition:transform .25s ease !important;
+}
+
+.club-social-link:hover .instagram-uploaded{
+  transform:scale(1.04) !important;
+}
+
+.footer-uploaded-instagram{
+  width:30px !important;
+  height:30px !important;
+  object-fit:contain !important;
+  display:block !important;
+  transition:transform .25s ease,filter .2s ease !important;
+}
+
+.social-icon-link:hover .footer-uploaded-instagram{
+  transform:rotate(360deg) !important;
+  filter:brightness(0) !important;
+}
+</style>
+
+
+<style id="final-uploaded-social-logos">
+.club-social-icon.instagram-uploaded,
+.club-social-icon.outlook-uploaded{
+  width:46px !important;
+  height:46px !important;
+  object-fit:contain !important;
+  display:block !important;
+  background:transparent !important;
+  transition:transform .25s ease, filter .2s ease !important;
+}
+
+.club-social-link:hover .instagram-uploaded,
+.club-social-link:hover .outlook-uploaded{
+  transform:scale(1.05) !important;
+}
+
+/* Uploaded logos are black/white images; the card itself gets crimson only on hover. */
+.club-social-link:hover .instagram-uploaded,
+.club-social-link:hover .outlook-uploaded{
+  filter:none !important;
+}
+
+.footer-uploaded-instagram,
+.footer-uploaded-outlook{
+  width:30px !important;
+  height:30px !important;
+  object-fit:contain !important;
+  display:block !important;
+}
+</style>
+
+
+<style id="inline-social-logo-final">
+.club-social-icon.instagram-inline,
+.club-social-icon.outlook-inline{
+  width:46px !important;
+  height:46px !important;
+  display:block !important;
+  object-fit:contain !important;
+  color:currentColor !important;
+  transition:transform .25s ease !important;
+}
+
+.club-social-link:hover .instagram-inline,
+.club-social-link:hover .outlook-inline{
+  transform:scale(1.05) !important;
+  color:#000 !important;
+}
+
+.footer-social-inline{
+  width:30px !important;
+  height:30px !important;
+  display:block !important;
+  color:currentColor !important;
+}
+</style>
+
+
+<style id="clean-social-logo-final">
+/* Clean social icon treatment */
+.club-social-icon.instagram-inline,
+.club-social-icon.outlook-inline{
+  width:42px !important;
+  height:42px !important;
+  display:block !important;
+  color:currentColor !important;
+  flex:none !important;
+  transform:none !important;
+}
+
+.club-social-link:hover .instagram-inline,
+.club-social-link:hover .outlook-inline{
+  color:#000 !important;
+  transform:scale(1.04) !important;
+}
+
+/* Keep the icon centered inside its circular frame. */
+.club-social-icon-wrap{
+  width:78px !important;
+  height:78px !important;
+  min-width:78px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+}
+
+/* Footer icons stay compact. */
+.footer-social-inline{
+  width:30px !important;
+  height:30px !important;
+}
+</style>
+
+
+<style id="club-social-navbar-red-hover-final">
+/* Club social cards: use the exact same crimson as the navbar hover */
+.club-social-link:hover {
+  background: var(--navbar-hover-red) !important;
+  border-color: var(--navbar-hover-red) !important;
+  color: #000 !important;
+  box-shadow: none !important;
+}
+
+/* Everything inside the hovered card switches to black for contrast */
+.club-social-link:hover .club-social-number,
+.club-social-link:hover .club-social-copy,
+.club-social-link:hover .club-social-copy small,
+.club-social-link:hover .club-social-arrow,
+.club-social-link:hover .club-social-icon,
+.club-social-link:hover .instagram-inline,
+.club-social-link:hover .outlook-inline,
+.club-social-link:hover svg {
+  color: #000 !important;
+  fill: currentColor;
+}
+
+/* Keep the icon frame consistent with the same hover red */
+.club-social-link:hover .club-social-icon-wrap {
+  border-color: rgba(0,0,0,.45) !important;
+  background: transparent !important;
+}
+
+/* Footer logo hover also uses the same navbar crimson */
+.social-icon-link:hover {
+  background: var(--navbar-hover-red) !important;
+  border-color: var(--navbar-hover-red) !important;
+  color: #000 !important;
+}
+</style>
+
+
+<style id="reference-navbar-hover-red">
+:root{
+  --navbar-hover-red:#7E1F25 !important;
+}
+
+/* Main navigation hover */
+.nav-link:hover,
+.nav-item:hover,
+header nav a:hover{
+  background:var(--navbar-hover-red) !important;
+}
+
+/* Connect navigation tabs */
+.connect-local-nav .connect-local-link:hover,
+.connect-local-nav .connect-local-link[type="button"]:hover{
+  background:var(--navbar-hover-red) !important;
+  border-color:var(--navbar-hover-red) !important;
+}
+
+/* Club social cards */
+.club-social-link:hover{
+  background:var(--navbar-hover-red) !important;
+  border-color:var(--navbar-hover-red) !important;
+  color:#000 !important;
+}
+
+/* Footer social icons */
+.social-icon-link:hover{
+  background:var(--navbar-hover-red) !important;
+  border-color:var(--navbar-hover-red) !important;
+  color:#000 !important;
+}
+</style>
+
+
+<style id="admin-login-socials-final">
+.login-wrap{
+  flex-direction:column !important;
+  gap:28px !important;
+}
+
+.admin-login-socials{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:24px;
+  width:min(400px,100%);
+  padding-top:4px;
+}
+
+.admin-login-socials a{
+  width:46px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text-dim);
+  border:1px solid transparent;
+  border-radius:50%;
+  text-decoration:none;
+  transition:background .22s ease,color .22s ease,transform .22s ease,border-color .22s ease;
+}
+
+.admin-login-socials svg{
+  width:27px;
+  height:27px;
+  display:block;
+  fill:currentColor;
+}
+
+.admin-login-socials a:hover{
+  background:var(--navbar-hover-red) !important;
+  border-color:var(--navbar-hover-red) !important;
+  color:#000 !important;
+  transform:translateY(-3px);
+}
+
+.admin-login-socials a:hover svg{
+  transform:rotate(360deg);
+  transition:transform .55s ease;
+}
+
+@media(max-width:600px){
+  .admin-login-socials{gap:18px;}
+}
+</style>
+
+
+<style id="footer-social-words-final">
+.footer-social-words{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 18px;
+  margin-top:14px;
+}
+
+.footer-social-words a{
+  display:inline-block !important;
+  width:auto !important;
+  padding:3px 0 !important;
+  color:var(--text-dim) !important;
+  font-size:11px !important;
+  letter-spacing:.08em;
+  text-transform:lowercase;
+  text-decoration:none;
+  transition:color .2s ease, transform .2s ease;
+}
+
+.footer-social-words a:hover{
+  color:var(--navbar-hover-red, #7E1F25) !important;
+  transform:translateY(-1px);
+}
+
+@media(max-width:700px){
+  .footer-social-words{
+    gap:8px 14px;
+  }
+}
+</style>
+
+
+<style id="homepage-about-final-polish">
+/* =========================================================
+   HOMEPAGE ABOUT — BRIGHTER TEXT + BUILD/LEARN/EXPLORE
+   ========================================================= */
+
+/* Make the About copy visually closer to the brighter
+   CRYPTOCURRENCY section above it. */
+.home-about-section .section-copy{
+  color:#b8b5ae !important;
+  opacity:1 !important;
+  font-weight:400;
+}
+
+/* BUILD / LEARN / EXPLORE are red before hover. */
+.home-about-section .wwd-item h3{
+  color:var(--accent-bright) !important;
+  transition:color .25s ease !important;
+}
+
+/* Numbers stay red normally, but become black on tile hover. */
+.home-about-section .wwd-item .wwd-num{
+  color:var(--accent-bright) !important;
+  transition:color .25s ease !important;
+}
+
+/* Hover state:
+   - heading becomes white
+   - red number becomes black
+   - description stays readable */
+.home-about-section .wwd-item:hover h3{
+  color:#f4f0e8 !important;
+}
+
+.home-about-section .wwd-item:hover .wwd-num{
+  color:#000 !important;
+}
+
+.home-about-section .wwd-item:hover p{
+  color:#000 !important;
+}
+</style>
+
+
+<style id="about-description-brighter">
+/* Brighter homepage About description */
+.home-about-section .section-copy,
+.home-about-section .about-description,
+.home-about-section p{
+  color:#d0cdc5 !important;
+  opacity:1 !important;
+}
+</style>
+
+
+<style id="about-block-white-hover-final">
+/* On hover, ALL text inside BUILD / LEARN / EXPLORE blocks becomes white. */
+.home-about-section .wwd-item:hover,
+.home-about-section .wwd-item:hover h3,
+.home-about-section .wwd-item:hover p,
+.home-about-section .wwd-item:hover .wwd-num,
+.home-about-section .wwd-item:hover .section-copy,
+.home-about-section .wwd-item:hover span,
+.home-about-section .wwd-item:hover div{
+  color:#fff !important;
+}
+
+/* Keep the tile's red hover background. */
+.home-about-section .wwd-item:hover{
+  background:var(--navbar-hover-red, #7E1F25) !important;
+}
+
+/* SVG/icon text, if any, should also become white. */
+.home-about-section .wwd-item:hover svg,
+.home-about-section .wwd-item:hover svg *{
+  color:#fff !important;
+  stroke:#fff !important;
+  fill:#fff !important;
+}
+</style>
+
+
+<style id="about-description-brightest-final">
+/* Make the specific homepage About description clearly brighter. */
+.home-about-section .section-copy{
+  color:#E2DED5 !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+</style>
+
+
+<style id="upcoming-events-and-play-prototype-fix">
+/* =========================================================
+   UPCOMING EVENTS
+   ========================================================= */
+
+.upcoming-events-section{
+  width:100%;
+  padding:54px 0 72px;
+}
+
+.upcoming-events-heading{
+  border-top:1px solid var(--border);
+  padding-top:22px;
+  margin-bottom:28px;
+}
+
+.upcoming-events-kicker{
+  color:var(--accent-bright);
+  font-size:11px;
+  letter-spacing:.14em;
+}
+
+.upcoming-events-heading h2{
+  margin:8px 0 12px;
+  color:var(--text);
+  font-size:clamp(28px,4vw,48px);
+  letter-spacing:.04em;
+}
+
+.upcoming-events-heading p{
+  max-width:700px;
+  color:var(--text-dim);
+  line-height:1.7;
+  margin:0;
+}
+
+.upcoming-events-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  border-top:1px solid var(--border);
+  border-left:1px solid var(--border);
+}
+
+.upcoming-event-card{
+  min-height:210px;
+  padding:24px;
+  border-right:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:20px;
+  background:rgba(255,255,255,.015);
+  transition:background .2s ease,color .2s ease;
+}
+
+.upcoming-event-number{
+  color:var(--accent-bright);
+  font-size:12px;
+}
+
+.upcoming-event-status{
+  color:var(--accent-bright);
+  font-size:10px;
+  letter-spacing:.12em;
+}
+
+.upcoming-event-card h3{
+  margin:10px 0 10px;
+  color:var(--text);
+  font-size:18px;
+}
+
+.upcoming-event-card p{
+  margin:0;
+  color:var(--text-dim);
+  line-height:1.65;
+}
+
+.upcoming-event-card:hover{
+  background:var(--navbar-hover-red,#7E1F25);
+}
+
+.upcoming-event-card:hover .upcoming-event-number,
+.upcoming-event-card:hover .upcoming-event-status,
+.upcoming-event-card:hover h3,
+.upcoming-event-card:hover p{
+  color:#fff !important;
+}
+
+/* =========================================================
+   LABS → GAMES
+   PLAY PROTOTYPE ALWAYS VISIBLE
+   ========================================================= */
+
+.labs-shell .lab-game-grid-full .lab-game-card-full .lab-play-game,
+.labs-shell .lab-game-grid-full .lab-game-card-full:not(:hover) .lab-play-game,
+.labs-shell .lab-game-grid-full .lab-game-card-full:hover .lab-play-game{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  align-self:flex-start !important;
+
+  visibility:visible !important;
+  opacity:1 !important;
+  position:relative !important;
+  z-index:10 !important;
+
+  width:auto !important;
+  min-width:170px !important;
+  height:38px !important;
+
+  margin-top:auto !important;
+  margin-bottom:0 !important;
+
+  padding:8px 14px !important;
+
+  background:#f1efeb !important;
+  background-image:none !important;
+  color:#8d1727 !important;
+
+  border:2px solid #aaa !important;
+  border-radius:4px !important;
+
+  font-family:"JetBrains Mono",monospace !important;
+  font-size:11px !important;
+  font-weight:500 !important;
+  letter-spacing:.08em !important;
+  line-height:1 !important;
+
+  cursor:pointer !important;
+  text-decoration:none !important;
+  transform:none !important;
+  box-shadow:none !important;
+}
+
+.labs-shell .lab-game-grid-full .lab-game-card-full .lab-play-game:hover{
+  visibility:visible !important;
+  opacity:1 !important;
+  color:#fff !important;
+  background:var(--accent,#8d1727) !important;
+  border-color:var(--accent,#8d1727) !important;
+}
+
+@media(max-width:800px){
+  .upcoming-events-grid{
+    grid-template-columns:1fr;
+  }
+
+  .upcoming-event-card{
+    min-height:auto;
+  }
+
+  .labs-shell .lab-game-grid-full .lab-game-card-full .lab-play-game{
+    display:inline-flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+}
+</style>
+
+
+<style id="resources-no-red-hover-fix">
+/* Resources page: remove the sliding red block from OPEN RESOURCE */
+.courses-resources-page .resource-card .link-btn::before{
+  display:none !important;
+  content:none !important;
+}
+
+.courses-resources-page .resource-card .link-btn:hover{
+  background:transparent !important;
+  color:var(--text) !important;
+  border-color:var(--border-light) !important;
+  transform:none !important;
+}
+</style>
+
+
+<style id="screenshot-upcoming-events-style">
+/* =========================================================
+   EVENTS PAGE → UPCOMING EVENTS
+   Screenshot-style block, positioned BELOW the calendar
+   ========================================================= */
+
+.screenshot-upcoming-events{
+  width:100%;
+  padding:90px 0 100px;
+  border-top:1px solid var(--border);
+}
+
+.screenshot-upcoming-events .container{
+  max-width:var(--container);
+}
+
+.upcoming-events-top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:70px;
+}
+
+.upcoming-events-kicker{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:24px;
+  color:var(--text-dim);
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+
+.upcoming-events-kicker::before{
+  content:'';
+  width:7px;
+  height:7px;
+  display:inline-block;
+  background:var(--accent);
+}
+
+.screenshot-upcoming-events #upcoming-events-title{
+  margin:0;
+  color:var(--text);
+  font-family:var(--font-display);
+  font-size:clamp(42px,5vw,60px);
+  font-weight:500;
+  line-height:1;
+  letter-spacing:-.025em;
+  text-transform:uppercase;
+}
+
+.upcoming-events-view-all{
+  display:inline-block;
+  padding-bottom:2px;
+  color:var(--text-dim);
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:color .2s ease;
+}
+
+.upcoming-events-view-all:hover{
+  color:var(--text);
+}
+
+.upcoming-events-empty{
+  width:100%;
+  min-height:335px;
+  border:1px dashed var(--border-light);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:60px 30px;
+}
+
+.upcoming-events-empty-title{
+  color:var(--text);
+  font-family:var(--font-display);
+  font-size:clamp(28px,3vw,36px);
+  font-weight:500;
+  line-height:1.1;
+  text-transform:uppercase;
+  letter-spacing:-.015em;
+}
+
+.upcoming-events-empty p{
+  margin:30px 0 0;
+  color:var(--text-dim);
+  font-family:var(--font-sans);
+  font-size:16px;
+  line-height:1.5;
+}
+
+@media(max-width:700px){
+  .screenshot-upcoming-events{
+    padding:70px 0 80px;
+  }
+
+  .upcoming-events-top{
+    align-items:flex-start;
+    flex-direction:column;
+    margin-bottom:42px;
+  }
+
+  .upcoming-events-view-all{
+    align-self:flex-start;
+  }
+
+  .upcoming-events-empty{
+    min-height:260px;
+  }
+}
+</style>
+
+
+<style id="footer-social-links-vertical">
+/* Footer → social links vertically stacked */
+.footer-social,
+.footer-links,
+.admin-social-links{
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  gap:16px !important;
+}
+
+/* Covers the actual footer link wrapper if it uses a generic flex class */
+.footer .social-links,
+.footer .footer-social-links{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-start !important;
+  gap:16px !important;
+}
+
+.footer .social-links a,
+.footer .footer-social-links a{
+  display:block !important;
+}
+</style>
+
+
+<style id="footer-social-words-vertical-final">
+/* CLUB footer links: stack vertically like NAVIGATE */
+.site-footer .footer-social-words{
+  display:flex !important;
+  flex-direction:column !important;
+  flex-wrap:nowrap !important;
+  align-items:flex-start !important;
+  justify-content:flex-start !important;
+  gap:0 !important;
+  margin-top:14px !important;
+}
+
+.site-footer .footer-social-words a{
+  display:block !important;
+  width:auto !important;
+  padding:6px 0 !important;
+  margin:0 !important;
+}
+</style>
+
 </head>
 <body>
 
@@ -4096,17 +4939,59 @@ function ClubSocialPage(){
               rel="noopener noreferrer"
               aria-label="Open Blockchain Club Instagram">
               <span class="club-social-icon-wrap" aria-hidden="true">
-                <svg class="club-social-icon" viewBox="0 0 24 24" fill="none">
-                  <rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5" stroke="currentColor" stroke-width="2"/>
-                  <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-                  <circle cx="17.4" cy="6.7" r="1.15" fill="currentColor"/>
-                </svg>
+                <svg class="club-social-icon instagram-inline" viewBox="0 0 64 64" aria-hidden="true">
+  <rect x="8" y="8" width="48" height="48" rx="14"
+        fill="none" stroke="currentColor" stroke-width="6"/>
+  <circle cx="32" cy="32" r="11"
+          fill="none" stroke="currentColor" stroke-width="6"/>
+  <circle cx="47" cy="17" r="3.5" fill="currentColor"/>
+</svg>
               </span>
               <span class="club-social-copy">
                 <small>instagram</small>
               </span>
               <span class="club-social-arrow" aria-hidden="true">↗</span>
             </a>
+
+            <a
+              class="club-social-link"
+              href="https://x.com/blockchain_mu?s=11"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Blockchain Club X">
+              <span class="club-social-icon-wrap" aria-hidden="true">
+                <svg class="club-social-icon x-mark" viewBox="0 0 24 24">
+                  <path d="M5 4h4.1l3.05 4.36L15.85 4H19l-5.38 6.14L19.45 20h-4.1l-3.48-4.98L7.2 20H4.05l5.65-6.47L5 4Zm3.15 1.75H7.3l8.95 12.5h.85L8.15 5.75Z"/>
+                </svg>
+              </span>
+              <span class="club-social-copy">
+                <small>X</small>
+              </span>
+              <span class="club-social-arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a
+              class="club-social-link"
+              href="mailto:blockchainclub@mahindrauniversity.edu.in"
+              aria-label="Email Blockchain Club">
+              <span class="club-social-icon-wrap" aria-hidden="true">
+                <svg class="club-social-icon outlook-inline" viewBox="0 0 64 64" aria-hidden="true">
+  <rect x="7" y="13" width="50" height="38" rx="5"
+        fill="none" stroke="currentColor" stroke-width="5"/>
+  <path d="M9 17 L32 36 L55 17"
+        fill="none" stroke="currentColor" stroke-width="5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9 49 L25 34 M55 49 L39 34"
+        fill="none" stroke="currentColor" stroke-width="4"
+        stroke-linecap="round"/>
+</svg>
+              </span>
+              <span class="club-social-copy">
+                <small>outlook</small>
+              </span>
+              <span class="club-social-arrow" aria-hidden="true">↗</span>
+            </a>
+
           </div>
         </section>
       </div>
@@ -4563,6 +5448,15 @@ function SiteFooter(){
         <div class="footer-col">
           <div class="footer-heading mono">CLUB</div>
           <a href="#/admin/login">Admin Access</a>
+<div class="footer-social-words" aria-label="Blockchain Club social links">
+            <a href="https://www.instagram.com/blockchain_mu?igsh=YnZ1ajZ1cG9odXI2&utm_source=qr"
+               target="_blank" rel="noopener noreferrer">instagram</a>
+            <a href="https://www.linkedin.com/company/mu-blockchain-club/about/?viewAsMember=true"
+               target="_blank" rel="noopener noreferrer">linkedin</a>
+            <a href="https://x.com/blockchain_mu?s=11"
+               target="_blank" rel="noopener noreferrer">x</a>
+            <a href="mailto:blockchainclub@mahindrauniversity.edu.in">outlook</a>
+          </div>
         </div>
 
       </div>
@@ -4911,6 +5805,30 @@ async function EventsPage(){
   </p>
 </div>
 
+    </div>
+  </section>
+
+  <section class="upcoming-events-section screenshot-upcoming-events" aria-labelledby="upcoming-events-title">
+    <div class="container">
+      <div class="upcoming-events-top">
+        <div>
+          <div class="upcoming-events-kicker mono">UPCOMING</div>
+          <h2 id="upcoming-events-title">EVENTS</h2>
+        </div>
+
+        <a href="#/events" class="upcoming-events-view-all mono">
+          VIEW ALL →
+        </a>
+      </div>
+
+      <div class="upcoming-events-empty">
+        <div class="upcoming-events-empty-title">
+          NO UPCOMING EVENTS
+        </div>
+        <p>
+          New events will appear here once published.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -5538,6 +6456,41 @@ async function AdminLoginPage(){
         <button type="submit" class="btn btn-primary" style="width:100%;">Log In</button>
       </form>
       <p class="login-note">Prototype authentication for frontend development only — no credentials are verified against a real backend. Any email with a password of 4+ characters will work. Do not treat this as secure.</p>
+    </div>
+
+    <div class="admin-login-socials" aria-label="Blockchain Club social links">
+      <a href="https://www.linkedin.com/company/mu-blockchain-club/about/?viewAsMember=true"
+         target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6.5 8.2H3.2V20h3.3V8.2ZM4.85 3A1.95 1.95 0 1 0 4.85 6.9 1.95 1.95 0 0 0 4.85 3ZM20.8 13.25c0-3.55-1.9-5.2-4.43-5.2-2.04 0-2.95 1.12-3.46 1.91V8.2H9.62V20h3.29v-5.84c0-1.54.29-3.03 2.2-3.03 1.88 0 1.9 1.76 1.9 3.13V20h3.29v-6.75Z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/blockchain_mu?igsh=YnZ1ajZ1cG9odXI2&utm_source=qr"
+         target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="8" y="8" width="48" height="48" rx="14"
+                fill="none" stroke="currentColor" stroke-width="6"/>
+          <circle cx="32" cy="32" r="11"
+                  fill="none" stroke="currentColor" stroke-width="6"/>
+          <circle cx="47" cy="17" r="3.5" fill="currentColor"/>
+        </svg>
+      </a>
+      <a href="https://x.com/blockchain_mu?s=11"
+         target="_blank" rel="noopener noreferrer" aria-label="X">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 4h4.1l3.05 4.36L15.85 4H19l-5.38 6.14L19.45 20h-4.1l-3.48-4.98L7.2 20H4.05l5.65-6.47L5 4Zm3.15 1.75H7.3l8.95 12.5h.85L8.15 5.75Z"/>
+        </svg>
+      </a>
+      <a href="mailto:blockchainclub@mahindrauniversity.edu.in"
+         aria-label="Email Blockchain Club">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="7" y="13" width="50" height="38" rx="5"
+                fill="none" stroke="currentColor" stroke-width="5"/>
+          <path d="M9 17L32 36 55 17"
+                fill="none" stroke="currentColor" stroke-width="5"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
   </div>`;
 }
@@ -6727,6 +7680,71 @@ function initChallengeGame(){
   }else{
     watch();
   }
+})();
+</script>
+
+
+<script id="global-social-footer-injector">
+(function(){
+  const footerHTML = `
+    <footer class="site-social-footer">
+      <div class="site-social-icons" aria-label="Blockchain Club social links">
+        <a class="social-icon-link"
+           href="https://www.linkedin.com/company/mu-blockchain-club/about/?viewAsMember=true"
+           target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.5 8.2H3.2V20h3.3V8.2ZM4.85 3A1.95 1.95 0 1 0 4.85 6.9 1.95 1.95 0 0 0 4.85 3ZM20.8 13.25c0-3.55-1.9-5.2-4.43-5.2-2.04 0-2.95 1.12-3.46 1.91V8.2H9.62V20h3.29v-5.84c0-1.54.29-3.03 2.2-3.03 1.88 0 1.9 1.76 1.9 3.13V20h3.29v-6.75Z"/>
+          </svg>
+        </a>
+        <a class="social-icon-link"
+           href="https://www.instagram.com/blockchain_mu?igsh=YnZ1ajZ1cG9odXI2&utm_source=qr"
+           target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg class="footer-social-inline" viewBox="0 0 100 100" aria-hidden="true">
+      <rect x="8" y="8" width="84" height="84" rx="27"
+            fill="none" stroke="currentColor" stroke-width="13"/>
+      <circle cx="50" cy="50" r="22"
+              fill="none" stroke="currentColor" stroke-width="13"/>
+      <circle cx="72" cy="28" r="7" fill="currentColor"/>
+    </svg>
+
+        <a class="social-icon-link"
+           href="https://x.com/blockchain_mu?s=11"
+           target="_blank" rel="noopener noreferrer" aria-label="X">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 4h4.1l3.05 4.36L15.85 4H19l-5.38 6.14L19.45 20h-4.1l-3.48-4.98L7.2 20H4.05l5.65-6.47L5 4Zm3.15 1.75H7.3l8.95 12.5h.85L8.15 5.75Z"/>
+          </svg>
+        </a>
+        <a class="social-icon-link"
+           href="mailto:blockchainclub@mahindrauniversity.edu.in"
+           aria-label="Email Blockchain Club">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+            <rect x="3" y="5" width="18" height="14" rx="1.7"
+                  stroke="currentColor" stroke-width="2"/>
+            <path d="M4 7l8 6 8-6"
+                  stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        </a>
+      </div>
+    </footer>
+  `;
+
+  function addFooter(){
+    const app=document.getElementById('app');
+    if(!app || app.querySelector('.site-social-footer')) return;
+    app.insertAdjacentHTML('beforeend', footerHTML);
+  }
+
+  function init(){
+    addFooter();
+    const app=document.getElementById('app');
+    if(!app) return;
+    new MutationObserver(addFooter).observe(app,{childList:true,subtree:true});
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+  else init();
 })();
 </script>
 
