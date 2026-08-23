@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Blockchain Club</title>
-<meta name="description" content="MU student organization researching distributed systems, applied cryptography, and offensive & defensive security." />
+<meta name="description" content="A university student organization researching distributed systems, applied cryptography, and offensive & defensive security." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -6473,6 +6473,105 @@ header nav a:hover{
 }
 </style>
 
+
+<style id="mobile-nav-vertical-final">
+@media (max-width:900px){
+  /* Mobile navigation: stack every item vertically and keep each
+     button full-width and properly aligned. */
+  .nav.nav-open .nav-links{
+    position:fixed !important;
+    top:72px !important;
+    left:0 !important;
+    right:0 !important;
+    width:100% !important;
+    height:auto !important;
+    max-height:calc(100vh - 72px) !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    flex-wrap:nowrap !important;
+    gap:0 !important;
+    white-space:normal !important;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .nav.nav-open .nav-links > .nav-link,
+  .nav.nav-open .nav-links > .nav-dropdown{
+    flex:0 0 auto !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:74px !important;
+    min-height:74px !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    padding:0 !important;
+    border-top:0 !important;
+    border-right:0 !important;
+    border-bottom:1px solid var(--border) !important;
+    display:flex !important;
+    align-items:center !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-link{
+    justify-content:flex-start !important;
+    padding:0 28px !important;
+    text-align:left !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown{
+    position:relative !important;
+    display:block !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown > .nav-dropdown-toggle{
+    width:100% !important;
+    height:74px !important;
+    min-height:74px !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    padding:0 28px !important;
+    margin:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    text-align:left !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown > .nav-dropdown-toggle::after{
+    margin-left:auto !important;
+  }
+
+  /* Dropdown contents stay underneath the relevant button. */
+  .nav.nav-open .nav-dropdown-menu{
+    position:relative !important;
+    top:auto !important;
+    left:auto !important;
+    right:auto !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    box-sizing:border-box !important;
+    border:0 !important;
+    border-top:1px solid var(--border) !important;
+    box-shadow:none !important;
+    background:#080808 !important;
+  }
+
+  .nav.nav-open .nav-dropdown-item{
+    width:100% !important;
+    min-height:58px !important;
+    box-sizing:border-box !important;
+    padding:0 42px !important;
+    display:flex !important;
+    align-items:center !important;
+    border:0 !important;
+    border-bottom:1px solid var(--border) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -6782,7 +6881,7 @@ const SEED_TEAM = [
   { id: uid(), name:'Elena Vasquez', role:'Faculty Advisor', department:'Leadership', bio:'Assistant professor advising the club on curriculum and applied research.', email:'evasquez@university.edu', image:'', linkedin:'', github:'', order:'5' },
 ];
 const DEFAULT_HOMEPAGE = {
-  heroEyebrow: 'MU student organization',
+  heroEyebrow: 'A UNIVERSITY STUDENT ORGANIZATION',
   heroTitle: 'BLOCKCHAIN CLUB',
   heroDescription: 'A student-run collective researching distributed systems, applied cryptography, and offensive & defensive security — through workshops, projects, and open research.',
   ctaPrimary: 'Learn More', ctaPrimaryLink: '#/about',
@@ -7700,7 +7799,7 @@ async function HomePage(){
       <div class="home-copy">
         <div class="eyebrow mono home-eyebrow">
           <span class="eyebrow-dot"></span>
-          MU student organization
+          A UNIVERSITY STUDENT ORGANIZATION
         </div>
 
         <h1 class="blockchain-home-title">BLOCKCHAIN CLUB</h1>
