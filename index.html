@@ -351,7 +351,7 @@ img{max-width:100%;display:block;}
 .nav-dropdown-desc{font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;color:var(--text-dim);line-height:1.5;}
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;}
 .nav-toggle span{width:20px;height:1px;background:var(--text);display:block;}
-@media (max-width:900px){
+@media (max-width:1024px), (pointer:coarse) and (hover:none){
   .nav-links{position:fixed;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);
     flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .3s ease;align-items:stretch;}
   .nav.nav-open .nav-links{max-height:760px;}
@@ -404,7 +404,7 @@ img{max-width:100%;display:block;}
 .grid-3{grid-template-columns:repeat(3,1fr);}
 .grid-4{grid-template-columns:repeat(4,1fr);}
 .grid > *{background:var(--bg);padding:32px;}
-@media (max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:1024px), (pointer:coarse) and (hover:none){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:560px){.grid-3,.grid-4{grid-template-columns:1fr;}}
 
 .img-placeholder{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;
@@ -5882,7 +5882,7 @@ header nav a:hover{
 
 
 <style id="mobile-dropdown-alignment-fix">
-@media (max-width:900px){
+@media (max-width:1024px), (pointer:coarse) and (hover:none){
   .nav.nav-open .nav-links{
     width:100% !important;
     box-sizing:border-box !important;
@@ -6351,7 +6351,7 @@ header nav a:hover{
 
 
 <style id="mobile-nav-single-row-final">
-@media (max-width:900px){
+@media (max-width:1024px), (pointer:coarse) and (hover:none){
   /* Mobile menu: keep Events, Labs, Connect, Blogs and Resources
      on one properly aligned horizontal row. */
   .nav.nav-open .nav-links{
@@ -6475,7 +6475,7 @@ header nav a:hover{
 
 
 <style id="mobile-nav-vertical-final">
-@media (max-width:900px){
+@media (max-width:1024px), (pointer:coarse) and (hover:none){
   /* Mobile navigation: stack every item vertically and keep each
      button full-width and properly aligned. */
   .nav.nav-open .nav-links{
@@ -6564,6 +6564,96 @@ header nav a:hover{
     min-height:58px !important;
     box-sizing:border-box !important;
     padding:0 42px !important;
+    display:flex !important;
+    align-items:center !important;
+    border:0 !important;
+    border-bottom:1px solid var(--border) !important;
+  }
+}
+</style>
+
+
+<style id="all-phones-vertical-nav-final">
+/* FINAL PHONE RULE — Labs/Connect/Events/Blogs/Resources are vertical
+   on every phone, including large/high-resolution phones and landscape. */
+@media (max-width:1024px), (pointer:coarse) and (hover:none){
+  .nav.nav-open .nav-links{
+    position:fixed !important;
+    top:72px !important;
+    left:0 !important;
+    right:0 !important;
+    width:100vw !important;
+    height:auto !important;
+    max-height:calc(100dvh - 72px) !important;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    flex-wrap:nowrap !important;
+    gap:0 !important;
+    white-space:normal !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-link,
+  .nav.nav-open .nav-links > .nav-dropdown{
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    flex:0 0 auto !important;
+    height:74px !important;
+    min-height:74px !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    padding:0 !important;
+    display:flex !important;
+    align-items:center !important;
+    border-right:0 !important;
+    border-bottom:1px solid var(--border) !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-link{
+    justify-content:flex-start !important;
+    padding:0 28px !important;
+    text-align:left !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown{
+    display:block !important;
+    position:relative !important;
+  }
+
+  .nav.nav-open .nav-dropdown > .nav-dropdown-toggle{
+    width:100% !important;
+    height:74px !important;
+    min-height:74px !important;
+    padding:0 28px !important;
+    margin:0 !important;
+    box-sizing:border-box !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    text-align:left !important;
+  }
+
+  .nav.nav-open .nav-dropdown-menu{
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    margin:0 !important;
+    padding:0 !important;
+    box-sizing:border-box !important;
+    border:0 !important;
+    border-top:1px solid var(--border) !important;
+    box-shadow:none !important;
+  }
+
+  .nav.nav-open .nav-dropdown-item{
+    width:100% !important;
+    min-height:58px !important;
+    padding:0 42px !important;
+    box-sizing:border-box !important;
     display:flex !important;
     align-items:center !important;
     border:0 !important;
