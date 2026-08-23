@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Blockchain Club</title>
-<meta name="description" content="A university student organization researching distributed systems, applied cryptography, and offensive & defensive security." />
+<meta name="description" content="MU student organization researching distributed systems, applied cryptography, and offensive & defensive security." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -6030,6 +6030,53 @@ header nav a:hover{
 }
 </style>
 
+
+<style id="events-heading-final-layout">
+.events-page-heading{
+  padding:150px 0 55px !important;
+  background:var(--bg);
+}
+
+.events-page-heading h1{
+  margin:0 0 22px !important;
+  color:var(--text);
+  font-family:var(--font-display);
+  font-size:clamp(48px,7.6vw,112px) !important;
+  line-height:.92 !important;
+  letter-spacing:-.045em !important;
+  font-weight:600 !important;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.events-upcoming-title{
+  color:var(--text-dim);
+  font-family:var(--font-mono);
+  font-size:clamp(16px,2vw,24px);
+  line-height:1.1;
+  letter-spacing:.12em;
+  font-weight:500;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+@media(max-width:700px){
+  .events-page-heading{
+    padding:120px 0 42px !important;
+  }
+
+  .events-page-heading h1{
+    font-size:clamp(42px,12vw,70px) !important;
+    margin-bottom:16px !important;
+  }
+
+  .events-upcoming-title{
+    font-size:clamp(13px,3.8vw,18px);
+    letter-spacing:.1em;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -6339,7 +6386,7 @@ const SEED_TEAM = [
   { id: uid(), name:'Elena Vasquez', role:'Faculty Advisor', department:'Leadership', bio:'Assistant professor advising the club on curriculum and applied research.', email:'evasquez@university.edu', image:'', linkedin:'', github:'', order:'5' },
 ];
 const DEFAULT_HOMEPAGE = {
-  heroEyebrow: 'A UNIVERSITY STUDENT ORGANIZATION',
+  heroEyebrow: 'MU student organization',
   heroTitle: 'BLOCKCHAIN CLUB',
   heroDescription: 'A student-run collective researching distributed systems, applied cryptography, and offensive & defensive security — through workshops, projects, and open research.',
   ctaPrimary: 'Learn More', ctaPrimaryLink: '#/about',
@@ -7257,7 +7304,7 @@ async function HomePage(){
       <div class="home-copy">
         <div class="eyebrow mono home-eyebrow">
           <span class="eyebrow-dot"></span>
-          A UNIVERSITY STUDENT ORGANIZATION
+          MU student organization
         </div>
 
         <h1 class="blockchain-home-title">BLOCKCHAIN CLUB</h1>
@@ -7411,7 +7458,8 @@ async function EventsPage(){
 
   <div class="events-page-heading">
     <div class="container">
-      <h1>UPCOMING EVENTS</h1>
+      <h1>EVENTS</h1>
+      <div class="events-upcoming-title">UPCOMING EVENTS</div>
     </div>
   </div>
 
