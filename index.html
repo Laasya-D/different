@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Blockchain Club</title>
-<meta name="description" content="A university student organization researching distributed systems, applied cryptography, and offensive & defensive security." />
+<meta name="description" content="MU student organization researching distributed systems, applied cryptography, and offensive & defensive security." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -5391,17 +5391,6 @@ header nav a:hover{
 </style>
 
 
-<style id="standalone-labs-projects-games-mobile-cleanup">
-/* Projects and Games are standalone pages.
-   They must not show the old Labs platform tab strip
-   (HOME / GAMES / LEADERBOARD / EVENTS / PROJECTS / ...). */
-body:has(.projects-tile-grid) .labs-nav,
-body:has(.games-page) .labs-nav{
-  display:none !important;
-}
-</style>
-
-
 <style id="standalone-games-clean-layout">
 /* Standalone Projects/Games pages: no secondary Labs platform navigation. */
 .games-standalone-page .standalone-game-grid{
@@ -5411,6 +5400,438 @@ body:has(.games-page) .labs-nav{
   .games-standalone-page{
     padding-top:18px !important;
   }
+}
+</style>
+
+
+<style id="clean-standalone-labs-pages">
+/* Projects and Games are standalone pages; the old Labs tab bar is gone. */
+.labs-nav{
+  display:none !important;
+}
+</style>
+
+
+<style id="contact-club-outlook-mail">
+/* Contact page: use the Club Outlook mail instead of the old
+   placeholder contact address/location. */
+.contact-outlook-link{
+  display:inline-block;
+  margin-top:12px;
+  color:var(--text) !important;
+  font-size:clamp(24px,3.5vw,42px);
+  line-height:1.1;
+  letter-spacing:.01em;
+  text-decoration:none !important;
+  overflow-wrap:anywhere;
+  position:relative;
+  padding-bottom:7px;
+}
+
+.contact-outlook-link::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:0;
+  height:1px;
+  background:var(--accent-bright);
+  transition:width .25s ease;
+}
+
+.contact-outlook-link:hover::after{
+  width:100%;
+}
+</style>
+
+
+<style id="contact-requested-layout">
+.contact-topline{
+  width:100%;
+  padding-bottom:38px;
+  border-bottom:1px solid var(--border);
+}
+.contact-outlook-full{
+  display:block;
+  width:100%;
+  margin-top:14px;
+  color:var(--text) !important;
+  font-size:clamp(30px,5vw,64px);
+  line-height:1.05;
+  letter-spacing:-.025em;
+  overflow-wrap:anywhere;
+  text-decoration:none !important;
+}
+.contact-bottom-layout{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:72px;
+  align-items:start;
+  margin-top:38px;
+}
+.contact-bottom-layout .contact-socials{
+  margin-top:0 !important;
+  border-top:1px solid var(--border);
+}
+.contact-bottom-layout .contact-form{
+  margin-top:0 !important;
+}
+@media(max-width:800px){
+  .contact-outlook-full{
+    font-size:clamp(25px,7vw,42px);
+  }
+  .contact-bottom-layout{
+    grid-template-columns:1fr;
+    gap:42px;
+  }
+}
+</style>
+
+
+<style id="contact-mail-smaller-connect-dropdown">
+.contact-outlook-full{
+  font-size:clamp(18px,2.5vw,28px) !important;
+  line-height:1.15 !important;
+  letter-spacing:0 !important;
+}
+
+/* Connect dropdown uses the same visual treatment as Labs. */
+[data-nav-dropdown]{
+  position:relative;
+}
+[data-nav-dropdown].active > .nav-dropdown-toggle{
+  color:#fff !important;
+}
+[data-nav-dropdown] .nav-dropdown-toggle{
+  cursor:pointer;
+}
+@media(max-width:800px){
+  .contact-outlook-full{
+    font-size:20px !important;
+    line-height:1.25 !important;
+  }
+}
+</style>
+
+
+<style id="contact-membership-questionnaire">
+.contact-question{
+  margin:0 0 28px;
+}
+
+.contact-question > label,
+.contact-choice-group > legend{
+  display:block;
+  margin:0 0 11px;
+  color:var(--text);
+  font-size:14px;
+  line-height:1.5;
+  font-weight:500;
+}
+
+.question-number{
+  color:var(--accent-bright);
+  margin-right:5px;
+  font-family:var(--font-mono);
+}
+
+.contact-question input[type="text"],
+.contact-question input[type="email"],
+.contact-question input:not([type]),
+.contact-question textarea{
+  width:100%;
+  box-sizing:border-box;
+}
+
+.contact-question input,
+.contact-question textarea{
+  background:rgba(255,255,255,.025) !important;
+  border:1px solid var(--border) !important;
+  color:var(--text) !important;
+  padding:13px 14px !important;
+  font:13px var(--font-sans) !important;
+  outline:none;
+  transition:border-color .2s ease, background .2s ease;
+}
+
+.contact-question input::placeholder,
+.contact-question textarea::placeholder{
+  color:var(--text-dim);
+}
+
+.contact-question input:focus,
+.contact-question textarea:focus{
+  border-color:var(--accent) !important;
+  background:rgba(255,255,255,.04) !important;
+}
+
+.contact-choice-group{
+  border:0;
+  padding:0;
+  min-width:0;
+}
+
+.contact-choice{
+  display:flex !important;
+  align-items:center;
+  gap:12px;
+  margin:0 0 15px;
+  color:var(--text-dim) !important;
+  font-size:13px !important;
+  cursor:pointer;
+}
+
+.contact-choice input{
+  appearance:none;
+  -webkit-appearance:none;
+  width:20px !important;
+  height:20px !important;
+  min-width:20px;
+  padding:0 !important;
+  border:1px solid var(--text-dim) !important;
+  background:transparent !important;
+  cursor:pointer;
+  position:relative;
+}
+
+.contact-choice input[type="checkbox"]:checked,
+.contact-choice input[type="radio"]:checked{
+  border-color:var(--accent) !important;
+  background:var(--accent) !important;
+}
+
+.contact-choice input[type="checkbox"]:checked::after{
+  content:"✓";
+  position:absolute;
+  left:4px;
+  top:0px;
+  color:#fff;
+  font-size:13px;
+}
+
+.contact-choice input[type="radio"]{
+  border-radius:50%;
+}
+
+.contact-choice input[type="radio"]:checked::after{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#fff;
+  left:5px;
+  top:5px;
+}
+
+.contact-choice span{
+  color:var(--text-dim);
+}
+
+.contact-choice:hover span{
+  color:var(--text);
+}
+
+@media(max-width:800px){
+  .contact-question{
+    margin-bottom:24px;
+  }
+
+  .contact-question > label,
+  .contact-choice-group > legend{
+    font-size:13px;
+  }
+}
+</style>
+
+
+<style id="club-about-section">
+.club-about-section{
+  margin-top:72px;
+  padding-top:32px;
+  border-top:1px solid var(--border);
+  max-width:100%;
+}
+
+.club-about-kicker{
+  color:var(--accent-bright);
+  font-size:12px;
+  letter-spacing:.16em;
+  margin-bottom:20px;
+}
+
+.club-about-section p{
+  max-width:980px;
+  margin:0;
+  color:var(--text-dim);
+  font-size:16px;
+  line-height:1.8;
+}
+
+.club-about-tagline{
+  margin-top:28px !important;
+  color:var(--text) !important;
+  font-size:17px !important;
+}
+
+@media(max-width:800px){
+  .club-about-section{
+    margin-top:48px;
+    padding-top:26px;
+  }
+
+  .club-about-section p{
+    font-size:14px;
+    line-height:1.75;
+  }
+
+  .club-about-tagline{
+    font-size:15px !important;
+  }
+}
+</style>
+
+
+<style id="club-join-member-button">
+.club-join-member{
+  display:inline-flex;
+  margin-top:34px;
+  min-width:220px;
+  justify-content:center;
+  text-decoration:none !important;
+}
+@media(max-width:800px){
+  .club-join-member{
+    width:100%;
+    box-sizing:border-box;
+    margin-top:28px;
+  }
+}
+</style>
+
+
+<style id="club-socials-compact-row">
+.club-social-links{
+  display:grid !important;
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:10px !important;
+  border:0 !important;
+  width:100%;
+}
+
+.club-social-link{
+  min-height:0 !important;
+  height:108px !important;
+  box-sizing:border-box;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  padding:12px 8px !important;
+  border:1px solid var(--border) !important;
+  background:var(--bg);
+  text-align:center;
+}
+
+.club-social-icon-wrap{
+  width:42px !important;
+  height:42px !important;
+  flex:0 0 42px !important;
+}
+
+.club-social-icon{
+  width:23px !important;
+  height:23px !important;
+}
+
+.club-social-copy{
+  display:block !important;
+}
+
+.club-social-copy small{
+  display:block;
+  font-size:9px !important;
+  line-height:1.1 !important;
+  letter-spacing:.1em !important;
+}
+
+.club-social-arrow{
+  position:absolute;
+  top:7px;
+  right:9px;
+  margin:0 !important;
+  font-size:12px !important;
+}
+
+.hero-cta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.hero-cta .btn{
+  white-space:nowrap;
+}
+
+@media(max-width:700px){
+  .club-social-links{
+    grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    gap:6px !important;
+  }
+
+  .club-social-link{
+    height:88px !important;
+    padding:8px 4px !important;
+  }
+
+  .club-social-icon-wrap{
+    width:34px !important;
+    height:34px !important;
+    flex-basis:34px !important;
+  }
+
+  .club-social-icon{
+    width:19px !important;
+    height:19px !important;
+  }
+
+  .club-social-copy small{
+    font-size:7px !important;
+    letter-spacing:.06em !important;
+  }
+
+  .club-social-arrow{
+    display:none;
+  }
+}
+
+@media(max-width:380px){
+  .club-social-links{
+    gap:4px !important;
+  }
+
+  .club-social-link{
+    height:82px !important;
+  }
+
+  .club-social-copy small{
+    font-size:6.5px !important;
+  }
+}
+</style>
+
+
+<style id="membership-scroll-target">
+#membership-form{
+  scroll-margin-top:110px;
+}
+</style>
+
+
+<style id="membership-direct-open">
+#membership-form{
+  scroll-margin-top:90px;
 }
 </style>
 
@@ -5723,7 +6144,7 @@ const SEED_TEAM = [
   { id: uid(), name:'Elena Vasquez', role:'Faculty Advisor', department:'Leadership', bio:'Assistant professor advising the club on curriculum and applied research.', email:'evasquez@university.edu', image:'', linkedin:'', github:'', order:'5' },
 ];
 const DEFAULT_HOMEPAGE = {
-  heroEyebrow: 'A UNIVERSITY STUDENT ORGANIZATION',
+  heroEyebrow: 'MU STUDENT ORGANIZATION',
   heroTitle: 'BLOCKCHAIN CLUB',
   heroDescription: 'A student-run collective researching distributed systems, applied cryptography, and offensive & defensive security — through workshops, projects, and open research.',
   ctaPrimary: 'Learn More', ctaPrimaryLink: '#/about',
@@ -6024,6 +6445,18 @@ function ClubSocialPage(){
             </a>
 
           </div>
+
+          <section class="club-about-section">
+            <div class="mono club-about-kicker">ABOUT</div>
+            <p>
+              We’re a student-driven community exploring blockchain, cybersecurity and distributed systems through curiosity, collaboration and hands-on learning. Here, you don’t need to know everything before you start — you just need to be willing to learn, ask questions and try things out. We learn by building practical projects, experimenting with new ideas and turning concepts into something we can actually understand and use. Through workshops, technical sessions, challenges and collaborative projects, we get the chance to pick up new skills, learn from each other and keep getting better along the way. At the same time, we look beyond what we already know, exploring emerging technologies and understanding how they are changing the way systems work. Different people bring different skills, interests and perspectives, but that’s what makes the community interesting — we learn together, build together and stay curious about what comes next.
+            </p>
+            <p class="club-about-tagline"><em>Trust, One Block At A Time.</em></p>
+
+            <a href="#/contact" class="btn btn-primary club-join-member" data-join-member>
+              JOIN AS A MEMBER ↗
+            </a>
+          </section>
         </section>
       </div>
     </main>
@@ -6039,10 +6472,8 @@ const routes = [
   { path:'/courses', view: CoursesPage },
   { path:'/team', view: TeamPage },
   { path:'/contact', view: ContactPage },
-  { path:'/labs', view: LabsPage, after: initLabsPage },
   { path:'/labs/projects', view: ProjectsPage },
   { path:'/labs/games', view: GamesPage, after: initStandaloneGamesPage },
-  { path:'/labs/:section', view: LabsPage, after: initLabsPage },
   { path:'/admin/login', view: AdminLoginPage, after: bindLoginForm, admin:true, skipGuard:true },
   { path:'/admin/dashboard', view: AdminDashboardPage, admin:true, key:'dashboard' },
   { path:'/admin/homepage', view: AdminHomepagePage, after: bindHomepageForm, admin:true, key:'homepage' },
@@ -6305,6 +6736,24 @@ const TRANSITION_ART = {
         ●   ●
        / \\ / \\
       ●   ●   ●`,
+  contact: `       ┌───────────────┐
+───────┤  JOIN CLUB    ├───────
+       └───────┬───────┘
+               │
+          ◇────┴────◇
+         /            \
+        ◇   CONNECT    ◇
+         \            /
+          ◇──────────◇`,
+  joinMember: `       ╭────────────╮
+───────┤  MEMBER    ├───────
+       ╰─────┬──────╯
+             │
+        ─────┼─────
+             │
+          ◇──┴──◇
+         /      \
+        ◇  JOIN  ◇`,
   games: `      ┌───────────┐
 ──────┤  GAMES    ├──────
       └─────┬─────┘
@@ -6353,6 +6802,13 @@ function transitionKey(path){
 
   /* Connect gets the original ASCII tree. */
   if(p[0] === 'team') return 'connect';
+  if(p[0] === 'contact'){
+    if(sessionStorage.getItem('joinMemberTransition') === '1'){
+      sessionStorage.removeItem('joinMemberTransition');
+      return 'joinMember';
+    }
+    return 'contact';
+  }
 
   /* Projects and Games are Labs sub-pages, so give each its own artwork. */
   if(p[0] === 'labs' && p[1] === 'projects') return 'projectsLab';
@@ -6377,6 +6833,8 @@ function startPageTransition(path){
   if(label){
     const transitionLabels = {
       connect: 'BLOCKCHAIN CLUB // CONNECT',
+      contact: 'BLOCKCHAIN // CONNECT // CONTACT',
+      joinMember: 'BLOCKCHAIN // CLUB // JOIN AS A MEMBER',
       projectsLab: 'BLOCKCHAIN // LABS // PROJECT',
       gamesLab: 'BLOCKCHAIN // LABS // GAMES',
       resources: 'BLOCKCHAIN CLUB // RESOURCES'
@@ -6508,13 +6966,8 @@ function SiteFooter(){
 }
 
 function NavBar(active){
-  const links = [
-  ['#/events','Events'],
-  ['#/blogs','Blogs'],
-  ['#/team','Connect'],
-  ['#/courses','Resources']
-];
   const labsActive=active.startsWith('#/labs');
+  const connectActive=active==='#/team' || active==='#/contact';
   return `
     <header class="nav" id="site-nav">
       <div class="container nav-inner">
@@ -6524,7 +6977,8 @@ function NavBar(active){
         </a>
         <nav class="nav-links">
           <a href="#/events" class="nav-link mono ${active==='#/events'?'active':''}">Events</a>
-          <div class="nav-dropdown ${labsActive?'active':''}" data-labs-dropdown>
+
+          <div class="nav-dropdown ${labsActive?'active':''}" data-nav-dropdown>
             <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Labs</button>
             <div class="nav-dropdown-menu">
               <a class="nav-dropdown-item" href="#/labs/projects">
@@ -6537,7 +6991,23 @@ function NavBar(active){
               </a>
             </div>
           </div>
-          ${links.slice(1).map(([href,label]) => `<a href="${href}" class="nav-link mono ${active===href?'active':''}">${label}</a>`).join('')}
+
+          <div class="nav-dropdown ${connectActive?'active':''}" data-nav-dropdown>
+            <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Connect</button>
+            <div class="nav-dropdown-menu">
+              <a class="nav-dropdown-item" href="#/team">
+                <span class="nav-dropdown-icon">+</span>
+                <span><div class="nav-dropdown-title">Connect</div><div class="nav-dropdown-desc">Meet the team &amp; faculty</div></span>
+              </a>
+              <a class="nav-dropdown-item" href="#/contact">
+                <span class="nav-dropdown-icon">↗</span>
+                <span><div class="nav-dropdown-title">Contact</div><div class="nav-dropdown-desc">Get in touch with the club</div></span>
+              </a>
+            </div>
+          </div>
+
+          <a href="#/blogs" class="nav-link mono ${active==='#/blogs'?'active':''}">Blogs</a>
+          <a href="#/courses" class="nav-link mono ${active==='#/courses'?'active':''}">Resources</a>
         </nav>
         <button class="nav-toggle" data-action="mobile-menu-toggle" aria-label="Toggle menu">
           <span></span><span></span><span></span>
@@ -6587,7 +7057,7 @@ async function HomePage(){
       <div class="home-copy">
         <div class="eyebrow mono home-eyebrow">
           <span class="eyebrow-dot"></span>
-          A UNIVERSITY STUDENT ORGANIZATION
+          MU STUDENT ORGANIZATION
         </div>
 
         <h1 class="blockchain-home-title">BLOCKCHAIN CLUB</h1>
@@ -6601,6 +7071,7 @@ async function HomePage(){
         <div class="hero-cta">
           <a href="#/about" class="btn btn-primary">LEARN MORE</a>
           <a href="#/events" class="btn btn-outline">UPCOMING EVENTS</a>
+          <a href="#/contact" class="btn btn-outline" data-join-member>JOIN AS A MEMBER</a>
         </div>
       </div>
     </div>
@@ -6722,28 +7193,6 @@ function EventRow(e,i){
     <div class="row-arrow mono">→</div>
   </a>`;
 }
-function ProjectRow(p,i){
-  return `<a href="#/labs" data-labs-tab="projects" class="row-item">
-    <div class="row-index mono">${String(i+1).padStart(2,'0')}</div>
-    <div class="row-main">
-      <div class="row-type mono">${esc(p.status||'active')}</div>
-      <h3>${esc(p.title)}</h3>
-      <div class="row-meta">${esc(p.year||'')}</div>
-    </div>
-    <div class="row-arrow mono">→</div>
-  </a>`;
-}
-function CourseRow(c,i){
-  return `<a href="#/courses" class="row-item">
-    <div class="row-index mono">${String(i+1).padStart(2,'0')}</div>
-    <div class="row-main">
-      <div class="row-type mono">${esc(c.level||'Course')}</div>
-      <h3>${esc(c.title)}</h3>
-      <div class="row-meta">${esc(c.duration||'')}${c.instructor?' — '+esc(c.instructor):''}</div>
-    </div>
-    <div class="row-arrow mono">→</div>
-  </a>`;
-}
 function BlogCard(b){
   return `<a href="#/blogs/${b.id}" class="blog-card">
     ${ImgOrPlaceholder(b.coverImage, b.title)}
@@ -6755,34 +7204,7 @@ function BlogCard(b){
     </div>
   </a>`;
 }
-function TeamCard(t){
-  return `<div class="team-card">
-    ${ImgOrPlaceholder(t.image, t.name, true)}
-    <h3>${esc(t.name)}</h3>
-    <div class="role mono">${esc(t.role)}</div>
-    <div class="dept mono">${esc(t.department||'')}</div>
-  </div>`;
-}
 
-async function AboutPage(){
-  const a = await aboutService.get();
-  return `${NavBar('#/about')}
-  ${PageHead('ABOUT','About the Club')}
-  <section class="section">
-    <div class="container">
-      <div class="prose">
-        <p>${esc(a.description)}</p>
-      </div>
-      <div class="grid grid-3" style="margin-top:64px;">
-        <div class="wwd-item"><div class="wwd-num mono">MISSION</div><p>${esc(a.mission)}</p></div>
-        <div class="wwd-item"><div class="wwd-num mono">VISION</div><p>${esc(a.vision)}</p></div>
-        <div class="wwd-item"><div class="wwd-num mono">FOUNDED</div><p>${esc(a.foundedYear)}</p></div>
-      </div>
-    </div>
-  </section>
-  
-  `;
-}
 
 async function EventsPage(){
   return `${NavBar('#/events')}
@@ -6871,18 +7293,6 @@ async function EventsPage(){
   </section>
 
   `;
-}
-function EventRowFull(e,i){
-  return `<div class="row-item" style="cursor:default;">
-    <div class="row-index mono">${String(i+1).padStart(2,'0')}</div>
-    <div class="row-main">
-      <div class="row-type mono">${esc(e.type||'Event')}</div>
-      <h3>${esc(e.title)}</h3>
-      <p class="text-dim" style="font-size:13.5px;margin:8px 0;max-width:560px;">${esc(e.description||'')}</p>
-      <div class="row-meta">${fmtDate(e.date)} ${e.time?'— '+esc(e.time):''} ${e.location?'— '+esc(e.location):''}</div>
-    </div>
-    ${e.registrationLink ? `<a href="${esc(e.registrationLink)}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Register</a>` : `<span class="row-arrow mono"></span>`}
-  </div>`;
 }
 
 function initHomeCrypto(){
@@ -7071,61 +7481,7 @@ function labVote(i,el){if(el.dataset.voted)return;el.dataset.voted=1;el.style.bo
 function labAuditTry(i){labSet('lab-as',i===2?'✓ GOOD CATCH — this external call needs investigation.':'Keep looking.',i===2)}
 function labWalletTry(i){labSet('lab-ws',i===1?'✓ Correct clue path. Continue the fictional puzzle.':'Try another clue.',i===1)}
 
-function initLabsPage(){
-  const tabs=document.querySelectorAll('[data-labs-tab]');
-  const views=document.querySelectorAll('[data-labs-view]');
-  const activate=target=>{
-    const safe=[...views].some(v=>v.dataset.labsView===target)?target:'home';
-    tabs.forEach(t=>t.classList.toggle('active',t.dataset.labsTab===safe));
-    views.forEach(v=>v.classList.toggle('active',v.dataset.labsView===safe));
-    window.scrollTo(0,0);
-  };
-  tabs.forEach(tab=>tab.addEventListener('click',e=>{
-    const target=tab.dataset.labsTab;
-    if(!target)return;
-    e.preventDefault();
-    activate(target);
-    history.replaceState(null,'',`#/labs/${target}`);
-  }));
-  const path=location.hash.replace(/^#\/labs\/?/,'').split('/')[0]||'home';
-  activate(path);
-  document.querySelectorAll('.lab-play-game').forEach(btn=>btn.addEventListener('click',()=>labOpenGame(btn.dataset.gameId)));
-  const closeBtn=document.getElementById('lab-game-close');
-  if(closeBtn)closeBtn.addEventListener('click',labCloseGame);
-  const modal=document.getElementById('lab-game-modal');
-  if(modal)modal.addEventListener('click',e=>{if(e.target===modal)labCloseGame()});
-}
 
-async function LabsPage(){
-  const projects=(await projectService.getAll()).filter(p=>(p.visibility||'draft')==='published'&&!['Campus Credential Ledger','Threat Intel Aggregator','Zero-Knowledge Attendance'].includes(p.title));
-  const projectCards=projects.length?projects.map((p,i)=>`<article class="labs-project-card"><div class="project-type">${esc(p.category||'PROJECT')} / ${String(i+1).padStart(2,'0')}</div><h3>${esc(p.title)}</h3><p>${esc(p.description||'Student project showcase and technical build.')}</p>${p.link?`<a class="labs-action" href="${esc(p.link)}" target="_blank" rel="noopener">VIEW DEMO →</a>`:''}</article>`).join(''):`<div class="labs-empty-game"><div class="mono">WHAT WE BUILD</div><h3>Projects will appear here.</h3><p>The admin can add and publish student projects from the main admin dashboard.</p></div>`;
-  return `${NavBar('#/labs')}
-  <section class="labs-shell">
-    <div class="labs-nav"><div class="container labs-nav-inner"><div class="labs-brand">BLOCKCHAIN CLUB // INTERACTIVE PLATFORM</div><div class="labs-tabs">
-      <button class="labs-tab active" data-labs-tab="home" type="button">HOME</button><button class="labs-tab" data-labs-tab="games" type="button">GAMES</button><button class="labs-tab" data-labs-tab="leaderboard" type="button">LEADERBOARD</button><button class="labs-tab" data-labs-tab="events" type="button">EVENTS</button><button class="labs-tab" data-labs-tab="projects" type="button">PROJECTS</button><button class="labs-tab" data-labs-tab="resources" type="button">RESOURCES</button><button class="labs-tab" data-labs-tab="team" type="button">TEAM</button>
-    </div></div></div>
-
-    <div class="labs-view active" data-labs-view="home"><div class="labs-hero"><div class="container"><div class="labs-kicker mono">01 / PLATFORM</div><h2>Don't just read about blockchain.</h2><p>A concept for turning the club website into a place students can actually explore: games, challenges, events, projects, resources, rankings and interactive demos.</p><button class="btn btn-primary" style="margin-top:28px;" type="button" data-labs-tab="games">EXPLORE THE LAB →</button></div></div><div class="labs-feature-grid"><article class="labs-feature"><div class="mono">02 / LIVE</div><h3>Weekly Challenge</h3><p>One small cybersecurity or blockchain puzzle changes every week.</p><button class="labs-action" type="button" data-labs-tab="games">TRY IT →</button></article><article class="labs-feature"><div class="mono">03 / COMMUNITY</div><h3>Club Score</h3><p>Points from games, workshops and CTFs can feed into one leaderboard.</p><button class="labs-action" type="button" data-labs-tab="leaderboard">VIEW RANKING →</button></article><article class="labs-feature"><div class="mono">04 / BUILD</div><h3>Student Projects</h3><p>Show actual projects, GitHub links and demos rather than generic descriptions.</p><button class="labs-action" type="button" data-labs-tab="projects">SEE PROJECTS →</button></article><article class="labs-feature"><div class="mono">05 / LEARN</div><h3>Resource Vault</h3><p>Curated notes, tools, beginner paths and workshop material in one place.</p><button class="labs-action" type="button" data-labs-tab="resources">OPEN VAULT →</button></article></div></div>
-
-    <div class="labs-view" data-labs-view="games"><section class="labs-section"><div class="container"><div class="labs-section-head"><div><div class="labs-kicker mono">INTERACTIVE LAB</div><h2>Games &amp; Challenges</h2></div><p>These are prototypes. The strongest ones can later become proper standalone game pages.</p></div><div class="lab-game-grid-full"><article class="lab-game-card-full"><div class="lab-game-number mono">01 / BLOCKCHAIN</div><h3>Hash Hunt</h3><p>Find a nonce that creates a valid hash.</p><button class="labs-action lab-play-game" type="button" data-game-id="hash">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">02 / BLOCKCHAIN</div><h3>Chain Reaction</h3><p>Find the corrupted block in a chain.</p><button class="labs-action lab-play-game" type="button" data-game-id="chain">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">03 / CYBERSECURITY</div><h3>Phish or Legit?</h3><p>Spot the suspicious email before you click.</p><button class="labs-action lab-play-game" type="button" data-game-id="phish">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">04 / CTF</div><h3>Mini CTF</h3><p>Solve three tiny flags from a fake lab terminal.</p><button class="labs-action lab-play-game" type="button" data-game-id="ctf">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">05 / ESCAPE ROOM</div><h3>Cyber Escape Room</h3><p>Unlock the room by solving a sequence of security puzzles.</p><button class="labs-action lab-play-game" type="button" data-game-id="escape">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">06 / CYBERSECURITY</div><h3>Trace the Intruder</h3><p>Locate the compromised node using limited scans.</p><button class="labs-action lab-play-game" type="button" data-game-id="trace">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">07 / NETWORKING</div><h3>Packet Panic</h3><p>Intercept malicious network packets without blocking safe traffic.</p><button class="labs-action lab-play-game" type="button" data-game-id="packet">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">08 / CRYPTO</div><h3>Decode the Chain</h3><p>Decode short pieces of data used around computing.</p><button class="labs-action lab-play-game" type="button" data-game-id="decode">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">09 / BLOCKCHAIN</div><h3>Build the Block</h3><p>Mine and add a new block to a tiny chain.</p><button class="labs-action lab-play-game" type="button" data-game-id="build">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">10 / BLOCKCHAIN</div><h3>Block Builder</h3><p>Assemble the pieces required for a valid block.</p><button class="labs-action lab-play-game" type="button" data-game-id="builder">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">11 / SIMULATION</div><h3>Chain Market</h3><p>Trade fictional tokens as network events change prices.</p><button class="labs-action lab-play-game" type="button" data-game-id="market">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">12 / BLOCKCHAIN</div><h3>Consensus Clash</h3><p>Reach consensus before conflicting nodes split the network.</p><button class="labs-action lab-play-game" type="button" data-game-id="consensus">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">13 / SECURITY</div><h3>Smart Contract Audit</h3><p>Find the dangerous line in a tiny contract.</p><button class="labs-action lab-play-game" type="button" data-game-id="smart">PLAY PROTOTYPE →</button></article><article class="lab-game-card-full"><div class="lab-game-number mono">14 / CRYPTO</div><h3>Wallet Heist</h3><p>Recover a fictional wallet using clues without revealing the seed.</p><button class="labs-action lab-play-game" type="button" data-game-id="wallet">PLAY PROTOTYPE →</button></article></div>
-<div class="lab-game-modal" id="lab-game-modal" aria-hidden="true">
-<div class="lab-game-modal-inner">
-<div class="lab-game-modal-head"><div><div class="labs-kicker mono" id="lab-game-modal-num"></div><h2 id="lab-game-modal-title"></h2><p class="text-dim" id="lab-game-modal-desc"></p></div><button class="btn btn-outline" type="button" id="lab-game-close">CLOSE</button></div>
-<div class="lab-game-demo" id="lab-game-demo"></div>
-</div>
-</div></div></section></div>
-
-    <div class="labs-view" data-labs-view="leaderboard"><section class="labs-section"><div class="container"><div class="labs-section-head"><div><div class="labs-kicker mono">COMPETITION</div><h2>Leaderboard</h2></div><p>Points could come from games, CTFs, workshops and club competitions.</p></div><div class="labs-board"><div class="labs-board-head"><span>#</span><span>PLAYER</span><span>LEVEL</span><span>POINTS</span><span>BADGES</span></div><div class="labs-board-row"><span class="labs-rank">01</span><span>cipher_01</span><span>12</span><span>1840</span><span>08</span></div><div class="labs-board-row"><span class="labs-rank">02</span><span>blocksmith</span><span>11</span><span>1715</span><span>07</span></div><div class="labs-board-row"><span class="labs-rank">03</span><span>rootkit</span><span>10</span><span>1602</span><span>06</span></div><div class="labs-board-row you"><span class="labs-rank">04</span><span>YOU</span><span>—</span><span>420</span><span>02</span></div><div class="labs-board-row"><span class="labs-rank">05</span><span>hashbrown</span><span>6</span><span>388</span><span>02</span></div></div></div></section></div>
-
-    <div class="labs-view" data-labs-view="events"><section class="labs-section"><div class="container"><div class="labs-section-head"><div><div class="labs-kicker mono">CALENDAR</div><h2>Events</h2></div><p>Only real club events should appear here once connected to the actual calendar.</p></div><div class="labs-project-grid"><article class="labs-project-card"><div class="project-type">AUG 21</div><h3>Blockchain 101</h3><p>Beginner workshop · Details will be added when confirmed.</p><div class="project-type" style="margin-top:20px;">WORKSHOP</div></article><article class="labs-project-card"><div class="project-type">AUG 28</div><h3>CTF Night</h3><p>Hands-on cybersecurity challenge · Registration opens later.</p><div class="project-type" style="margin-top:20px;">CTF</div></article><article class="labs-project-card"><div class="project-type">SEP 04</div><h3>Build Session</h3><p>Student project showcase and open build night.</p><div class="project-type" style="margin-top:20px;">BUILD</div></article></div></div></section></div>
-
-    <div class="labs-view" data-labs-view="projects"><section class="labs-section"><div class="container"><div class="labs-section-head"><div><div class="labs-kicker mono">WHAT WE BUILD</div><h2>Projects</h2></div><p>Real student projects can be showcased here with a short explanation and demo link.</p></div><div class="labs-project-grid">${projectCards}</div></div></section></div>
-
-    <div class="labs-view" data-labs-view="resources"><section class="labs-section"><div class="container"><div class="labs-section-head"><div><div class="labs-kicker mono">LEARNING</div><h2>Resource Vault</h2></div><p>A useful resource section could be organized by skill level rather than becoming a giant list of links.</p></div><div class="labs-resource-card"><div class="mono">START HERE</div><h3>Blockchain Fundamentals</h3><p class="text-dim">Hashes · blocks · consensus · wallets · smart contracts</p><a class="labs-action" href="#/courses">OPEN PATH →</a></div><div class="labs-resource-card"><div class="mono">CYBERSECURITY</div><h3>Security Starter Pack</h3><p class="text-dim">Linux · networking · web security · cryptography · CTF basics</p><a class="labs-action" href="#/courses">OPEN PATH →</a></div><div class="labs-resource-card"><div class="mono">BUILD</div><h3>Project Toolkit</h3><p class="text-dim">Git · APIs · Solidity · Python · JavaScript · useful labs</p><a class="labs-action" href="#/courses">OPEN PATH →</a></div></div></section></div>
-
-    <div class="labs-view" data-labs-view="team"><section class="labs-section"><div class="container"><div class="labs-section-head"><div><div class="labs-kicker mono">PEOPLE</div><h2>Team</h2></div><p>Keep this simple: actual members, roles and links. No fake profiles.</p></div><div><div class="labs-team-row"><div class="labs-team-num">01</div><div><h3>President</h3><p class="text-dim">Name / profile link added here.</p></div></div><div class="labs-team-row"><div class="labs-team-num">02</div><div><h3>Technical Lead</h3><p class="text-dim">Name / profile link added here.</p></div></div><div class="labs-team-row"><div class="labs-team-num">03</div><div><h3>Events Lead</h3><p class="text-dim">Name / profile link added here.</p></div></div></div></div></section></div>
-  </section>`;
-}
 
 function initStandaloneGamesPage(){
   document.querySelectorAll('.lab-play-game').forEach(btn => {
@@ -7219,23 +7575,6 @@ function ProjectTile(p,i){
   </article>`;
 }
 
-function ProjectRowFull(p,i){
-  const links = (p.links||'').split(',').map(s=>s.trim()).filter(Boolean).map(pair=>{
-    const [label,url] = pair.split('|').map(s=>(s||'').trim());
-    return url ? `<a href="${esc(url)}" target="_blank" rel="noopener" class="link-btn mono">${esc(label||'LINK')} ↗</a>` : '';
-  }).join(' ');
-  return `<div class="row-item" style="cursor:default;">
-    <div class="row-index mono">${String(i+1).padStart(2,'0')}</div>
-    <div class="row-main">
-      <div class="row-type mono">${esc(p.status||'active')} · ${esc(p.year||'')}</div>
-      <h3>${esc(p.title)}</h3>
-      <p class="text-dim" style="font-size:13.5px;margin:8px 0;max-width:560px;">${esc(p.description||'')}</p>
-      ${p.teamMembers ? `<div class="row-meta">${esc(p.teamMembers)}</div>` : ''}
-      ${links ? `<div style="margin-top:8px;display:flex;gap:16px;">${links}</div>` : ''}
-    </div>
-    <span class="badge ${p.status==='completed'?'published':''} mono">${esc(p.status||'')}</span>
-  </div>`;
-}
 
 async function CoursesPage(){
   const courses = (await courseService.getPublished()).length ? await courseService.getPublished() : SEED_COURSES;
@@ -7466,20 +7805,6 @@ async function TeamPage(){
   `;
 }
 
-function TeamCardFull(t){
-  return `<div class="team-card">
-    ${ImgOrPlaceholder(t.image, t.name, true)}
-    <h3>${esc(t.name)}</h3>
-    <div class="role mono">${esc(t.role)}</div>
-    <div class="dept mono">${esc(t.department||'')}</div>
-    ${t.bio ? `<p class="bio">${esc(t.bio)}</p>` : ''}
-    <div style="margin-top:12px;display:flex;gap:14px;">
-      ${t.email ? `<a href="mailto:${esc(t.email)}" class="link-btn mono">EMAIL</a>` : ''}
-      ${t.linkedin ? `<a href="${esc(t.linkedin)}" target="_blank" rel="noopener" class="link-btn mono">LINKEDIN</a>` : ''}
-      ${t.github ? `<a href="${esc(t.github)}" target="_blank" rel="noopener" class="link-btn mono">GITHUB</a>` : ''}
-    </div>
-  </div>`;
-}
 
 async function BlogsPage(){
   const blogs = (await blogService.getPublished()).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
@@ -7660,73 +7985,99 @@ async function ContactPage(){
   ${PageHead('CONTACT','Contact the Club','Questions, collaborations, workshops, and anything else — send us a message.')}
   <section class="section contact-page-section">
     <div class="container">
-      <div class="contact-layout">
-        <div class="contact-intro">
-          <div class="eyebrow mono">GET IN TOUCH</div>
-          <h2>${esc(c.email)}</h2>
-          <p>${esc(c.location)}</p>
+      <div class="contact-topline">
+        <div class="eyebrow mono">CONTACT</div>
+        <a class="contact-outlook-full"
+           href="mailto:blockchainclub@mahindrauniversity.edu.in">
+          blockchainclub@mahindrauniversity.edu.in ↗
+        </a>
+      </div>
 
-          <div class="contact-socials">
-            <div class="contact-social-heading mono">FOLLOW THE CLUB</div>
+      <div class="contact-bottom-layout">
+        <div class="contact-socials">
+          <div class="contact-social-heading mono">FOLLOW THE CLUB</div>
 
-            <a class="contact-social-card" href="https://www.linkedin.com/company/mu-blockchain-club/about/?viewAsMember=true"
-               target="_blank" rel="noopener noreferrer">
-              <span class="contact-social-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2 2 0 1 0 5.25 7.01 2 2 0 0 0 5.25 3ZM20.44 13.42c0-3.47-1.85-5.09-4.32-5.09-1.99 0-2.88 1.1-3.38 1.87V8.5H9.36V20h3.38v-5.69c0-1.5.28-2.95 2.14-2.95 1.83 0 1.85 1.71 1.85 3.05V20h3.38l.33-6.58Z"/>
-                </svg>
-              </span>
-              <span><small>LINKEDIN</small><strong>MU BLOCKCHAIN CLUB</strong></span>
-              <span class="contact-social-arrow">↗</span>
-            </a>
+          <a class="contact-social-card" href="https://www.linkedin.com/company/mu-blockchain-club/about/?viewAsMember=true" target="_blank" rel="noopener noreferrer">
+            <span class="contact-social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 3A2 2 0 1 0 5.25 7.01 2 2 0 0 0 5.25 3ZM20.44 13.42c0-3.47-1.85-5.09-4.32-5.09-1.99 0-2.88 1.1-3.38 1.87V8.5H9.36V20h3.38v-5.69c0-1.5.28-2.95 2.14-2.95 1.83 0 1.85 1.71 1.85 3.05V20h3.38l.33-6.58Z"/></svg>
+            </span>
+            <span><small>LINKEDIN</small><strong>MU BLOCKCHAIN CLUB</strong></span>
+            <span class="contact-social-arrow">↗</span>
+          </a>
 
-            <a class="contact-social-card" href="https://www.instagram.com/blockchain_mu?igsh=YnZ1ajZ1cG9odXI2&utm_source=qr"
-               target="_blank" rel="noopener noreferrer">
-              <span class="contact-social-icon" aria-hidden="true">
-                <svg viewBox="0 0 64 64">
-                  <rect x="8" y="8" width="48" height="48" rx="14" fill="none" stroke="currentColor" stroke-width="6"/>
-                  <circle cx="32" cy="32" r="11" fill="none" stroke="currentColor" stroke-width="6"/>
-                  <circle cx="47" cy="17" r="3.5" fill="currentColor"/>
-                </svg>
-              </span>
-              <span><small>INSTAGRAM</small><strong>@BLOCKCHAIN_MU</strong></span>
-              <span class="contact-social-arrow">↗</span>
-            </a>
+          <a class="contact-social-card" href="https://www.instagram.com/blockchain_mu?igsh=YnZ1ajZ1cG9odXI2&utm_source=qr" target="_blank" rel="noopener noreferrer">
+            <span class="contact-social-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="48" rx="14" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="32" cy="32" r="11" fill="none" stroke="currentColor" stroke-width="6"/><circle cx="47" cy="17" r="3.5" fill="currentColor"/></svg>
+            </span>
+            <span><small>INSTAGRAM</small><strong>@BLOCKCHAIN_MU</strong></span>
+            <span class="contact-social-arrow">↗</span>
+          </a>
 
-            <a class="contact-social-card" href="https://x.com/blockchain_mu?s=11"
-               target="_blank" rel="noopener noreferrer">
-              <span class="contact-social-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 4h4.1l3.05 4.36L15.85 4H19l-5.38 6.14L19.45 20h-4.1l-3.48-4.98L7.2 20H4.05l5.65-6.47L5 4Zm3.15 1.75h-.85l8.95 12.5h.85L8.15 5.75Z"/>
-                </svg>
-              </span>
-              <span><small>X</small><strong>@BLOCKCHAIN_MU</strong></span>
-              <span class="contact-social-arrow">↗</span>
-            </a>
+          <a class="contact-social-card" href="https://x.com/blockchain_mu?s=11" target="_blank" rel="noopener noreferrer">
+            <span class="contact-social-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M5 4h4.1l3.05 4.36L15.85 4H19l-5.38 6.14L19.45 20h-4.1l-3.48-4.98L7.2 20H4.05l5.65-6.47L5 4Zm3.15 1.75h-.85l8.95 12.5h.85L8.15 5.75Z"/></svg>
+            </span>
+            <span><small>X</small><strong>@BLOCKCHAIN_MU</strong></span>
+            <span class="contact-social-arrow">↗</span>
+          </a>
 
-            <a class="contact-social-card" href="mailto:blockchainclub@mahindrauniversity.edu.in">
-              <span class="contact-social-icon" aria-hidden="true">
-                <svg viewBox="0 0 64 64">
-                  <rect x="7" y="13" width="50" height="38" rx="5" fill="none" stroke="currentColor" stroke-width="5"/>
-                  <path d="M9 17 L32 36 L55 17" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M9 49 L25 34 M55 49 L39 34" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span><small>OUTLOOK</small><strong>${esc(c.email)}</strong></span>
-              <span class="contact-social-arrow">↗</span>
-            </a>
-          </div>
+          <a class="contact-social-card" href="mailto:blockchainclub@mahindrauniversity.edu.in">
+            <span class="contact-social-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><rect x="7" y="13" width="50" height="38" rx="5" fill="none" stroke="currentColor" stroke-width="5"/><path d="M9 17 L32 36 L55 17" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 49 L25 34 M55 49 L39 34" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg>
+            </span>
+            <span><small>OUTLOOK</small><strong>CLUB OUTLOOK</strong></span>
+            <span class="contact-social-arrow">↗</span>
+          </a>
         </div>
 
-        <form id="public-contact-form" class="admin-form contact-form">
+        <form id="public-contact-form" class="admin-form contact-form" data-membership-form>
           <div class="contact-form-head">
             <div class="eyebrow mono">SEND A MESSAGE</div>
-            <h3>LET'S CONNECT.</h3>
+            <h3>JOIN AS A MEMBER.</h3>
           </div>
-          <div class="field"><label>Name</label><input name="name" required></div>
-          <div class="field"><label>Email</label><input type="email" name="email" required></div>
-          <div class="field"><label>Subject</label><input name="subject" required></div>
-          <div class="field"><label>Message</label><textarea name="message" rows="7" required></textarea></div>
+
+          <div class="contact-question">
+            <label><span class="question-number">1.</span> Name</label>
+            <input name="name" placeholder="Enter your answer" required>
+          </div>
+
+          <div class="contact-question">
+            <label><span class="question-number">2.</span> Roll No.</label>
+            <input name="rollNo" placeholder="Enter your answer" required>
+          </div>
+
+          <div class="contact-question">
+            <label><span class="question-number">3.</span> Email</label>
+            <input type="email" name="email" placeholder="Enter your answer" required>
+          </div>
+
+          <div class="contact-question">
+            <label><span class="question-number">4.</span> What course are you pursuing?</label>
+            <input name="course" placeholder="Enter your answer" required>
+          </div>
+
+          <div class="contact-question">
+            <label><span class="question-number">5.</span> Why do you want to become a member of the Blockchain Club?</label>
+            <textarea name="reason" rows="4" placeholder="Enter your answer" required></textarea>
+          </div>
+
+          <fieldset class="contact-question contact-choice-group">
+            <legend><span class="question-number">6.</span> For which team do you wish to become a member?</legend>
+            <label class="contact-choice"><input type="checkbox" name="teams" value="Technical team"><span>Technical team</span></label>
+            <label class="contact-choice"><input type="checkbox" name="teams" value="Financial team"><span>Financial team</span></label>
+            <label class="contact-choice"><input type="checkbox" name="teams" value="Logistics team"><span>Logistics team</span></label>
+            <label class="contact-choice"><input type="checkbox" name="teams" value="Content team"><span>Content team</span></label>
+            <label class="contact-choice"><input type="checkbox" name="teams" value="Design team"><span>Design team</span></label>
+            <label class="contact-choice"><input type="checkbox" name="teams" value="Social media and marketing team"><span>Social media and marketing team</span></label>
+          </fieldset>
+
+          <fieldset class="contact-question contact-choice-group">
+            <legend><span class="question-number">7.</span> You are more interested in:</legend>
+            <label class="contact-choice"><input type="radio" name="interest" value="Blockchain" required><span>Blockchain</span></label>
+            <label class="contact-choice"><input type="radio" name="interest" value="Cybersecurity"><span>Cybersecurity</span></label>
+            <label class="contact-choice"><input type="radio" name="interest" value="Both"><span>Both</span></label>
+          </fieldset>
+
           <button class="btn btn-primary" type="submit">SEND MESSAGE ↗</button>
         </form>
       </div>
@@ -7981,16 +8332,22 @@ function bindResourceEditor(resourceKey, id){
 }
 
 document.addEventListener('click', async (e) => {
-  const labsToggle = e.target.closest('[data-labs-dropdown] .nav-dropdown-toggle');
-  if(labsToggle){
-    const dropdown=labsToggle.closest('[data-labs-dropdown]');
+  const navToggle = e.target.closest('[data-nav-dropdown] .nav-dropdown-toggle');
+  if(navToggle){
+    const dropdown=navToggle.closest('[data-nav-dropdown]');
     const isOpen=dropdown.classList.toggle('open');
-    labsToggle.setAttribute('aria-expanded',String(isOpen));
+    navToggle.setAttribute('aria-expanded',String(isOpen));
+    document.querySelectorAll('[data-nav-dropdown].open').forEach(d=>{
+      if(d!==dropdown){
+        d.classList.remove('open');
+        d.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded','false');
+      }
+    });
     e.preventDefault();
     return;
   }
-  if(!e.target.closest('[data-labs-dropdown]')){
-    document.querySelectorAll('[data-labs-dropdown].open').forEach(d=>{
+  if(!e.target.closest('[data-nav-dropdown]')){
+    document.querySelectorAll('[data-nav-dropdown].open').forEach(d=>{
       d.classList.remove('open');
       d.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded','false');
     });
@@ -8038,10 +8395,51 @@ document.addEventListener('click', async (e) => {
 document.addEventListener('submit', async (e) => {
   if(e.target && e.target.id === 'public-contact-form'){
     e.preventDefault();
-    const data=Object.fromEntries(new FormData(e.target).entries());
-    await contactSubmissionService.create({...data,status:'new'});
-    showToast('Message received — thanks for reaching out.');
-    e.target.reset();
+
+    const form = e.target;
+    const fd = new FormData(form);
+    const teams = fd.getAll('teams');
+    const data = {
+      name: fd.get('name') || '',
+      rollNo: fd.get('rollNo') || '',
+      email: fd.get('email') || '',
+      course: fd.get('course') || '',
+      reason: fd.get('reason') || '',
+      teams,
+      interest: fd.get('interest') || ''
+    };
+
+    const subject = `Blockchain Club Membership Application — ${data.name}`;
+    const body = [
+      'Blockchain Club Membership Application',
+      '',
+      `1. Name: ${data.name}`,
+      `2. Roll No.: ${data.rollNo}`,
+      `3. Email: ${data.email}`,
+      `4. Course: ${data.course}`,
+      `5. Why do you want to become a member of the Blockchain Club?: ${data.reason}`,
+      `6. Team(s): ${teams.length ? teams.join(', ') : 'None selected'}`,
+      `7. More interested in: ${data.interest}`,
+      '',
+      'Sent from the Blockchain Club website.'
+    ].join('\n');
+
+    // Keep the application in the website's admin inbox as well.
+    await contactSubmissionService.create({
+      ...data,
+      subject,
+      message: body,
+      status:'new'
+    });
+
+    // Open the user's configured mail client/Outlook with the Club's
+    // Outlook address and the complete questionnaire already filled in.
+    const mailto =
+      `mailto:blockchainclub@mahindrauniversity.edu.in` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+
+    window.location.href = mailto;
   }
 });
 
@@ -8903,6 +9301,77 @@ function initChallengeGame(){
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
   else init();
+})();
+</script>
+
+
+<script id="join-member-transition-handler">
+document.addEventListener('click', function(e){
+  const join = e.target.closest('[data-join-member]');
+  if(!join) return;
+  sessionStorage.setItem('joinMemberTransition','1');
+});
+</script>
+
+
+<script id="membership-scroll-handler">
+(function(){
+  function scrollToMembership(instant){
+    const form = document.querySelector('[data-membership-form]');
+    if(!form) return false;
+
+    requestAnimationFrame(function(){
+      form.scrollIntoView({
+        behavior: instant ? 'auto' : 'smooth',
+        block: 'start'
+      });
+    });
+    return true;
+  }
+
+  document.addEventListener('click', function(e){
+    const join = e.target.closest('[data-join-member]');
+    if(!join) return;
+
+    // Tell the Contact route to open directly at the membership form.
+    sessionStorage.setItem('openMembershipOnContact','1');
+    sessionStorage.setItem('joinMemberTransition','1');
+
+    // If already on Contact, don't reload/re-route; just jump to the form.
+    if(window.location.hash === '#/contact'){
+      e.preventDefault();
+      scrollToMembership(false);
+    }
+  });
+
+  // The app router renders the Contact page on hashchange. Once the form
+  // exists in the DOM, immediately position the page at the form.
+  window.addEventListener('hashchange', function(){
+    if(window.location.hash === '#/contact' &&
+       sessionStorage.getItem('openMembershipOnContact') === '1'){
+      let tries = 0;
+      const waitForForm = setInterval(function(){
+        tries++;
+        if(scrollToMembership(true) || tries >= 30){
+          clearInterval(waitForForm);
+          sessionStorage.removeItem('openMembershipOnContact');
+        }
+      }, 25);
+    }
+  });
+
+  // Also handle a fresh page load with the flag still set.
+  if(window.location.hash === '#/contact' &&
+     sessionStorage.getItem('openMembershipOnContact') === '1'){
+    let tries = 0;
+    const waitForForm = setInterval(function(){
+      tries++;
+      if(scrollToMembership(true) || tries >= 30){
+        clearInterval(waitForForm);
+        sessionStorage.removeItem('openMembershipOnContact');
+      }
+    }, 25);
+  }
 })();
 </script>
 
