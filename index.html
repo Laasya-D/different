@@ -5880,6 +5880,156 @@ header nav a:hover{
 }
 </style>
 
+
+<style id="mobile-dropdown-alignment-fix">
+@media (max-width:900px){
+  .nav.nav-open .nav-links{
+    width:100% !important;
+    box-sizing:border-box !important;
+    align-items:stretch !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-link,
+  .nav.nav-open .nav-links > .nav-dropdown{
+    width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown{
+    display:block !important;
+    position:relative !important;
+    height:auto !important;
+    border-top:1px solid var(--border) !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown > .nav-dropdown-toggle{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    width:100% !important;
+    min-width:0 !important;
+    box-sizing:border-box !important;
+    margin:0 !important;
+    padding:16px 24px !important;
+    text-align:left !important;
+    line-height:1.2 !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown > .nav-dropdown-toggle::after{
+    flex:0 0 7px !important;
+    margin-left:auto !important;
+    transform:rotate(45deg) !important;
+  }
+
+  .nav.nav-open .nav-links > .nav-dropdown.open > .nav-dropdown-toggle::after{
+    transform:rotate(225deg) !important;
+  }
+
+  .nav.nav-open .nav-dropdown-menu{
+    width:auto !important;
+    margin:0 16px 12px !important;
+    box-sizing:border-box !important;
+    border-left:1px solid var(--border) !important;
+    border-right:1px solid var(--border) !important;
+  }
+
+  .nav.nav-open .nav-dropdown-item{
+    width:100% !important;
+    box-sizing:border-box !important;
+  }
+}
+</style>
+
+
+<style id="homepage-about-heading-match-crypto">
+/* Make the homepage ABOUT heading the same size as CRYPTOCURRENCY. */
+.home-about-section .section-head h2{
+  font-size:clamp(34px,4vw,58px) !important;
+  line-height:1 !important;
+  margin:10px 0 12px !important;
+}
+</style>
+
+
+<style id="events-one-line-heading">
+.events-page-heading{
+  padding:150px 0 70px;
+  background:var(--bg);
+}
+.events-page-heading h1{
+  margin:0;
+  color:var(--text);
+  font-family:var(--font-display);
+  font-size:clamp(48px,7.6vw,112px);
+  line-height:.92;
+  letter-spacing:-.045em;
+  font-weight:600;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+@media(max-width:700px){
+  .events-page-heading{
+    padding:120px 0 48px;
+  }
+  .events-page-heading h1{
+    font-size:clamp(38px,11vw,70px);
+  }
+}
+</style>
+
+
+<style id="games-play-prototype-always-visible">
+/* Games page: keep PLAY PROTOTYPE visible without requiring hover. */
+.games-standalone-page .lab-game-card-full .lab-play-game{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  align-self:flex-start !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  position:relative !important;
+  z-index:10 !important;
+  width:auto !important;
+  min-width:170px !important;
+  height:38px !important;
+  margin-top:auto !important;
+  margin-bottom:0 !important;
+  padding:8px 14px !important;
+  background:#f1efeb !important;
+  background-image:none !important;
+  color:#8d1727 !important;
+  border:2px solid #aaa !important;
+  border-radius:4px !important;
+  font-family:"JetBrains Mono",monospace !important;
+  font-size:11px !important;
+  font-weight:500 !important;
+  letter-spacing:.08em !important;
+  line-height:1 !important;
+  cursor:pointer !important;
+  text-decoration:none !important;
+  transform:none !important;
+  box-shadow:none !important;
+}
+
+.games-standalone-page .lab-game-card-full .lab-play-game:hover{
+  visibility:visible !important;
+  opacity:1 !important;
+  color:#fff !important;
+  background:var(--accent,#8d1727) !important;
+  border-color:var(--accent,#8d1727) !important;
+}
+
+@media(max-width:800px){
+  .games-standalone-page .lab-game-card-full .lab-play-game{
+    display:inline-flex !important;
+    visibility:visible !important;
+    opacity:1 !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -7259,11 +7409,11 @@ function BlogCard(b){
 async function EventsPage(){
   return `${NavBar('#/events')}
 
-  ${PageHead(
-    '01 / EVENTS',
-    'Events',
-    'See upcoming Blockchain Club events and activities.'
-  )}
+  <div class="events-page-heading">
+    <div class="container">
+      <h1>UPCOMING EVENTS</h1>
+    </div>
+  </div>
 
   <section class="section calendar-section">
     <div class="container">
