@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Blockchain Club</title>
-<meta name="description" content="MU student organization researching distributed systems, applied cryptography, and offensive & defensive security." />
+<meta name="description" content="A university student organization researching distributed systems, applied cryptography, and offensive & defensive security." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -5835,6 +5835,51 @@ header nav a:hover{
 }
 </style>
 
+
+<style id="ios-events-scroll-fix-v2">
+@media (max-width:700px){
+  html.events-page,
+  html.events-page body{
+    background:#070707 !important;
+    overscroll-behavior-y:none !important;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  html.events-page #app{
+    background:#070707 !important;
+    min-height:100dvh !important;
+    isolation:isolate !important;
+  }
+
+  /* Safari can expose the compositor's grey backing layer when an
+     animated/transformed page is rubber-banded. Events does not need
+     the page-fade transform, so keep this page on a flat layer. */
+  html.events-page .page-fade{
+    animation:none !important;
+    transform:none !important;
+    opacity:1 !important;
+    background:#070707 !important;
+  }
+
+  html.events-page .calendar-section,
+  html.events-page .upcoming-events-section,
+  html.events-page .site-footer{
+    background:#070707 !important;
+  }
+
+  html.events-page .calendar-section,
+  html.events-page .upcoming-events-section{
+    transform:none !important;
+    -webkit-transform:none !important;
+    will-change:auto !important;
+  }
+
+  html.events-page #page-transition{
+    display:none !important;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -6144,7 +6189,7 @@ const SEED_TEAM = [
   { id: uid(), name:'Elena Vasquez', role:'Faculty Advisor', department:'Leadership', bio:'Assistant professor advising the club on curriculum and applied research.', email:'evasquez@university.edu', image:'', linkedin:'', github:'', order:'5' },
 ];
 const DEFAULT_HOMEPAGE = {
-  heroEyebrow: 'MU STUDENT ORGANIZATION',
+  heroEyebrow: 'A UNIVERSITY STUDENT ORGANIZATION',
   heroTitle: 'BLOCKCHAIN CLUB',
   heroDescription: 'A student-run collective researching distributed systems, applied cryptography, and offensive & defensive security — through workshops, projects, and open research.',
   ctaPrimary: 'Learn More', ctaPrimaryLink: '#/about',
@@ -6863,6 +6908,11 @@ function endPageTransition(){
 
 async function render(){
   const path = parseHash();
+
+  // Mark Events separately so the iOS Safari scroll fix only affects
+  // that page and does not change scrolling/animations elsewhere.
+  document.documentElement.classList.toggle('events-page', path === '/events');
+
   startPageTransition(path);
 
   const found = matchRoute(path);
@@ -7057,7 +7107,7 @@ async function HomePage(){
       <div class="home-copy">
         <div class="eyebrow mono home-eyebrow">
           <span class="eyebrow-dot"></span>
-          MU STUDENT ORGANIZATION
+          A UNIVERSITY STUDENT ORGANIZATION
         </div>
 
         <h1 class="blockchain-home-title">BLOCKCHAIN CLUB</h1>
