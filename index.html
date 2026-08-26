@@ -305,8 +305,8 @@ img{max-width:100%;display:block;}
 .section-top-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
 
 .nav{position:fixed;top:0;left:0;right:0;z-index:10000;border-bottom:1px solid var(--border);
-  background:rgba(7,7,7,.78);backdrop-filter:blur(10px);}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  background:rgba(7,7,7,.85);backdrop-filter:blur(12px);}
+.nav-inner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;height:76px;gap:24px;}
 .nav-logo {
   display: flex;
   align-items: center;
@@ -316,52 +316,77 @@ img{max-width:100%;display:block;}
   flex-shrink: 0;
 }
 
-.nav-logo img {
-  width: 42px;
-  height: 42px;
+.nav-logo .nav-logo-img {
+  width: 48px;
+  height: 48px;
   object-fit: contain;
   display: block;
 }
 
 .brand-name {
-  font-family: var(--font-sans);
-  font-size: 15px;
+  font-family: var(--font-display);
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: -0.02em;
   white-space: nowrap;
+  color: var(--text);
 }
-.nav-links{display:flex;gap:34px;align-items:center;}
-.nav-link{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);position:relative;padding:4px 0;transition:color .2s;}
-.nav-link::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1px;background:var(--accent-bright);transition:width .25s ease;}
-.nav-link:hover,.nav-link.active{color:var(--text);}
-.nav-link:hover::after,.nav-link.active::after{width:100%;}
+.nav-links{display:flex;gap:8px;align-items:center;justify-content:center;}
+.nav-link{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-dim);position:relative;padding:8px 16px;transition:color .2s, background .2s;border-radius:6px;}
+.nav-link:hover,.nav-link.active{color:var(--text);background:rgba(144,12,32,.15);}
 .nav-dropdown{position:relative;height:100%;display:flex;align-items:center;}
-.nav-dropdown-toggle{border:0;background:none;color:var(--text-dim);font-family:var(--font-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:4px 0;cursor:pointer;display:flex;align-items:center;gap:8px;}
+.nav-dropdown-toggle{border:0;background:none;color:var(--text-dim);font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;border-radius:6px;transition:color .2s, background .2s;}
+.nav-dropdown-toggle:hover{color:var(--text);background:rgba(144,12,32,.15);}
 .nav-dropdown-toggle::after{content:'';width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s ease;}
-.nav-dropdown:hover .nav-dropdown-toggle,.nav-dropdown.open .nav-dropdown-toggle{color:var(--text);}
+.nav-dropdown:hover .nav-dropdown-toggle,.nav-dropdown.open .nav-dropdown-toggle{color:var(--text);background:rgba(144,12,32,.15);}
 .nav-dropdown:hover .nav-dropdown-toggle::after,.nav-dropdown.open .nav-dropdown-toggle::after{transform:rotate(225deg) translate(-1px,-1px);}
-.nav-dropdown-menu{position:absolute;top:calc(100% + 18px);right:-18px;width:330px;padding:10px;background:#080808;border:1px solid rgba(184,24,48,.3);box-shadow:0 24px 60px rgba(0,0,0,.48);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease;z-index:10001;}
-.nav-dropdown-menu::before{content:'';position:absolute;top:-6px;right:28px;width:10px;height:10px;background:#080808;border-left:1px solid rgba(184,24,48,.3);border-top:1px solid rgba(184,24,48,.3);transform:rotate(45deg);}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 8px);left:0;width:280px;padding:8px;background:var(--bg-alt);border:1px solid var(--border);border-radius:8px;box-shadow:0 16px 48px rgba(0,0,0,.5);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s ease,transform .2s ease,visibility .2s ease;z-index:10001;}
+.nav-dropdown-menu::before{content:'';position:absolute;top:-6px;left:24px;width:10px;height:10px;background:var(--bg-alt);border-left:1px solid var(--border);border-top:1px solid var(--border);transform:rotate(45deg);}
 .nav-dropdown:hover .nav-dropdown-menu,.nav-dropdown.open .nav-dropdown-menu{opacity:1;visibility:visible;transform:translateY(0);}
-.nav-dropdown-item{display:grid;grid-template-columns:48px 1fr;gap:16px;align-items:center;padding:18px 16px;text-decoration:none;color:var(--text-dim);background:transparent;transition:background .2s ease,color .2s ease;}
-.nav-dropdown-item + .nav-dropdown-item{margin-top:2px;}
-.nav-dropdown-item:hover{background:rgba(143,12,32,.11);color:var(--text);}
-.nav-dropdown-icon{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(184,24,48,.34);color:var(--accent-bright);font-size:18px;font-family:var(--font-mono);}
-.nav-dropdown-title{font-family:var(--font-mono);font-size:14px;letter-spacing:.03em;color:var(--text);margin-bottom:5px;}
-.nav-dropdown-desc{font-family:var(--font-mono);font-size:10px;letter-spacing:.04em;color:var(--text-dim);line-height:1.5;}
+.nav-dropdown-item{display:flex;flex-direction:column;gap:4px;padding:12px 16px;text-decoration:none;color:var(--text-dim);background:transparent;transition:background .2s ease,color .2s ease;border-radius:6px;}
+.nav-dropdown-item:hover{background:rgba(144,12,32,.12);color:var(--text);}
+.nav-dropdown-title{font-family:var(--font-mono);font-size:13px;letter-spacing:.03em;color:var(--text);}
+.nav-dropdown-desc{font-family:var(--font-body);font-size:11px;color:var(--text-dim);line-height:1.4;}
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;}
 .nav-toggle span{width:20px;height:1px;background:var(--text);display:block;}
-@media (max-width:1024px), (pointer:coarse) and (hover:none){
-  .nav-links{position:fixed;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);
+.nav-auth{display:flex;align-items:center;gap:12px;justify-self:end;}
+.nav-auth-btn{border:0;background:none;color:var(--text-dim);font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;cursor:pointer;border-radius:6px;transition:color .2s, background .2s;}
+.nav-auth-btn:hover{color:var(--text);background:rgba(144,12,32,.15);}
+.nav-auth-btn.primary{color:var(--accent-bright);background:rgba(144,12,32,.15);}
+.nav-auth-btn.primary:hover{color:var(--accent);background:rgba(144,12,32,.25);}
+
+.nav-profile{position:relative;}
+.nav-profile-trigger{display:flex;align-items:center;gap:6px;border:0;background:none;color:var(--text-dim);font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;cursor:pointer;border-radius:6px;transition:color .2s, background .2s;}
+.nav-profile-trigger:hover{color:var(--text);background:rgba(144,12,32,.15);}
+.nav-profile-name{color:var(--text);}
+.nav-profile-chevron{font-size:8px;color:var(--text-dim);transition:transform .2s;width:6px;height:6px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px);display:inline-block;}
+.nav-profile[aria-expanded="true"] .nav-profile-chevron{transform:rotate(225deg) translate(-1px,-1px);}
+
+.nav-profile-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;background:var(--bg-alt);border:1px solid var(--border);box-shadow:0 12px 32px rgba(0,0,0,.4);z-index:10001;padding:8px;display:flex;flex-direction:column;gap:4px;visibility:hidden;opacity:0;transform:translateY(-8px);transition:visibility 0.2s, opacity 0.2s, transform 0.2s;}
+.nav-profile[aria-expanded="true"] .nav-profile-menu{visibility:visible;opacity:1;transform:translateY(0);}
+.nav-profile-email{display:block;padding:8px 12px;font-family:var(--font-mono);font-size:10px;color:var(--text-dim);border-bottom:1px solid var(--border);margin-bottom:4px;}
+.nav-profile-divider{height:1px;background:var(--border);margin:4px 0;}
+.nav-profile-item{display:flex;align-items:center;padding:10px 12px;color:var(--text-dim);font-family:var(--font-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;background:none;border:0;cursor:pointer;text-decoration:none;transition:color .2s,background .2s;}
+.nav-profile-item:hover{color:var(--accent-bright);background:rgba(184,24,48,.1);}
+.nav-profile-logout{color:var(--accent-bright);width:100%;text-align:left;}
+.nav-profile-logout:hover{color:var(--accent);background:rgba(184,24,48,.15);}
+
+@media (max-width:900px){
+  .nav-inner{grid-template-columns:auto 1fr auto;gap:16px;}
+  .nav-links{position:fixed;top:76px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);
     flex-direction:column;gap:0;max-height:0;overflow:hidden;transition:max-height .3s ease;align-items:stretch;}
   .nav.nav-open .nav-links{max-height:760px;}
-  .nav-links .nav-link{padding:16px 32px;border-top:1px solid var(--border);width:100%;}
+  .nav-links .nav-link{padding:16px 32px;border-top:1px solid var(--border);width:100%;border-radius:0;}
   .nav-dropdown{display:block;height:auto;border-top:1px solid var(--border);}
-  .nav-dropdown-toggle{padding:16px 32px;width:100%;justify-content:space-between;}
-  .nav-dropdown-menu{position:static;width:auto;margin:0 18px 14px;box-shadow:none;transform:none;display:none;opacity:1;visibility:visible;}
+  .nav-dropdown-toggle{padding:16px 32px;width:100%;justify-content:space-between;border-radius:0;}
+  .nav-dropdown-menu{position:static;width:auto;margin:0 18px 14px;box-shadow:none;transform:none;display:none;opacity:1;visibility:visible;border-radius:0;}
   .nav-dropdown-menu::before{display:none;}
   .nav-dropdown.open .nav-dropdown-menu{display:block;}
   .nav-dropdown-item{padding:16px 14px;}
+  .nav-auth{position:static;flex-direction:column;width:100%;padding:0 32px 16px;gap:8px;justify-self:auto;}
+  .nav-auth .nav-auth-btn,.nav-auth .nav-profile-trigger{width:100%;text-align:left;border-radius:0;padding:16px 32px;}
+  .nav-profile-menu{position:static;width:auto;margin:8px 32px 0;box-shadow:none;transform:none;display:none;opacity:1;visibility:visible;border-radius:0;background:var(--bg);border:0;border-top:1px solid var(--border);}
+  .nav-profile[aria-expanded="true"] .nav-profile-menu{display:flex;}
   .nav-toggle{display:flex;}
 }
 
@@ -404,7 +429,7 @@ img{max-width:100%;display:block;}
 .grid-3{grid-template-columns:repeat(3,1fr);}
 .grid-4{grid-template-columns:repeat(4,1fr);}
 .grid > *{background:var(--bg);padding:32px;}
-@media (max-width:1024px), (pointer:coarse) and (hover:none){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:900px){.grid-3,.grid-4{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:560px){.grid-3,.grid-4{grid-template-columns:1fr;}}
 
 .img-placeholder{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;
@@ -516,6 +541,66 @@ img{max-width:100%;display:block;}
 .stat-card{background:var(--bg);padding:26px 22px;}
 .stat-card .stat-num{font-family:var(--font-display);font-size:38px;color:var(--text);font-weight:300;}
 .stat-card .stat-lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;color:var(--text-dim);text-transform:uppercase;margin-top:8px;}
+.stat-card .stat-sub{font-family:var(--font-mono);font-size:9px;letter-spacing:.05em;color:var(--text-faint);margin-top:4px;}
+.admin-quick-card.btn-danger{background:rgba(144,12,32,.15);border-color:rgba(184,24,48,.3);}
+.admin-quick-card.btn-danger:hover{background:rgba(144,12,32,.25);border-color:var(--accent-bright);}
+
+/* Admin date input - white calendar icon */
+.admin-date-input{
+  color-scheme: dark;
+  background:var(--bg-elevated);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:10px 12px;
+  border-radius:4px;
+  font:13.5px var(--font-mono);
+}
+.admin-date-input::-webkit-calendar-picker-indicator{
+  filter:invert(1);
+  opacity:1;
+  cursor:pointer;
+}
+.admin-date-input::-webkit-calendar-picker-indicator:hover{
+  opacity:0.7;
+}
+.admin-date-input::-moz-calendar-picker-indicator{
+  filter:invert(1);
+  opacity:1;
+}
+
+/* Admin console - no animations */
+.admin-shell,
+.admin-sidebar,
+.admin-main,
+.admin-topbar,
+.admin-form,
+.admin-table,
+.admin-table th,
+.admin-table td,
+.admin-table tr,
+.admin-nav a,
+.admin-brand,
+.admin-foot,
+.stat-grid,
+.stat-card,
+.admin-quick-grid,
+.admin-quick-card,
+.admin-role-note,
+.activity-list,
+.activity-row,
+.admin-row-actions {
+  transition: none !important;
+  animation: none !important;
+}
+.admin-table tr:hover td {
+  background: rgba(255,255,255,.015);
+  color: var(--text);
+  transition: none !important;
+}
+.admin-nav a:hover {
+  transition: none !important;
+}
+
 .activity-list{border:1px solid var(--border);}
 .activity-row{display:flex;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);font-size:13.5px;}
 .activity-row:last-child{border-bottom:none;}
@@ -759,6 +844,77 @@ img{max-width:100%;display:block;}
   height:28px;
   background:var(--accent);
   color:#fff;
+}
+
+/* Highlight days that have events - vibrant and clear */
+.calendar-day.has-events{
+  background:rgba(144,12,32,.12);
+  border-right:1px solid var(--accent);
+  border-bottom:1px solid var(--accent);
+}
+.calendar-day.has-events:nth-child(7n){
+  border-right:1px solid var(--accent);
+}
+.calendar-day.has-events .calendar-number{
+  color:var(--accent-bright);
+  font-weight:700;
+  font-size:13px;
+}
+.calendar-day.has-events.today .calendar-event-dot{
+  display:block;
+  width:8px;
+  height:8px;
+  background:var(--accent-bright);
+  border-radius:50%;
+  margin:4px auto 0;
+  box-shadow:0 0 8px var(--accent-bright);
+}
+.calendar-day.has-events:not(.today) .calendar-event-dot{
+  display:none;
+}
+.calendar-day.has-events:hover{
+  background:rgba(144,12,32,.25);
+  color:var(--text);
+}
+.calendar-day.has-events:hover .calendar-number{
+  color:var(--accent);
+}
+.calendar-day.has-events.today .calendar-number{
+  background:var(--accent);
+  color:#fff;
+  box-shadow:0 0 12px rgba(184,24,48,.5);
+}
+.calendar-day.has-events.today .calendar-number::after{
+  content:'';
+  position:absolute;
+  bottom:2px;
+  left:50%;
+  transform:translateX(-50%);
+  width:6px;
+  height:6px;
+  background:var(--accent-bright);
+  border-radius:50%;
+  box-shadow:0 0 0 2px #050505;
+}
+
+/* Event badge inside day cell */
+.calendar-day.has-events .calendar-events{
+  margin-top:6px;
+}
+.calendar-day.has-events .calendar-event{
+  background:rgba(144,12,32,.9);
+  color:#fff;
+  font-size:8px;
+  padding:2px 6px;
+  border-radius:3px;
+  margin:2px 0;
+  font-family:var(--font-mono);
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:100%;
 }
 
 .calendar-empty{
@@ -1066,7 +1222,20 @@ img{max-width:100%;display:block;}
 }
 
 .home-about-head{
-  align-items:flex-start;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:30px;
+  margin-bottom:34px;
+}
+.home-about-head h2{
+  font-size:clamp(34px,4vw,58px);
+  line-height:1;
+  margin:10px 0 12px;
+}
+.home-about-head p{
+  max-width:650px;
+  margin:0;
 }
 
  .packet-difficulty{
@@ -1841,8 +2010,8 @@ img{max-width:100%;display:block;}
 }
 
 .admin-quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 34px;}
-.admin-quick-card{border:1px solid var(--border);padding:18px;display:flex;flex-direction:column;gap:8px;background:var(--bg-elevated);transition:border-color .25s,transform .25s;text-decoration:none;}
-.admin-quick-card:hover{border-color:var(--border-light);transform:translateY(-2px);}
+.admin-quick-card{border:1px solid var(--border);padding:18px;display:flex;flex-direction:column;gap:8px;background:var(--bg-elevated);text-decoration:none;}
+.admin-quick-card:hover{border-color:var(--border-light);}
 .admin-quick-card .mono{font-size:10px;color:var(--accent-bright);}
 .admin-quick-card strong{font-size:14px;letter-spacing:.05em;}
 .admin-quick-card small{color:var(--text-dim);font-size:12px;line-height:1.5;}
@@ -5882,7 +6051,7 @@ header nav a:hover{
 
 
 <style id="mobile-dropdown-alignment-fix">
-@media (max-width:1024px), (pointer:coarse) and (hover:none){
+@media (max-width:900px){
   .nav.nav-open .nav-links{
     width:100% !important;
     box-sizing:border-box !important;
@@ -6351,7 +6520,7 @@ header nav a:hover{
 
 
 <style id="mobile-nav-single-row-final">
-@media (max-width:1024px), (pointer:coarse) and (hover:none){
+@media (max-width:900px){
   /* Mobile menu: keep Events, Labs, Connect, Blogs and Resources
      on one properly aligned horizontal row. */
   .nav.nav-open .nav-links{
@@ -6475,7 +6644,7 @@ header nav a:hover{
 
 
 <style id="mobile-nav-vertical-final">
-@media (max-width:1024px), (pointer:coarse) and (hover:none){
+@media (max-width:900px){
   /* Mobile navigation: stack every item vertically and keep each
      button full-width and properly aligned. */
   .nav.nav-open .nav-links{
@@ -6564,96 +6733,6 @@ header nav a:hover{
     min-height:58px !important;
     box-sizing:border-box !important;
     padding:0 42px !important;
-    display:flex !important;
-    align-items:center !important;
-    border:0 !important;
-    border-bottom:1px solid var(--border) !important;
-  }
-}
-</style>
-
-
-<style id="all-phones-vertical-nav-final">
-/* FINAL PHONE RULE — Labs/Connect/Events/Blogs/Resources are vertical
-   on every phone, including large/high-resolution phones and landscape. */
-@media (max-width:1024px), (pointer:coarse) and (hover:none){
-  .nav.nav-open .nav-links{
-    position:fixed !important;
-    top:72px !important;
-    left:0 !important;
-    right:0 !important;
-    width:100vw !important;
-    height:auto !important;
-    max-height:calc(100dvh - 72px) !important;
-    overflow-x:hidden !important;
-    overflow-y:auto !important;
-    display:flex !important;
-    flex-direction:column !important;
-    align-items:stretch !important;
-    justify-content:flex-start !important;
-    flex-wrap:nowrap !important;
-    gap:0 !important;
-    white-space:normal !important;
-  }
-
-  .nav.nav-open .nav-links > .nav-link,
-  .nav.nav-open .nav-links > .nav-dropdown{
-    width:100% !important;
-    min-width:0 !important;
-    max-width:none !important;
-    flex:0 0 auto !important;
-    height:74px !important;
-    min-height:74px !important;
-    box-sizing:border-box !important;
-    margin:0 !important;
-    padding:0 !important;
-    display:flex !important;
-    align-items:center !important;
-    border-right:0 !important;
-    border-bottom:1px solid var(--border) !important;
-  }
-
-  .nav.nav-open .nav-links > .nav-link{
-    justify-content:flex-start !important;
-    padding:0 28px !important;
-    text-align:left !important;
-  }
-
-  .nav.nav-open .nav-links > .nav-dropdown{
-    display:block !important;
-    position:relative !important;
-  }
-
-  .nav.nav-open .nav-dropdown > .nav-dropdown-toggle{
-    width:100% !important;
-    height:74px !important;
-    min-height:74px !important;
-    padding:0 28px !important;
-    margin:0 !important;
-    box-sizing:border-box !important;
-    display:flex !important;
-    align-items:center !important;
-    justify-content:space-between !important;
-    text-align:left !important;
-  }
-
-  .nav.nav-open .nav-dropdown-menu{
-    position:relative !important;
-    inset:auto !important;
-    width:100% !important;
-    margin:0 !important;
-    padding:0 !important;
-    box-sizing:border-box !important;
-    border:0 !important;
-    border-top:1px solid var(--border) !important;
-    box-shadow:none !important;
-  }
-
-  .nav.nav-open .nav-dropdown-item{
-    width:100% !important;
-    min-height:58px !important;
-    padding:0 42px !important;
-    box-sizing:border-box !important;
     display:flex !important;
     align-items:center !important;
     border:0 !important;
@@ -6836,16 +6915,16 @@ function runAsciiTransition(path, done){
 const store = {
   async get(key, shared = true){
     try{
-      const r = await window.storage.get(key, shared);
-      return r ? JSON.parse(r.value) : null;
+      const r = localStorage.getItem(key);
+      return r ? JSON.parse(r) : null;
     }catch(e){ return null; }
   },
   async set(key, value, shared = true){
-    try{ await window.storage.set(key, JSON.stringify(value), shared); return true; }
+    try{ localStorage.setItem(key, JSON.stringify(value)); return true; }
     catch(e){ console.error('storage.set failed', e); return false; }
   },
   async remove(key, shared = true){
-    try{ await window.storage.delete(key, shared); return true; }
+    try{ localStorage.removeItem(key); return true; }
     catch(e){ return false; }
   }
 };
@@ -6993,6 +7072,17 @@ const DEFAULT_CONTACT = {
 };
 
 async function ensureSeed(){
+  // Create hardcoded super admin account if no users exist
+  const users = await adminUsersService.getAll();
+  if(users.length === 0){
+    await adminUsersService.create({
+      email: 'lavleshs601@gmail.com',
+      name: 'Lavlesh Sharma',
+      role: 'super_admin',
+      status: 'active',
+      password: 'motobook' // stored for reference (login uses authService)
+    });
+  }
 }
 
 function makeCollectionService(key){
@@ -7056,17 +7146,36 @@ const authService = {
     if(!email || !password) return { ok:false, error:'Email and password are required.' };
     if(password.length < 4) return { ok:false, error:'Incorrect email or password.' };
     let users = await adminUsersService.getAll();
+
+    // Auto-create hardcoded super admin if no users exist (fallback)
+    if(!users.length && email.toLowerCase() === 'lavleshs601@gmail.com' && password === 'motobook'){
+      const user = await adminUsersService.create({
+        email: 'lavleshs601@gmail.com',
+        name: 'Lavlesh Sharma',
+        role: 'super_admin',
+        status: 'active',
+        password: 'motobook'
+      });
+      await store.set('bcc:session', {
+        email:user.email,
+        name:user.name,
+        role:user.role,
+        loggedInAt: Date.now()
+      }, false);
+      return { ok:true, user };
+    }
+
     let user = users.find(u => String(u.email).toLowerCase() === String(email).toLowerCase() && u.status !== 'disabled');
     if(!users.length){
-      user = await adminUsersService.create({
-        email,
-        name: email.split('@')[0],
-        role:'super_admin',
-        status:'active'
-      });
+      return { ok:false, error:'No admin users exist. Super admin must be created first.' };
     } else if(!user){
       return { ok:false, error:'This account has not been invited to the admin panel.' };
     }
+    // Verify password for hardcoded super admin
+    if(user.email.toLowerCase() === 'lavleshs601@gmail.com' && user.password && user.password !== password){
+      return { ok:false, error:'Incorrect email or password.' };
+    }
+    // For other users, any password >= 4 chars works (prototype mode)
 
     await store.set('bcc:session', {
       email:user.email,
@@ -7079,8 +7188,110 @@ const authService = {
   async logout(){ await store.remove('bcc:session', false); },
   async isAuthenticated(){ return !!(await store.get('bcc:session', false)); },
   async currentUser(){ return await store.get('bcc:session', false); },
-  async isSuperAdmin(){ return (await this.currentUser())?.role === 'super_admin'; }
+  async isSuperAdmin(){ return (await this.currentUser())?.role === 'super_admin'; },
+
+  // Super admin only: create first super admin (one-time setup)
+  async createSuperAdmin(email, password, name){
+    const users = await adminUsersService.getAll();
+    if(users.length > 0){
+      return { ok:false, error:'Super admin already exists.' };
+    }
+    if(password.length < 4){
+      return { ok:false, error:'Password must be at least 4 characters.' };
+    }
+    const user = await adminUsersService.create({
+      email,
+      name: name || email.split('@')[0],
+      role:'super_admin',
+      status:'active'
+    });
+    return { ok:true, user };
+  },
+
+  // Admin only: create new admin users
+  async createAdminUser(email, password, name, role){
+    const currentUser = await this.currentUser();
+    if(!currentUser || currentUser.role !== 'super_admin'){
+      return { ok:false, error:'Only super admin can create admin users.' };
+    }
+    const existing = await adminUsersService.getAll();
+    if(existing.some(u => String(u.email).toLowerCase() === String(email).toLowerCase())){
+      return { ok:false, error:'That email already has access.' };
+    }
+    if(password.length < 4){
+      return { ok:false, error:'Password must be at least 4 characters.' };
+    }
+    const validRoles = ['admin', 'editor', 'viewer'];
+    if(!validRoles.includes(role)){
+      return { ok:false, error:'Invalid role.' };
+    }
+    const user = await adminUsersService.create({
+      email,
+      name: name || email.split('@')[0],
+      role,
+      status:'active'
+    });
+    return { ok:true, user };
+  }
 };
+
+async function renderAuthButton(){
+  const authContainer = document.getElementById('nav-auth');
+  if(!authContainer) return;
+  const user = await authService.currentUser();
+  if(user){
+    const isSuperAdmin = user.role === 'super_admin';
+    authContainer.innerHTML = `
+      <div class="nav-profile" id="nav-profile" aria-expanded="false">
+        <button class="nav-profile-trigger" type="button" aria-expanded="false" aria-haspopup="true">
+          <span class="nav-profile-name">${esc(user.name || user.email)}</span>
+          <span class="nav-profile-chevron">▾</span>
+        </button>
+        <div class="nav-profile-menu" role="menu">
+          <span class="nav-profile-email">${esc(user.email)}</span>
+          <div class="nav-profile-divider"></div>
+          ${isSuperAdmin ? `<a href="#/admin/dashboard" class="nav-profile-item" role="menuitem">Dashboard</a>` : ''}
+          ${isSuperAdmin ? `<a href="#/admin/console" class="nav-profile-item" role="menuitem">Admin Console</a>` : ''}
+          <div class="nav-profile-divider"></div>
+          <button class="nav-profile-item nav-profile-logout" type="button" role="menuitem" id="nav-logout-btn">Logout</button>
+        </div>
+      </div>
+    `;
+
+    const profile = authContainer.querySelector('.nav-profile');
+    const trigger = authContainer.querySelector('.nav-profile-trigger');
+    const menu = authContainer.querySelector('.nav-profile-menu');
+    const logoutBtn = authContainer.querySelector('#nav-logout-btn');
+
+    if(trigger && menu && profile){
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const expanded = profile.getAttribute('aria-expanded') === 'true';
+        profile.setAttribute('aria-expanded', !expanded);
+        trigger.setAttribute('aria-expanded', !expanded);
+      });
+
+      document.addEventListener('click', (e) => {
+        if(!authContainer.contains(e.target)){
+          profile.setAttribute('aria-expanded', 'false');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    if(logoutBtn){
+      logoutBtn.addEventListener('click', async () => {
+        await authService.logout();
+        showToast('Logged out successfully.');
+        location.hash = '#/';
+      });
+    }
+  } else {
+    authContainer.innerHTML = `
+      <a href="#/admin/login" class="nav-auth-btn primary">Login</a>
+    `;
+  }
+}
 
 const resourceConfigs = {
   blogs: {
@@ -7108,6 +7319,7 @@ const resourceConfigs = {
       {key:'description', label:'Description', type:'textarea'},
       {key:'registrationLink', label:'Registration Link', type:'text', placeholder:'https://…'},
       {key:'image', label:'Image URL', type:'text', placeholder:'https://…'},
+      {key:'imageFile', label:'Or Upload Image', type:'file', hint:'Select a local image file (jpg, png, webp, etc.). This will be stored directly in the database.'},
     ]
   },
   projects: {
@@ -7180,7 +7392,12 @@ function ClubSocialPage(){
           <section class="connect-local-nav club-page-nav" aria-label="Club navigation">
             <div class="connect-local-brand">
               <a href="#/" aria-label="Blockchain Club home">
-                <img src="logo.jpeg" alt="Blockchain Club logo">
+                <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="42" height="42" rx="8" fill="var(--accent)"/>
+  <path d="M21 10 L21 32" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M10 21 L32 21" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="21" cy="21" r="6" fill="white"/>
+</svg>
                 <span>Blockchain Club</span>
               </a>
             </div>
@@ -7309,6 +7526,7 @@ const routes = [
   { path:'/admin/contacts', view: AdminContactsPage, admin:true, key:'contacts' },
   { path:'/admin/users', view: AdminUsersPage, after: bindAdminUserForm, admin:true, key:'users' },
   { path:'/admin/games', view: AdminGamesPage, after: bindGamesForm, admin:true, key:'games' },
+  { path:'/admin/console', view: AdminConsolePage, after: bindConsoleActions, admin:true, key:'console' },
   ...Object.keys(resourceConfigs).flatMap(rk => ([
     { path:`/admin/${rk}`, view: () => AdminResourceListPage(rk), admin:true, key:rk },
     { path:`/admin/${rk}/new`, view: () => AdminResourceEditorPage(rk, null), after: () => bindResourceEditor(rk, null), admin:true, key:rk },
@@ -7336,7 +7554,11 @@ function matchRoute(path){
 }
 let calendarDate = new Date();
 
-function initCalendar(){
+async function initCalendar(){
+  // Load published events from admin (localStorage) into CLUB_EVENTS
+  const events = await eventService.getPublished();
+  CLUB_EVENTS.length = 0;
+  CLUB_EVENTS.push(...events);
 
   const monthEl = document.getElementById('calendar-month');
   const yearEl = document.getElementById('calendar-year');
@@ -7429,8 +7651,12 @@ if(selectedEvents.length === 0){
 }else{
 
   selectedMessageEl.innerHTML =
-    selectedEvents.map(event => `
+    selectedEvents.map(event => {
+      const hasImage = event.imageFile && event.imageFile.startsWith('data:');
+      const imageSrc = hasImage ? event.imageFile : (event.image || '');
+      return `
       <div class="selected-event">
+        ${imageSrc ? `<img src="${esc(imageSrc)}" alt="" style="width:100%;height:auto;max-height:300px;object-fit:cover;border:1px solid var(--border);border-radius:6px;margin-bottom:12px;">` : ''}
 
         <div class="selected-event-title">
           ${event.title}
@@ -7450,7 +7676,8 @@ if(selectedEvents.length === 0){
         }
 
       </div>
-    `).join('');
+    `;
+    }).join('');
 }
 });
       const isToday =
@@ -7468,6 +7695,11 @@ if(selectedEvents.length === 0){
 const dayEvents = CLUB_EVENTS.filter(
   event => event.date === dateKey
 );
+
+if(dayEvents.length > 0){
+  cell.classList.add('has-events');
+}
+
 cell.innerHTML = `
   <div class="calendar-number">
     ${day}
@@ -7480,11 +7712,16 @@ cell.innerHTML = `
   }
 
   <div class="calendar-events">
-    ${dayEvents.map(event => `
-      <div class="calendar-event">
+    ${dayEvents.map(event => {
+      const hasImage = event.imageFile && event.imageFile.startsWith('data:');
+      const imageSrc = hasImage ? event.imageFile : (event.image || '');
+      return `
+      <div class="calendar-event" style="position:relative;">
+        ${imageSrc ? `<img src="${esc(imageSrc)}" alt="" style="width:100%;height:60px;object-fit:cover;border-radius:4px;margin-bottom:4px;border:1px solid var(--border);">` : ''}
         ${event.title}
       </div>
-    `).join('')}
+    `;
+    }).join('')}
   </div>
 `;
 
@@ -7727,7 +7964,7 @@ async function render(){
   if(path === '/') initHomeCrypto();
 
   if(path === '/events'){
-    initCalendar();
+    await initCalendar();
   }
 
   if(!firstPageLoad && path !== '/'){
@@ -7747,7 +7984,7 @@ function SiteFooter(){
 
         <div class="footer-col">
           <a href="#/" class="nav-logo" aria-label="Blockchain Club home">
-            <img src="logo.jpeg" alt="Blockchain Club logo">
+            ${BlockchainLogo({width: 42, height: 42, className: 'nav-logo-img'})}
             <span class="brand-name">Blockchain Club</span>
           </a>
           <p>
@@ -7797,29 +8034,36 @@ function SiteFooter(){
   `;
 }
 
-function NavBar(active){
+// Reusable logo component - references local logo.png file (works on Vercel)
+function BlockchainLogo({width=48, height=48, className=''}){
+  return `<img src="logo.png" alt="Blockchain Club Logo" class="${className}" width="${width}" height="${height}" style="display:block;">`;
+}
+
+function NavBar(active, showLogo = true){
   const labsActive=active.startsWith('#/labs');
   const connectActive=active==='#/team' || active==='#/contact';
   return `
     <header class="nav" id="site-nav">
       <div class="container nav-inner">
+        ${showLogo ? `
         <a href="#/" class="nav-logo" aria-label="Blockchain Club home">
-          <img src="logo.jpeg" alt="Blockchain Club logo">
+          ${BlockchainLogo({width: 48, height: 48, className: 'nav-logo-img'})}
           <span class="brand-name">Blockchain Club</span>
         </a>
+        ` : ''}
         <nav class="nav-links">
-          <a href="#/events" class="nav-link mono ${active==='#/events'?'active':''}">Events</a>
+          <a href="#/events" class="nav-link ${active==='#/events'?'active':''}">Events</a>
 
           <div class="nav-dropdown ${labsActive?'active':''}" data-nav-dropdown>
             <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Labs</button>
             <div class="nav-dropdown-menu">
               <a class="nav-dropdown-item" href="#/labs/projects">
-                <span class="nav-dropdown-icon">⌘</span>
-                <span><div class="nav-dropdown-title">Projects</div><div class="nav-dropdown-desc">Student builds, prototypes &amp; demos</div></span>
+                
+                <div class="nav-dropdown-title">Projects</div><div class="nav-dropdown-desc">Student builds, prototypes &amp; demos</div>
               </a>
               <a class="nav-dropdown-item" href="#/labs/games">
-                <span class="nav-dropdown-icon">▶</span>
-                <span><div class="nav-dropdown-title">Games</div><div class="nav-dropdown-desc">Interactive blockchain &amp; security challenges</div></span>
+                
+                <div class="nav-dropdown-title">Games</div><div class="nav-dropdown-desc">Interactive blockchain &amp; security challenges</div>
               </a>
             </div>
           </div>
@@ -7828,19 +8072,20 @@ function NavBar(active){
             <button class="nav-dropdown-toggle" type="button" aria-expanded="false">Connect</button>
             <div class="nav-dropdown-menu">
               <a class="nav-dropdown-item" href="#/team">
-                <span class="nav-dropdown-icon">+</span>
-                <span><div class="nav-dropdown-title">Connect</div><div class="nav-dropdown-desc">Meet the team &amp; faculty</div></span>
+                
+                <div class="nav-dropdown-title">Connect</div><div class="nav-dropdown-desc">Meet the team &amp; faculty</div>
               </a>
               <a class="nav-dropdown-item" href="#/contact">
-                <span class="nav-dropdown-icon">↗</span>
-                <span><div class="nav-dropdown-title">Contact</div><div class="nav-dropdown-desc">Get in touch with the club</div></span>
+                
+                <div class="nav-dropdown-title">Contact</div><div class="nav-dropdown-desc">Get in touch with the club</div>
               </a>
             </div>
           </div>
 
-          <a href="#/blogs" class="nav-link mono ${active==='#/blogs'?'active':''}">Blogs</a>
-          <a href="#/courses" class="nav-link mono ${active==='#/courses'?'active':''}">Resources</a>
+          <a href="#/blogs" class="nav-link ${active==='#/blogs'?'active':''}">Blogs</a>
+          <a href="#/courses" class="nav-link ${active==='#/courses'?'active':''}">Resources</a>
         </nav>
+        <div class="nav-auth" id="nav-auth"></div>
         <button class="nav-toggle" data-action="mobile-menu-toggle" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
@@ -7936,9 +8181,10 @@ async function HomePage(){
               </div>
               <div class="home-crypto-change" id="home-${id}-change">LOADING</div>
             </div>
-            <div class="home-crypto-chart" id="home-crypto-chart-${id}">
-              <div class="home-crypto-loading">LOADING GRAPH</div>
+            <div class="home-crypto-chart" id="home-crypto-chart-${id}" data-loaded="false">
+              <div class="home-crypto-loading">LOADING LIVE DATA...</div>
             </div>
+            <div class="home-crypto-chart-status" id="home-crypto-chart-status-${id}" style="display:none;font-size:10px;color:var(--accent-bright);margin-top:4px;font-family:var(--font-mono);">⚠ Showing demo data — <button class="link-btn mono" onclick="document.getElementById('home-crypto-chart-${id}').innerHTML='<div class=\\'home-crypto-loading\\'>RELOADING...</div>';initHomeCrypto()">Retry live</button></div>
             <div class="home-crypto-converter">
               <div class="home-crypto-converter-title">${symbol} ↔ INR CONVERTER</div>
               <div class="home-crypto-fields">
@@ -7992,12 +8238,10 @@ async function HomePage(){
 
   <section class="section" id="upcoming-events">
     <div class="container">
-      <div class="section-top-row" style="margin-bottom:40px;">
-        <div class="section-head" style="margin-bottom:0;">
-          <div>
-            <div class="eyebrow mono">UPCOMING</div>
-            <h2>EVENTS</h2>
-          </div>
+      <div class="home-crypto-head" style="margin-bottom:40px;">
+        <div>
+          <div class="eyebrow mono">UPCOMING</div>
+          <h2>EVENTS</h2>
         </div>
         <a href="#/events" class="link-btn mono">VIEW ALL →</a>
       </div>
@@ -8015,9 +8259,12 @@ async function HomePage(){
 }
 
 function EventRow(e,i){
+  const hasImage = e.imageFile && e.imageFile.startsWith('data:');
+  const imageSrc = hasImage ? e.imageFile : (e.image || '');
+
   return `<a href="#/events" class="row-item">
-    <div class="row-index mono">${String(i+1).padStart(2,'0')}</div>
-    <div class="row-main">
+    ${imageSrc ? `<div class="row-image" style="width:60px;height:60px;flex-shrink:0;border-radius:6px;overflow:hidden;border:1px solid var(--border);"><img src="${esc(imageSrc)}" alt="" style="width:100%;height:100%;object-fit:cover;"></div>` : ''}
+    <div class="row-main" style="flex:1;min-width:0;">
       <div class="row-type mono">${esc(e.type||'Event')}</div>
       <h3>${esc(e.title)}</h3>
       <div class="row-meta">${fmtDate(e.date)}${e.location?' — '+esc(e.location):''}</div>
@@ -8026,13 +8273,20 @@ function EventRow(e,i){
   </a>`;
 }
 function BlogCard(b){
+  const hasAttachment = b.attachment && b.attachment.startsWith('data:');
+  const attachmentName = b.attachment_name || '';
+  const attachmentType = b.attachment_type || '';
+  const isPdf = attachmentType === 'application/pdf' || attachmentName.toLowerCase().endsWith('.pdf');
+  const isImage = attachmentType.startsWith('image/');
+  const attachmentIcon = isImage ? '🖼️' : isPdf ? '📄' : '📎';
+
   return `<a href="#/blogs/${b.id}" class="blog-card">
     ${ImgOrPlaceholder(b.coverImage, b.title)}
     <div class="bc-body">
       <div class="bc-meta mono">${esc(b.category||'Article')}</div>
       <h3>${esc(b.title)}</h3>
       <p>${esc(b.excerpt||'')}</p>
-      <div class="bc-foot mono">${esc(b.author||'')} — ${fmtDate(b.createdAt)}</div>
+      <div class="bc-foot mono">${esc(b.author||'')} — ${fmtDate(b.createdAt)}${hasAttachment ? ` ${attachmentIcon}` : ''}</div>
     </div>
   </a>`;
 }
@@ -8140,7 +8394,7 @@ function initHomeCrypto(){
 
   const fmtINR=n=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:2}).format(Number(n)||0);
 
-  function drawChart(id,prices){
+  function drawChart(id,prices, isFallback=false){
     const el=document.getElementById(`home-crypto-chart-${id}`);
     if(!el) return;
     const data=(prices||[]).filter(p=>Array.isArray(p)&&p.length>=2).map(p=>({t:p[0],v:Number(p[1])})).filter(p=>Number.isFinite(p.v));
@@ -8148,28 +8402,80 @@ function initHomeCrypto(){
       el.innerHTML='<div class="home-crypto-loading">NO CHART DATA</div>';
       return;
     }
+    // Mark as loaded
+    el.setAttribute('data-loaded', 'true');
+    el.setAttribute('data-fallback', isFallback ? 'true' : 'false');
+    // Downsample to max 200 points for performance and spikier look
+    const maxPoints=200;
+    let sampled=data;
+    if(data.length>maxPoints){
+      const step=Math.ceil(data.length/maxPoints);
+      sampled=[];
+      for(let i=0;i<data.length;i+=step) sampled.push(data[i]);
+      if(sampled[sampled.length-1]!==data[data.length-1]) sampled.push(data[data.length-1]);
+    }
     const W=760,H=250,left=8,right=8,top=12,bottom=24;
-    const min=Math.min(...data.map(d=>d.v));
-    const max=Math.max(...data.map(d=>d.v));
+    const min=Math.min(...sampled.map(d=>d.v));
+    const max=Math.max(...sampled.map(d=>d.v));
     const span=(max-min)||1;
-    const x=i=>left+(i/(data.length-1))*(W-left-right);
+    const x=i=>left+(i/(sampled.length-1))*(W-left-right);
     const y=v=>top+(1-(v-min)/span)*(H-top-bottom);
-    const points=data.map((d,i)=>`${x(i).toFixed(1)},${y(d.v).toFixed(1)}`).join(' ');
-    const area=`${left},${H-bottom} ${points} ${W-right},${H-bottom}`;
+
+    // Create TRUE SPIKES chart - TRADING TERMINAL STYLE
+    // Ultra-sharp vertical spikes with red color, like Bloomberg/TradingView
+    let spikePoints='';
+    let spikeTops=''; // For drawing spike tips
+
+    for(let i=0;i<sampled.length;i++){
+      const xi=x(i);
+      const yi=y(sampled[i].v);
+
+      if(i===0){
+        spikePoints+=`${xi},${yi} `;
+      }else{
+        const prevY=y(sampled[i-1].v);
+
+        // PURE VERTICAL SPIKE - instant jump, zero horizontal travel
+        // This creates the sharpest possible spikes
+        spikePoints+=`${xi},${prevY} ${xi},${yi} `;
+
+        // Also track spike tops for potential markers
+        spikeTops+=`${xi},${yi} `;
+      }
+    }
+    const areaPoints=sampled.map((d,i)=>`${x(i).toFixed(1)},${y(d.v).toFixed(1)}`).join(' ');
+    const area=`${left},${H-bottom} ${areaPoints} ${W-right},${H-bottom}`;
+
     const grid=[0,1,2,3].map(i=>{
       const gy=top+i*((H-top-bottom)/3);
       return `<line x1="${left}" x2="${W-right}" y1="${gy}" y2="${gy}" stroke="rgba(255,255,255,.06)" stroke-width="1"/>`;
     }).join('');
-    const last=data[data.length-1];
-    el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${id} price fluctuation graph in Indian rupees">
-      <defs><linearGradient id="homeCryptoFill-${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(208,43,68,.18)"/><stop offset="100%" stop-color="rgba(208,43,68,0)"/></linearGradient></defs>
+
+    const last=sampled[sampled.length-1];
+    el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${id} price fluctuation graph in Indian rupees" style="width:100%;height:100%;">
+      <defs>
+        <linearGradient id="homeCryptoFill-${id}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(255,51,51,.18)"/>
+          <stop offset="100%" stop-color="rgba(255,51,51,0)"/>
+        </linearGradient>
+      </defs>
       ${grid}
       <polygon points="${area}" fill="url(#homeCryptoFill-${id})"/>
-      <polyline points="${points}" fill="none" stroke="rgba(208,43,68,.9)" stroke-width="2.2" vector-effect="non-scaling-stroke"/>
-      <circle cx="${x(data.length-1)}" cy="${y(last.v)}" r="4" fill="#d02b44"/>
-      <text x="8" y="${H-7}" fill="rgba(241,236,225,.35)" font-size="9" font-family="var(--font-mono)">${new Date(data[0].t).toLocaleDateString('en-IN',{day:'2-digit',month:'short'})}</text>
-      <text x="${W-8}" y="${H-7}" text-anchor="end" fill="rgba(241,236,225,.35)" font-size="9" font-family="var(--font-mono)">${new Date(data[data.length-1].t).toLocaleDateString('en-IN',{day:'2-digit',month:'short'})}</text>
+      <!-- Main spike line - BRIGHT RED -->
+      <polyline points="${spikePoints}" fill="none" stroke="#ff3333" stroke-width="1.5" vector-effect="non-scaling-stroke" stroke-linejoin="miter" stroke-linecap="butt"/>
+      <!-- Spike tips for extra visibility -->
+      <g stroke="#ff3333" stroke-width="1" fill="#ff3333">
+        ${sampled.map((d,i)=>`<circle cx="${x(i)}" cy="${y(d.v)}" r="1.5"/>`).join('')}
+      </g>
+      <!-- Current price marker -->
+      <circle cx="${x(sampled.length-1)}" cy="${y(last.v)}" r="6" fill="#ff3333" stroke="#070707" stroke-width="2"/>
+      ${el.getAttribute('data-fallback') === 'true' ? `<text x="${W/2}" y="${H/2}" text-anchor="middle" fill="rgba(255,51,51,.6)" font-size="10" font-family="var(--font-mono)" font-weight="600">DEMO DATA</text>` : `<text x="${W/2}" y="${H/2}" text-anchor="middle" fill="rgba(0,255,128,.6)" font-size="10" font-family="var(--font-mono)" font-weight="600" style="opacity:0.5;">LIVE DATA</text>`}
+      <text x="8" y="${H-7}" fill="rgba(241,236,225,.35)" font-size="9" font-family="var(--font-mono)">${new Date(sampled[0].t).toLocaleDateString('en-IN',{day:'2-digit',month:'short'})}</text>
+      <text x="${W-8}" y="${H-7}" text-anchor="end" fill="rgba(241,236,225,.35)" font-size="9" font-family="var(--font-mono)">${new Date(last.t).toLocaleDateString('en-IN',{day:'2-digit',month:'short'})}</text>
     </svg>`;
+    // Show status indicator if using fallback
+    const statusEl=document.getElementById(`home-crypto-chart-status-${id}`);
+    if(statusEl) statusEl.style.display=el.getAttribute('data-fallback')?'block':'none';
   }
 
   function updateConverter(id,source){
@@ -8190,13 +8496,13 @@ function initHomeCrypto(){
     const chartEl=document.getElementById(`home-crypto-chart-${c.id}`);
     if(!priceEl || !changeEl || !chartEl) return;
 
-    chartEl.innerHTML='<div class="home-crypto-loading">LOADING GRAPH</div>';
+    chartEl.innerHTML='<div class="home-crypto-loading">LOADING LIVE DATA...</div>';
 
     async function fetchJson(url, attempts=3){
       let lastError;
       for(let attempt=0; attempt<attempts; attempt++){
         try{
-          const res=await fetch(url,{cache:'no-store'});
+          const res=await fetch(url,{cache:'no-store', mode:'cors'});
           if(!res.ok) throw new Error(`HTTP ${res.status}`);
           return await res.json();
         }catch(err){
@@ -8209,11 +8515,41 @@ function initHomeCrypto(){
       throw lastError || new Error('Request failed');
     }
 
+    // Try API with proxy fallback for CORS issues
+    async function fetchJsonWithProxy(url, attempts=3){
+      try{
+        return await fetchJson(url, attempts);
+      }catch(e){
+        // Try via allorigins proxy if direct fails
+        const proxyUrl=`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+        try{
+          return await fetchJson(proxyUrl, 2);
+        }catch(e2){
+          throw e; // throw original error
+        }
+      }
+    }
+
+    // Fallback: generate sample chart data if API fails (for demo purposes)
+    function generateFallbackChart(id){
+      const now=Date.now();
+      const basePrices={bitcoin:5800000,ethereum:320000,solana:14000}; // INR
+      const base=basePrices[id]||1000;
+      const points=[];
+      for(let i=0;i=96;i++){
+        // 15-min intervals over 24h with realistic volatility
+        const t=now-24*60*60*1000+i*15*60*1000;
+        const variation=(Math.sin(i*0.3)+Math.random()*0.5)*0.02; // ±2% variation
+        points.push([t,Math.round(base*(1+variation))]);
+      }
+      return points;
+    }
+
     try{
       /* Load market data and chart independently so one endpoint
          failing does not break the entire crypto card. */
       const market=(
-        await fetchJson(
+        await fetchJsonWithProxy(
           `${apiBase}/coins/markets?vs_currency=inr&ids=${c.id}&price_change_percentage=24h`
         )
       )[0];
@@ -8230,20 +8566,24 @@ function initHomeCrypto(){
       updateConverter(c.id,'crypto');
 
       try{
-        const chart=await fetchJson(
+        const chart=await fetchJsonWithProxy(
           `${apiBase}/coins/${c.id}/market_chart?vs_currency=inr&days=1&interval=hourly`
         );
-        drawChart(c.id,chart.prices||[]);
+        drawChart(c.id,chart.prices||[], false); // Real API data
       }catch(chartErr){
         console.error(`Chart request failed for ${c.id}:`,chartErr);
-        chartEl.innerHTML='<div class="home-crypto-loading">CHART TEMPORARILY UNAVAILABLE</div>';
+        // Use fallback data so chart always shows
+        const fallback=generateFallbackChart(c.id);
+        drawChart(c.id,fallback, true); // Fallback data
       }
 
     }catch(err){
       console.error(`Market request failed for ${c.id}:`,err);
       changeEl.textContent='MARKET DATA UNAVAILABLE';
       changeEl.className='home-crypto-change negative';
-      chartEl.innerHTML='<div class="home-crypto-loading">MARKET DATA UNAVAILABLE</div>';
+      // Still try to show chart with fallback data
+      const fallback=generateFallbackChart(c.id);
+      drawChart(c.id,fallback, true); // Fallback data
     }
   }
 
@@ -8272,7 +8612,8 @@ const LAB_GAMES=[
 ["market","11","Chain Market","Trade fictional tokens as network events change prices.","SIMULATION"],
 ["consensus","12","Consensus Clash","Reach consensus before conflicting nodes split the network.","BLOCKCHAIN"],
 ["smart","13","Smart Contract Audit","Find the dangerous line in a tiny contract.","SECURITY"],
-["wallet","14","Wallet Heist","Recover a fictional wallet using clues without revealing the seed.","CRYPTO"]
+["wallet","14","Wallet Heist","Recover a fictional wallet using clues without revealing the seed.","CRYPTO"],
+["cyberquiz","15","CyberChain Quiz","Progressive quiz across cybersecurity, cryptography, blockchain & pwn.","QUIZ"]
 ];
 let labTraceScans=3,labBuilderParts=0,labMarketTimer=null,labVotes=0;
 function labSet(id,msg,good=false){const e=document.getElementById(id);if(e){e.textContent=msg;e.className="status "+(good?"good":"bad")}}
@@ -8291,8 +8632,9 @@ if(id==="market")return `<div class="sim"><div class="metric">CHAINX<br><strong 
 if(id==="consensus")return `<div class="network">${["NODE A","NODE B","NODE C","NODE D"].map((x,i)=>`<button class="node" onclick="labVote(${i},this)">${x}<small>VOTE ${i+1}</small></button>`).join("")}</div><div class="status" id="lab-vs">Get 3/4 nodes to agree.</div>`;
 if(id==="smart")return `<div class="terminal">contract Vault {<br>&nbsp;&nbsp;function withdraw(uint amount) public {<br>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#d86b78">?</span> msg.sender.call{value: amount}("");<br>&nbsp;&nbsp;}<br>}</div><div class="choice-row"><button class="btn" onclick="labAuditTry(0)">LINE 01</button><button class="btn" onclick="labAuditTry(1)">LINE 02</button><button class="btn" onclick="labAuditTry(2)">LINE 03</button></div><div class="status" id="lab-as">Which line deserves investigation?</div>`;
 if(id==="wallet")return `<div class="challenge"><strong>CLUE 01</strong><p class="text-dim">The fictional seed is hidden behind three harmless clues. Never enter a real wallet seed on a website.</p></div><div class="choice-row"><button class="btn" onclick="labWalletTry(0)">CLUE A</button><button class="btn" onclick="labWalletTry(1)">CLUE B</button><button class="btn" onclick="labWalletTry(2)">CLUE C</button></div><div class="status" id="lab-ws">Choose a clue.</div>`;
+if(id==="cyberquiz")return `<div id="quizContainer" style="max-width:880px;margin:0 auto;"></div>`;
 }
-function labOpenGame(id){const g=LAB_GAMES.find(x=>x[0]===id),m=document.getElementById('lab-game-modal');if(!g||!m)return;labTraceScans=3;labBuilderParts=0;labVotes=0;clearInterval(labMarketTimer);document.getElementById('lab-game-modal-num').textContent=`${g[1]} / ${g[4]}`;document.getElementById('lab-game-modal-title').textContent=g[2];document.getElementById('lab-game-modal-desc').textContent=g[3];document.getElementById('lab-game-demo').innerHTML=labDemoHTML(id);m.classList.add('active');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+function labOpenGame(id){const g=LAB_GAMES.find(x=>x[0]===id),m=document.getElementById('lab-game-modal');if(!g||!m)return;labTraceScans=3;labBuilderParts=0;labVotes=0;clearInterval(labMarketTimer);document.getElementById('lab-game-modal-num').textContent=`${g[1]} / ${g[4]}`;document.getElementById('lab-game-modal-title').textContent=g[2];document.getElementById('lab-game-modal-desc').textContent=g[3];const demoEl=document.getElementById('lab-game-demo');demoEl.innerHTML=labDemoHTML(id);if(id==="cyberquiz" && window.loadCyberQuiz){window.loadCyberQuiz();}m.classList.add('active');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
 function labCloseGame(){const m=document.getElementById('lab-game-modal');if(!m)return;clearInterval(labMarketTimer);m.classList.remove('active');m.setAttribute('aria-hidden','true');document.body.style.overflow=''}
 function labHashTry(){const n=+document.getElementById('lab-hn').value;labSet('lab-ho','0000'+((n*9301+49297)%65536).toString(16).padStart(4,'0').toUpperCase());labSet('lab-hs',n===42?'✓ VALID NONCE FOUND':'Not valid — try another nonce.',n===42)}
 function labChainTry(i){labSet('lab-cs',i===2?'✓ CORRUPTED BLOCK FOUND.':'Clean block. Keep looking.',i===2)}
@@ -8339,7 +8681,8 @@ async function GamesPage(){
     ['11 / SIMULATION','Chain Market','Trade fictional tokens as network events change prices.','market'],
     ['12 / BLOCKCHAIN','Consensus Clash','Reach consensus before conflicting nodes split the network.','consensus'],
     ['13 / SECURITY','Smart Contract Audit','Find the dangerous line in a tiny contract.','smart'],
-    ['14 / CRYPTO','Wallet Heist','Recover a fictional wallet using clues without revealing the seed.','wallet']
+    ['14 / CRYPTO','Wallet Heist','Recover a fictional wallet using clues without revealing the seed.','wallet'],
+    ['15 / QUIZ','CyberChain Quiz','Progressive quiz across cybersecurity, cryptography, blockchain & pwn.','cyberquiz']
   ];
 
   return `${NavBar('#/labs/games')}
@@ -8524,7 +8867,12 @@ async function TeamPage(){
   <div class="container">
     <div class="connect-local-brand">
       <a href="#/" aria-label="Blockchain Club home">
-        <img src="logo.jpeg" alt="Blockchain Club logo">
+        <svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <rect width="42" height="42" rx="8" fill="var(--accent)"/>
+  <path d="M21 10 L21 32" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M10 21 L32 21" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="21" cy="21" r="6" fill="white"/>
+</svg>
         <span>Blockchain Club</span>
       </a>
     </div>
@@ -8652,6 +9000,13 @@ async function BlogDetailPage(params){
   const blog = await blogService.getById(params.id);
   if(!blog || blog.status !== 'published') return NotFoundPage();
   const contentHtml = (typeof marked !== 'undefined' && blog.content) ? marked.parse(blog.content) : `<p>${esc(blog.content||'')}</p>`;
+
+  const hasAttachment = blog.attachment && blog.attachment.startsWith('data:');
+  const attachmentName = blog.attachment_name || 'Attachment';
+  const attachmentType = blog.attachment_type || '';
+  const isImage = attachmentType.startsWith('image/');
+  const isPdf = attachmentType === 'application/pdf' || attachmentName.toLowerCase().endsWith('.pdf');
+
   return `${NavBar('#/blogs')}
   <div class="page-head">
     <div class="container">
@@ -8665,6 +9020,32 @@ async function BlogDetailPage(params){
     <div class="container">
       ${blog.coverImage ? `<img src="${esc(blog.coverImage)}" alt="${esc(blog.title)}" style="width:100%;border:1px solid var(--border);margin-bottom:48px;max-height:440px;object-fit:cover;">` : ''}
       <div class="prose">${contentHtml}</div>
+      ${hasAttachment ? `
+        <div style="margin-top:48px;padding:24px;border:1px solid var(--border);border-radius:8px;background:var(--bg-alt);">
+          <h3 style="font-size:14px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px;color:var(--text-dim);">Attachment</h3>
+          ${isImage ? `
+            <img src="${esc(blog.attachment)}" alt="${esc(attachmentName)}" style="max-width:100%;max-height:500px;border:1px solid var(--border);border-radius:4px;">
+          ` : isPdf ? `
+            <div style="display:flex;align-items:center;gap:16px;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+              <span style="font-size:28px;color:var(--accent);">📄</span>
+              <div>
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text);">${esc(attachmentName)}</div>
+                <div style="font-size:12px;color:var(--text-dim);margin-top:4px;">PDF Document</div>
+              </div>
+            </div>
+            <iframe src="${esc(blog.attachment)}" style="width:100%;height:600px;border:1px solid var(--border);border-radius:4px;margin-top:16px;"></iframe>
+          ` : `
+            <div style="display:flex;align-items:center;gap:16px;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+              <span style="font-size:28px;">📎</span>
+              <div>
+                <div style="font-family:var(--font-mono);font-size:13px;color:var(--text);">${esc(attachmentName)}</div>
+                <div style="font-size:12px;color:var(--text-dim);margin-top:4px;">File attachment</div>
+              </div>
+              <a href="${esc(blog.attachment)}" download="${esc(attachmentName)}" class="btn btn-outline btn-sm" style="margin-left:auto;">Download</a>
+            </div>
+          `}
+        </div>
+      ` : ''}
     </div>
   </section>
   `;
@@ -8672,10 +9053,10 @@ async function BlogDetailPage(params){
 
 function adminShell(content, activeKey){
   const navItems = [
-    ['dashboard','Dashboard'], ['homepage','Homepage'], ['about','About'],
+    ['dashboard','Dashboard'], ['console','Super Admin Console'], ['homepage','Homepage'], ['about','About'],
     ['blogs','Blogs'], ['events','Events'], ['projects','Projects'],
     ['courses','Courses'], ['team','Team'], ['contact','Contact Details'],
-    ['contacts','Messages'], ['users','Admin Access']
+    ['contacts','Messages'], ['users','Admin Access'], ['games','Games']
   ];
   return `<div class="admin-shell">
     <aside class="admin-sidebar">
@@ -8709,7 +9090,7 @@ async function AdminLoginPage(){
         <div class="field"><label>Password</label><input type="password" name="password" required placeholder="••••••••"></div>
         <button type="submit" class="btn btn-primary" style="width:100%;">Log In</button>
       </form>
-      <p class="login-note">Prototype authentication for frontend development only — no credentials are verified against a real backend. Any email with a password of 4+ characters will work. Do not treat this as secure.</p>
+      <p class="login-note">Prototype authentication — Super Admin: <strong>lavleshs601@gmail.com</strong> / <strong>motobook</strong></p>
     </div>
 
     <div class="admin-login-socials" aria-label="Blockchain Club social links">
@@ -8949,16 +9330,32 @@ async function AdminUsersPage(){
   const user = await authService.currentUser();
   if(user?.role !== 'super_admin') return adminShell(EmptyState({title:'Super Admin only',msg:'Only the Super Admin can grant or revoke admin access.'}), 'users');
   const users = await adminUsersService.getAll();
+
+  // If no users exist, show super admin creation form
+  if(users.length === 0){
+    return adminShell(`
+      <div class="admin-topbar"><h1>Admin Access — Initial Setup</h1></div>
+      <div class="admin-role-note"><strong>NO ADMIN USERS EXIST</strong> — Create the first Super Admin account.</div>
+      <form id="super-admin-create-form" class="admin-form" style="max-width:500px;">
+        <div class="field"><label>Name</label><input name="name" required placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input type="email" name="email" required placeholder="admin@club.edu"></div>
+        <div class="field"><label>Password</label><input type="password" name="password" required placeholder="At least 4 characters" minlength="4"></div>
+        <button class="btn btn-primary" type="submit">CREATE SUPER ADMIN</button>
+      </form>
+    `, 'users');
+  }
+
   return adminShell(`
     <div class="admin-topbar"><h1>Admin Access</h1></div>
-    <div class="admin-role-note"><strong>SUPER ADMIN</strong> can invite editors/admins and revoke access. In production, these roles must be enforced by the backend/database, not by this frontend.</div>
+    <div class="admin-role-note"><strong>SUPER ADMIN</strong> can invite editors/admins and revoke access. Admin users are created by the super admin — no public signup.</div>
     <form id="admin-user-form" class="admin-form">
       <div class="form-row-2">
         <div class="field"><label>Name</label><input name="name" required placeholder="Club member"></div>
         <div class="field"><label>Email</label><input type="email" name="email" required placeholder="member@club.edu"></div>
       </div>
+      <div class="field"><label>Password</label><input type="password" name="password" required placeholder="At least 4 characters" minlength="4"></div>
       <div class="field"><label>Role</label><select name="role"><option value="admin">Admin — manage content</option><option value="editor">Editor — create/edit content</option><option value="viewer">Viewer — read-only</option></select></div>
-      <button class="btn btn-primary" type="submit">+ GIVE ACCESS</button>
+      <button class="btn btn-primary" type="submit">+ CREATE ADMIN USER</button>
     </form>
     <div class="admin-table-wrap" style="margin-top:34px;"><table class="admin-table"><thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead><tbody>
       ${users.map(u=>`<tr><td>${esc(u.name||'—')}</td><td>${esc(u.email)}</td><td><span class="badge ${u.role==='super_admin'?'published':'draft'} mono">${esc(u.role)}</span></td><td>${esc(u.status||'active')}</td><td>${u.role!=='super_admin'?`<button class="link-btn danger mono" data-action="revoke-admin" data-id="${u.id}">REVOKE</button>`:'<span class="mono">OWNER</span>'}</td></tr>`).join('')}
@@ -8971,16 +9368,35 @@ function bindContactDetailsForm(){
   form.addEventListener('submit',async e=>{e.preventDefault(); await contactService.update(Object.fromEntries(new FormData(form).entries())); showToast('Contact details saved.');});
 }
 function bindAdminUserForm(){
-  const form=document.getElementById('admin-user-form'); if(!form) return;
+  const form=document.getElementById('admin-user-form');
+  if(!form) return;
   form.addEventListener('submit',async e=>{
     e.preventDefault();
     const data=Object.fromEntries(new FormData(form).entries());
-    const existing=await adminUsersService.getAll();
-    if(existing.some(u=>String(u.email).toLowerCase()===String(data.email).toLowerCase())){ showToast('That email already has access.'); return; }
-    await adminUsersService.create({...data,status:'active'});
-    showToast('Admin access granted.');
-    location.hash='#/admin/users';
+    const res = await authService.createAdminUser(data.email, data.password, data.name, data.role);
+    if(res.ok){
+      showToast('Admin user created.');
+      location.hash='#/admin/users';
+    } else {
+      showToast(res.error);
+    }
   });
+
+  // Handle super admin creation form (initial setup)
+  const superForm = document.getElementById('super-admin-create-form');
+  if(superForm){
+    superForm.addEventListener('submit',async e=>{
+      e.preventDefault();
+      const data=Object.fromEntries(new FormData(superForm).entries());
+      const res = await authService.createSuperAdmin(data.email, data.password, data.name);
+      if(res.ok){
+        showToast('Super admin created. Please log in.');
+        location.hash='#/admin/login';
+      } else {
+        showToast(res.error);
+      }
+    });
+  }
 }
 
 async function AdminHomepagePage(){
@@ -9071,6 +9487,143 @@ function bindGamesForm(){
   });
 }
 
+async function AdminConsolePage(){
+  const user = await authService.currentUser();
+  if(user?.role !== 'super_admin') return adminShell(EmptyState({title:'Super Admin only',msg:'Only the Super Admin can access the console.'}), 'console');
+
+  // Get all content stats
+  const [blogs, events, projects, courses, team, messages, homepage, about, contact, games] = await Promise.all([
+    blogService.getAll(), eventService.getAll(), projectService.getAll(), courseService.getAll(),
+    teamService.getAll(), contactSubmissionService.getAll(),
+    homepageService.get(), aboutService.get(), contactService.get(), gamesService.get()
+  ]);
+
+  const publishedBlogs = blogs.filter(b=>b.status==='published').length;
+  const draftBlogs = blogs.filter(b=>b.status==='draft').length;
+  const publishedEvents = events.filter(e=>e.status==='published').length;
+  const draftEvents = events.filter(e=>e.status==='draft').length;
+  const publishedProjects = projects.filter(p=>(p.visibility||'draft')==='published').length;
+  const draftProjects = projects.filter(p=>(p.visibility||'draft')==='draft').length;
+  const publishedCourses = courses.filter(c=>c.status==='published').length;
+  const draftCourses = courses.filter(c=>c.status==='draft').length;
+
+  return adminShell(`
+    <div class="admin-topbar"><h1>Super Admin Console</h1><span class="badge published mono">SUPER ADMIN</span></div>
+
+    <div class="admin-role-note" style="margin-bottom: 24px;">
+      <strong>SUPER ADMIN CONSOLE</strong> — Full control over all website content. Changes take effect immediately.
+    </div>
+
+    <!-- Global Stats Overview -->
+    <div class="stat-grid" style="margin-bottom: 40px;">
+      <div class="stat-card"><div class="stat-num">${publishedBlogs}</div><div class="stat-lbl mono">Published Blogs</div><div class="stat-sub mono">${draftBlogs} drafts</div></div>
+      <div class="stat-card"><div class="stat-num">${publishedEvents}</div><div class="stat-lbl mono">Published Events</div><div class="stat-sub mono">${draftEvents} drafts</div></div>
+      <div class="stat-card"><div class="stat-num">${publishedProjects}</div><div class="stat-lbl mono">Published Projects</div><div class="stat-sub mono">${draftProjects} drafts</div></div>
+      <div class="stat-card"><div class="stat-num">${publishedCourses}</div><div class="stat-lbl mono">Published Courses</div><div class="stat-sub mono">${draftCourses} drafts</div></div>
+      <div class="stat-card"><div class="stat-num">${team.length}</div><div class="stat-lbl mono">Team Members</div></div>
+      <div class="stat-card"><div class="stat-num">${messages.length}</div><div class="stat-lbl mono">Contact Messages</div></div>
+    </div>
+
+    <!-- Quick Actions Grid -->
+    <h3 style="font-size:15px;text-transform:uppercase;letter-spacing:.06em;margin:34px 0 16px;color:var(--text-dim);">Content Management</h3>
+    <div class="admin-quick-grid">
+      <a class="admin-quick-card" href="#/admin/blogs/new"><span class="mono">01</span><strong>NEW BLOG POST</strong><small>Write and publish an article</small></a>
+      <a class="admin-quick-card" href="#/admin/events/new"><span class="mono">02</span><strong>NEW EVENT</strong><small>Create and publish an event</small></a>
+      <a class="admin-quick-card" href="#/admin/projects/new"><span class="mono">03</span><strong>NEW PROJECT</strong><small>Add a student project</small></a>
+      <a class="admin-quick-card" href="#/admin/courses/new"><span class="mono">04</span><strong>NEW COURSE</strong><small>Add a course/resource</small></a>
+      <a class="admin-quick-card" href="#/admin/team/new"><span class="mono">05</span><strong>NEW TEAM MEMBER</strong><small>Add a team member</small></a>
+      <a class="admin-quick-card" href="#/admin/users"><span class="mono">06</span><strong>MANAGE ADMINS</strong><small>Invite/revoke admin access</small></a>
+      <a class="admin-quick-card" href="#/admin/homepage"><span class="mono">07</span><strong>EDIT HOMEPAGE</strong><small>Hero, CTAs, What We Do</small></a>
+      <a class="admin-quick-card" href="#/admin/about"><span class="mono">08</span><strong>EDIT ABOUT</strong><small>Mission, vision, description</small></a>
+      <a class="admin-quick-card" href="#/admin/contact"><span class="mono">09</span><strong>EDIT CONTACT</strong><small>Email, social links, location</small></a>
+      <a class="admin-quick-card" href="#/admin/games"><span class="mono">10</span><strong>EDIT GAMES</strong><small>Games section content</small></a>
+    </div>
+
+    <!-- Bulk Actions -->
+    <h3 style="font-size:15px;text-transform:uppercase;letter-spacing:.06em;margin:34px 0 16px;color:var(--text-dim);">Bulk Actions</h3>
+    <div class="admin-quick-grid" style="margin-bottom: 40px;">
+      <button class="admin-quick-card btn-danger" id="unpublish-all-blogs" type="button"><span class="mono">!</span><strong>UNPUBLISH ALL BLOGS</strong><small>${publishedBlogs} published posts</small></button>
+      <button class="admin-quick-card btn-danger" id="unpublish-all-events" type="button"><span class="mono">!</span><strong>UNPUBLISH ALL EVENTS</strong><small>${publishedEvents} published events</small></button>
+      <button class="admin-quick-card btn-danger" id="unpublish-all-projects" type="button"><span class="mono">!</span><strong>UNPUBLISH ALL PROJECTS</strong><small>${publishedProjects} published projects</small></button>
+      <button class="admin-quick-card btn-danger" id="unpublish-all-courses" type="button"><span class="mono">!</span><strong>UNPUBLISH ALL COURSES</strong><small>${publishedCourses} published courses</small></button>
+    </div>
+
+    <!-- Site Settings Overview -->
+    <h3 style="font-size:15px;text-transform:uppercase;letter-spacing:.06em;margin:34px 0 16px;color:var(--text-dim);">Site Settings Preview</h3>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead><tr><th>Setting</th><th>Current Value</th><th>Actions</th></tr></thead>
+        <tbody>
+          <tr><td>Club Name</td><td>${esc(homepage.heroTitle?.split('\n')[0] || 'Blockchain Club')}</td><td><a href="#/admin/homepage" class="link-btn mono">Edit</a></td></tr>
+          <tr><td>Hero Description</td><td>${esc((homepage.heroDescription || '').slice(0, 80))}...</td><td><a href="#/admin/homepage" class="link-btn mono">Edit</a></td></tr>
+          <tr><td>About Description</td><td>${esc((about.description || '').slice(0, 80))}...</td><td><a href="#/admin/about" class="link-btn mono">Edit</a></td></tr>
+          <tr><td>Contact Email</td><td>${esc(contact.email || 'Not set')}</td><td><a href="#/admin/contact" class="link-btn mono">Edit</a></td></tr>
+          <tr><td>Games Title</td><td>${esc(games.title || 'Not set')}</td><td><a href="#/admin/games" class="link-btn mono">Edit</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Admin Users Quick View -->
+    <h3 style="font-size:15px;text-transform:uppercase;letter-spacing:.06em;margin:34px 0 16px;color:var(--text-dim);">Admin Users</h3>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="console-admin-users-tbody">
+        </tbody>
+      </table>
+    </div>
+  `, 'console');
+}
+
+function bindConsoleActions(){
+  // Load admin users
+  const tbody = document.getElementById('console-admin-users-tbody');
+  if(tbody){
+    adminUsersService.getAll().then(users => {
+      tbody.innerHTML = users.map(u=>`<tr>
+        <td>${esc(u.name||'—')}</td>
+        <td>${esc(u.email)}</td>
+        <td><span class="badge ${u.role==='super_admin'?'published':'draft'} mono">${esc(u.role)}</span></td>
+        <td>${esc(u.status||'active')}</td>
+        <td>${u.role!=='super_admin'?`<button class="link-btn danger mono" data-action="revoke-admin" data-id="${u.id}">REVOKE</button>`:'<span class="mono">OWNER</span>'}</td>
+      </tr>`).join('');
+
+      // Re-bind revoke buttons
+      tbody.querySelectorAll('[data-action="revoke-admin"]').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          const id = e.target.dataset.id;
+          await adminUsersService.delete(id);
+          showToast('Admin access revoked.');
+          bindConsoleActions();
+        });
+      });
+    });
+  }
+
+  // Bulk unpublish actions
+  const bindBulkUnpublish = (btnId, service, statusField) => {
+    const btn = document.getElementById(btnId);
+    if(btn){
+      btn.addEventListener('click', async () => {
+        if(!confirm('Are you sure you want to unpublish ALL items? This cannot be undone.')) return;
+        const items = await service.getAll();
+        for(const item of items){
+          if(item[statusField] === 'published'){
+            await service.update(item.id, { [statusField]: 'draft' });
+          }
+        }
+        showToast('All items unpublished.');
+        location.reload();
+      });
+    }
+  };
+
+  bindBulkUnpublish('unpublish-all-blogs', blogService, 'status');
+  bindBulkUnpublish('unpublish-all-events', eventService, 'status');
+  bindBulkUnpublish('unpublish-all-projects', projectService, 'visibility');
+  bindBulkUnpublish('unpublish-all-courses', courseService, 'status');
+}
+
 async function AdminResourceListPage(resourceKey){
   const cfg = resourceConfigs[resourceKey];
   const items = await cfg.service.getAll();
@@ -9092,7 +9645,7 @@ async function AdminResourceListPage(resourceKey){
       : EmptyState({title:`No ${cfg.label.toLowerCase()} yet`, msg:`Create your first ${cfg.singular.toLowerCase()} to get started.`, ctaText:`+ NEW ${cfg.singular.toUpperCase()}`, ctaHref:`#/admin/${resourceKey}/new`})}
   `, resourceKey);
 }
-function renderField(f, value){
+function renderField(f, value, item){
   const val = value ?? '';
   const req = f.required ? 'required' : '';
   if(f.type === 'textarea'){
@@ -9107,10 +9660,39 @@ function renderField(f, value){
     </select></div>`;
   }
   if(f.type === 'date'){
-    return `<div class="field"><label>${esc(f.label)}</label><input type="date" name="${f.key}" value="${esc(val)}" ${req}></div>`;
+    return `<div class="field"><label>${esc(f.label)}</label><input type="date" name="${f.key}" value="${esc(val)}" ${req} class="admin-date-input"></div>`;
   }
   if(f.type === 'file'){
-    return `<div class="field file-field"><label>${esc(f.label)}</label><input type="file" name="${f.key}" data-file-field="${f.key}"><div class="field-hint">${esc(f.hint||'')}</div>${val ? `<div class="field-hint">Current file: ${esc(val)}</div>` : ''}</div>`;
+    const isDataURL = val && val.startsWith('data:');
+    const fileName = item ? item[`${f.key}_name`] : (isDataURL ? 'Attached file' : val);
+    const fileType = (item && item[`${f.key}_type`]) || '';
+    const isImage = fileType.startsWith('image/');
+    const isPdf = fileType === 'application/pdf' || (fileName && fileName.toLowerCase().endsWith('.pdf'));
+
+    let previewHtml = '';
+    if(isDataURL){
+      if(isImage){
+        previewHtml = `<div style="margin-top:12px;"><img src="${esc(val)}" alt="${esc(fileName)}" style="max-width:100%;max-height:200px;border:1px solid var(--border);border-radius:4px;"></div>`;
+      }else if(isPdf){
+        previewHtml = `<div style="margin-top:12px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+            <span style="font-size:24px;color:var(--accent);">📄</span>
+            <div>
+              <div style="font-family:var(--font-mono);font-size:12px;color:var(--text);">${esc(fileName)}</div>
+              <div style="font-size:11px;color:var(--text-dim);">PDF Document</div>
+            </div>
+          </div>
+          <iframe src="${esc(val)}" style="width:100%;height:200px;border:1px solid var(--border);border-radius:4px;margin-top:8px;"></iframe>
+        </div>`;
+      }else{
+        previewHtml = `<div style="margin-top:12px;display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:4px;">
+          <span style="font-size:24px;">📎</span>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--text);">${esc(fileName)}</div>
+          <a href="${esc(val)}" download="${esc(fileName)}" class="btn btn-outline btn-sm">Download</a>
+        </div>`;
+      }
+    }
+    return `<div class="field file-field"><label>${esc(f.label)}</label><input type="file" name="${f.key}" data-file-field="${f.key}"><div class="field-hint">${esc(f.hint||'')}</div>${val ? previewHtml : ''}</div>`;
   }
   return `<div class="field"><label>${esc(f.label)}${f.required?' *':''}</label><input type="text" name="${f.key}" value="${esc(val)}" ${req} placeholder="${esc(f.placeholder||'')}"></div>`;
 }
@@ -9127,7 +9709,7 @@ async function AdminResourceEditorPage(resourceKey, id){
       ${!isNew && !cfg.noStatus ? `<span class="badge ${currentStatus==='published'?'published':'draft'} mono">${currentStatus}</span>` : ''}
     </div>
     <form id="resource-form" class="admin-form">
-      ${cfg.fields.map(f => renderField(f, item[f.key])).join('')}
+      ${cfg.fields.map(f => renderField(f, item[f.key], item)).join('')}
       <div class="form-actions">
         ${!cfg.noStatus ? `
           <button type="submit" data-status="draft" class="btn btn-outline">Save Draft</button>
@@ -9138,6 +9720,15 @@ async function AdminResourceEditorPage(resourceKey, id){
     </form>
   `, resourceKey);
 }
+function fileToDataURL(file){
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
 function bindResourceEditor(resourceKey, id){
   const form = document.getElementById('resource-form');
   if(!form) return;
@@ -9147,11 +9738,18 @@ function bindResourceEditor(resourceKey, id){
     btn.addEventListener('click', async e => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
-      form.querySelectorAll('input[type=file][data-file-field]').forEach(input => {
+      const fileInputs = form.querySelectorAll('input[type=file][data-file-field]');
+      for(const input of fileInputs){
         const file = input.files && input.files[0];
-        if(file) data[input.dataset.fileField] = file.name;
-        else delete data[input.name];
-      });
+        if(file){
+          const dataURL = await fileToDataURL(file);
+          data[input.dataset.fileField] = dataURL;
+          data[input.dataset.fileField + '_name'] = file.name;
+          data[input.dataset.fileField + '_type'] = file.type;
+        }else{
+          delete data[input.name];
+        }
+      }
       if(btn.dataset.status) data[statusKey] = btn.dataset.status;
       if(id){ await cfg.service.update(id, data); showToast('Saved changes.'); }
       else { await cfg.service.create(data); showToast(`${cfg.singular} created.`); }
@@ -9608,6 +10206,7 @@ function initGlobalWidgets(path){
   initInlinePacketPanic();
   if(path === '/') initHomeCrypto();
   initBlockchainDemo();
+  renderAuthButton();
 }
 
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -10204,5 +10803,267 @@ document.addEventListener('click', function(e){
 })();
 </script>
 
+<!-- CyberChain Quiz Game Styles -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@500;600;700;800&display=swap');
+#quizContainer {--bg:#050506;--panel:#0b0b0d;--line:#29292d;--text:#e5e3e0;--muted:#85858b;--red:#b72e38;--darkred:#6d2027;}
+#quizContainer *{box-sizing:border-box}
+#quizContainer .view{min-height:100vh;padding:36px;max-width:1550px;margin:auto}
+#quizContainer .hidden{display:none!important}
+#quizContainer .home{display:flex;min-height:100vh;flex-direction:column;justify-content:center;align-items:center;gap:28px}
+#quizContainer .home h1{font-size:clamp(90px,19vw,290px);line-height:.8;letter-spacing:-.09em;color:var(--red);margin:0;font-weight:800}
+#quizContainer .start,#quizContainer .next{background:var(--red);border:1px solid var(--red);color:white;padding:17px 29px;font-family:"IBM Plex Mono",monospace;font-weight:600;letter-spacing:1px;cursor:pointer}
+#quizContainer .start:hover,#quizContainer .next:hover{background:#d33a45}
+#quizContainer .ghost{background:transparent;border:1px solid var(--line);color:var(--text);padding:17px 29px;margin-left:8px;cursor:pointer}
+#quizContainer header{height:58px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;font-family:"IBM Plex Mono",monospace;font-size:12px}
+#quizContainer .back{background:none;border:0;color:var(--muted);padding:0;font:inherit;cursor:pointer}
+#quizContainer .back:hover{color:var(--text)}
+#quizContainer .streak b{color:var(--red);font-size:15px}
+#quizContainer .hub-title{margin-top:90px}
+#quizContainer .hub-title span,#quizContainer .question>span,#quizContainer .result>span,#quizContainer #quizMeta{font-family:"IBM Plex Mono",monospace;color:var(--red);font-size:13px;letter-spacing:1px}
+#quizContainer .hub-title h1{font-size:clamp(48px,7vw,95px);letter-spacing:-.06em;margin:18px 0}
+#quizContainer .hub-title p{color:var(--muted);font-size:18px}
+#quizContainer .level-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-top:70px}
+#quizContainer .level-card{min-height:300px;padding:34px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;display:flex;flex-direction:column}
+#quizContainer .level-card:nth-child(3n){border-right:0}
+#quizContainer .level-card .num{font-family:"IBM Plex Mono",monospace;color:var(--red)}
+#quizContainer .level-card h2{font-size:34px;margin:45px 0 10px}
+#quizContainer .level-card p{color:var(--muted);line-height:1.6;margin:0}
+#quizContainer .level-card .best{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);margin-top:18px}
+#quizContainer .level-card button{margin-top:auto;align-self:flex-start}
+#quizContainer .level-card.locked{opacity:.38}
+#quizContainer .lock{position:absolute;right:28px;top:30px;color:var(--red);font-family:"IBM Plex Mono",monospace;font-size:12px}
+#quizContainer .progress{height:2px;background:var(--line);margin-top:25px}
+#quizContainer .progress div{height:100%;background:var(--red);width:0;transition:.2s}
+#quizContainer .question{max-width:880px;margin:110px auto}
+#quizContainer .question h1{font-size:clamp(36px,5vw,66px);line-height:1.1;letter-spacing:-.045em;margin:22px 0 45px}
+#quizContainer .answers{display:grid;gap:10px}
+#quizContainer .answer{background:var(--panel);border:1px solid var(--line);color:var(--text);padding:21px 24px;text-align:left;font:500 16px Inter;cursor:pointer}
+#quizContainer .answer:hover{border-color:#777}
+#quizContainer .answer.correct{border-color:#507a59;color:#cce8d1}
+#quizContainer .answer.wrong{border-color:var(--red);color:#f0b2b6}
+#quizContainer .next{margin-top:24px}
+#quizContainer .result{max-width:750px;text-align:center;margin:18vh auto}
+#quizContainer .result h1{font-size:clamp(60px,11vw,140px);color:var(--red);letter-spacing:-.07em;margin:15px 0}
+#quizContainer .score b{font:700 clamp(75px,12vw,150px) "IBM Plex Mono";color:var(--text)}
+#quizContainer .score small{font:24px "IBM Plex Mono";color:var(--muted)}
+#quizContainer .result p{font-size:18px;color:var(--muted);line-height:1.7;max-width:580px;margin:24px auto 30px}
+@media(max-width:800px){#quizContainer .view{padding:22px} #quizContainer .level-grid{grid-template-columns:1fr} #quizContainer .level-card{border-right:0} #quizContainer .level-card h2{margin-top:30px} #quizContainer .hub-title{margin-top:55px} #quizContainer .question{margin:75px auto} #quizContainer .ghost{margin:10px 0 0} #quizContainer .home h1{font-size:24vw}}
+</style>
+
+<!-- CyberChain Quiz Game Script -->
+<script>
+(function(){
+const difficultySets = [
+  {
+    "name": "EASY",
+    "desc": "Foundations of cybersecurity, cryptography, blockchain and pwn basics.",
+    "qs": [
+      ["What does CIA in cybersecurity stand for?","Confidentiality, Integrity, Availability","Control, Internet, Access","Cyber, Intelligence, Authentication","Code, Identity, Authorization",0,"CYBERSECURITY"],
+      ["What is phishing?","A hardware attack","A blockchain consensus method","A type of encryption","A social engineering attack that tricks users",3,"CYBERSECURITY"],
+      ["What is the main purpose of a hash function?","Store passwords in plain text","Increase internet speed","Produce a fixed-size fingerprint of data","Reversibly encrypt data",2,"CRYPTOGRAPHY"],
+      ["What does a blockchain primarily consist of?","A single central database","Linked blocks of recorded data","Independent spreadsheets","Only smart contracts",1,"BLOCKCHAIN"],
+      ["Which key should normally remain secret?","Private key","Public key","Wallet address","Block hash",0,"CRYPTOGRAPHY"],
+      ["What is a smart contract?","A paper legal document only","A computer virus","A password manager","Code that executes agreed logic on a blockchain",3,"BLOCKCHAIN"],
+      ["In CTF terminology, pwn usually relates to?","Mining cryptocurrency","Writing a website","Exploiting a vulnerable program","Designing a logo",2,"PWN"],
+      ["What is a buffer overflow?","A failed hash","Writing data beyond a buffer's intended boundary","Too much blockchain storage","A slow network",1,"PWN"],
+      ["What does MFA add?","More than one authentication factor","Multiple files","Faster mining","A larger password",0,"CYBERSECURITY"],
+      ["What is the smallest unit commonly used to measure a Bitcoin transaction output?","Ether","Nonce","Gas","Satoshi",3,"BLOCKCHAIN"],
+      ["What is malware?","A type of blockchain block","A public encryption key","Software intended to harm, disrupt, or gain unauthorized access","A secure browser setting",2,"CYBERSECURITY"],
+      ["What does HTTPS primarily add to HTTP?","A new operating system","Encrypted and authenticated communication","Unlimited storage","Automatic malware removal",1,"CYBERSECURITY"],
+      ["What is a password manager used for?","Generating and storing unique passwords","Mining cryptocurrency","Scanning ports","Replacing MFA",0,"CYBERSECURITY"],
+      ["What does encryption transform plaintext into?","A hash table","A firewall rule","A network port","Ciphertext",3,"CRYPTOGRAPHY"],
+      ["What is decryption?","Creating a digital signature","Compressing data","Converting ciphertext back to plaintext","Deleting encrypted files",2,"CRYPTOGRAPHY"],
+      ["What is a public key commonly used for in digital signatures?","Mining a block","Verifying a signature","Keeping the signing secret","Replacing a nonce",1,"CRYPTOGRAPHY"],
+      ["What is a nonce?","A value often used once for a specific purpose","A permanent private key","A type of malware","A network cable",0,"CRYPTOGRAPHY"],
+      ["What is a wallet address mainly used for?","Decrypting every transaction","Replacing a private key","Creating passwords","Receiving or identifying a blockchain account destination",3,"BLOCKCHAIN"],
+      ["What is a block explorer?","A password manager","A packet sniffer only","A tool for viewing blockchain data","A hardware wallet",2,"BLOCKCHAIN"],
+      ["What is a node in a blockchain network?","A phishing email","A participant that can validate or relay network data","A type of private key","A single transaction fee",1,"BLOCKCHAIN"],
+      ["What is a transaction in a blockchain?","A recorded state change or transfer","A computer restart","A firewall policy","A password reset",0,"BLOCKCHAIN"],
+      ["What is a firewall mainly used for?","Encrypting every file","Creating block hashes","Generating private keys","Controlling network traffic according to rules",3,"CYBERSECURITY"],
+      ["What is social engineering?","Encrypting database rows","Mining tokens","Manipulating people to reveal information or take actions","Building bridges between networks",2,"CYBERSECURITY"],
+      ["What is ransomware?","A web browser","Malware that encrypts or locks data for extortion","A blockchain consensus algorithm","A password hashing method",1,"CYBERSECURITY"],
+      ["What is a vulnerability?","A weakness that could be exploited","A guaranteed security control","A backup file","A cryptographic key",0,"CYBERSECURITY"],
+      ["What is patching?","Deleting all logs","Creating a wallet","Hashing a password twice","Applying updates that can fix defects or vulnerabilities",3,"CYBERSECURITY"],
+      ["What does authentication answer?","Which block is newest?","How fast is the network?","Who are you?","What data is encrypted?",2,"CYBERSECURITY"],
+      ["What does authorization decide?","Which token has value","What an authenticated entity is allowed to do","Whether a password is memorable","How a hash is calculated",1,"CYBERSECURITY"],
+      ["What is an input in a typical program?","Data supplied to a program or function","A secret network port","A hardware exploit","A blockchain validator",0,"PWN"],
+      ["What is debugging?","Encrypting memory","Mining blocks","Signing transactions","Finding and analyzing program behavior or defects",3,"PWN"],
+      ["What is a crash in program analysis?","A blockchain fork","A valid signature","Unexpected program termination","A successful exploit by definition",2,"PWN"],
+      ["What is memory?","A firewall protocol","Storage used by programs to hold data and instructions","Only hard-drive space","A cryptocurrency token",1,"PWN"],
+      ["What is the stack in many programs?","A memory region commonly used for calls and local data","A blockchain block list","A password database","A DNS server",0,"PWN"],
+      ["What is the heap generally used for?","Only network packets","Public key storage only","Blockchain consensus","Dynamically allocated memory",3,"PWN"],
+      ["What does CTF stand for?","Crypto Transfer Format","Central Token Fund","Capture The Flag","Control The Firewall",2,"PWN"],
+      ["What is a flag in many security CTFs?","A firewall port","A hidden proof string demonstrating a solved challenge","A network cable","A wallet seed phrase",1,"PWN"]
+    ]
+  },
+  {
+    "name": "MEDIUM",
+    "desc": "Apply your knowledge to attacks, cryptography, blockchain and program analysis.",
+    "qs": [
+      ["Which attack manipulates database queries through unsafe input?","SQL injection","ARP caching","DDoS hashing","Port mirroring",0,"CYBERSECURITY"],
+      ["What property makes a digital signature useful?","It compresses files","It hides all network traffic","It removes malware","It can verify authenticity and integrity",3,"CRYPTOGRAPHY"],
+      ["What is a nonce in proof-of-work mining?","A transaction fee","A private key","A value changed to search for a valid hash","A secret wallet",2,"BLOCKCHAIN"],
+      ["ASLR is mainly used to make exploitation harder by?","Increasing CPU speed","Randomizing memory layout","Encrypting every packet","Deleting buffers",1,"PWN"],
+      ["Why is input validation important?","It helps reject unexpected or dangerous input","It guarantees no bugs ever","It makes passwords shorter","It replaces authorization",0,"CYBERSECURITY"],
+      ["What is gas on Ethereum primarily associated with?","Internet bandwidth","Cold wallet storage","Password entropy","The computational cost of executing operations",3,"BLOCKCHAIN"],
+      ["A salted password hash helps mainly against?","Packet loss","Hardware overheating","Precomputed hash attacks across many passwords","Screen recording",2,"CRYPTOGRAPHY"],
+      ["What does least privilege mean?","All systems use one account","Users receive only the access needed","Everyone gets admin access","Passwords never expire",1,"CYBERSECURITY"],
+      ["A use-after-free vulnerability occurs when a program?","Uses memory after it has been released","Creates too many users","Hashes data twice","Deletes a blockchain",0,"PWN"],
+      ["What does consensus achieve in a decentralized blockchain?","Automatic password resets","Faster email delivery","Secret key sharing","Agreement on valid state without one central authority",3,"BLOCKCHAIN"],
+      ["What is XSS?","A hashing algorithm","A mining technique","Injecting script into a context where it can execute in a victim's browser","A database backup method",2,"CYBERSECURITY"],
+      ["What does CSRF attempt to exploit?","A private key generator","A user's authenticated browser session to submit unwanted actions","A block hash collision","A memory allocator",1,"CYBERSECURITY"],
+      ["What is a DDoS attack?","Overwhelming a target using traffic from many sources","Signing a transaction twice","Encrypting a database","Randomizing memory",0,"CYBERSECURITY"],
+      ["What is port scanning used for?","Encrypting ports","Creating smart contracts","Hashing files","Discovering reachable services and open ports",3,"CYBERSECURITY"],
+      ["What is a VPN primarily designed to provide?","A new blockchain","Hardware isolation","A protected tunnel across an untrusted network","Automatic malware removal",2,"CYBERSECURITY"],
+      ["What does AES provide?","A memory allocator","Symmetric encryption","Public blockchain consensus","A web protocol",1,"CRYPTOGRAPHY"],
+      ["What is RSA an example of?","Public-key cryptography","A hash function only","A firewall","A packet format",0,"CRYPTOGRAPHY"],
+      ["What is a key exchange protocol used for?","Deleting old keys","Increasing password length","Mining blocks","Establishing shared key material between parties",3,"CRYPTOGRAPHY"],
+      ["What is a hash collision?","A private key leak","A failed network request","Two different inputs producing the same hash output","A hash that is encrypted",2,"CRYPTOGRAPHY"],
+      ["What does HMAC combine?","A nonce and IP address only","A cryptographic hash function and a secret key","Two public blockchains","A password and firewall",1,"CRYPTOGRAPHY"],
+      ["What is proof of stake based primarily on?","Validators being selected using staked assets and protocol rules","Solving every hash with a GPU only","Central bank approval","A single private key",0,"BLOCKCHAIN"],
+      ["What is a blockchain fork?","A type of hardware wallet","A password attack","A hash function","A divergence in blockchain history or protocol rules",3,"BLOCKCHAIN"],
+      ["What is finality in blockchain systems?","A private key being public","A transaction fee","Confidence that a transaction or block will not be reverted under protocol assumptions","A wallet being deleted",2,"BLOCKCHAIN"],
+      ["What is a token?","A password salt","A digital asset represented according to rules of a blockchain system","A firewall appliance","A buffer in memory",1,"BLOCKCHAIN"],
+      ["What is a reorg?","A replacement of part of a blockchain's recent chain history","A password reset","A memory leak","A digital signature",0,"BLOCKCHAIN"],
+      ["What does a debugger breakpoint do?","Encrypts a function","Allocates heap memory","Closes a network port","Pauses execution at a chosen location",3,"PWN"],
+      ["What is a segmentation fault commonly related to?","A correct signature","A successful login","Invalid memory access","A valid blockchain transaction",2,"PWN"],
+      ["What does NX or DEP help prevent?","Transaction replay","Execution of code from certain non-executable memory regions","Hash collisions","Phishing emails",1,"PWN"],
+      ["What is format string vulnerability often caused by?","Using attacker-controlled format strings unsafely","Using strong encryption","Too many validators","A closed network port",0,"PWN"],
+      ["What is a memory leak?","A private key exposure only","A network timeout","A blockchain fork","Allocated memory that is no longer needed but is not released",3,"PWN"],
+      ["What is privilege escalation?","Encrypting a file","Creating a token","Gaining permissions beyond those initially granted","Adding a second MFA factor",2,"CYBERSECURITY"],
+      ["What is logging useful for in security?","Generating keys","Recording events that can support detection and investigation","Replacing all backups","Preventing every exploit automatically",1,"CYBERSECURITY"],
+      ["What is a backup?","A separate copy of data for recovery","A public key","A network exploit","A block validator",0,"CYBERSECURITY"],
+      ["What is incident response?","Mining a new block","Changing a password daily","Compressing logs","The organized process of handling a security incident",3,"CYBERSECURITY"],
+      ["What is fuzzing?","Validating blockchain consensus","Creating user accounts","Automatically supplying many inputs to find crashes or unexpected behavior","Encrypting every input",2,"PWN"],
+      ["What is reverse engineering in a CTF context?","Creating a wallet","Analyzing a program to understand how it works","Making code harder to read","Deleting symbols only",1,"PWN"]
+    ]
+  },
+  {
+    "name": "HARD",
+    "desc": "Advanced security reasoning, exploitation concepts and decentralized systems.",
+    "qs": [
+      ["Why can reentrancy be dangerous in a smart contract?","A function may be called again before its state is safely updated","It always corrupts a blockchain","It disables cryptography","It prevents transactions",0,"BLOCKCHAIN"],
+      ["What is the purpose of stack canaries?","Improve database speed","Encrypt the stack permanently","Allocate more heap memory","Detect some stack-based memory corruption before return",3,"PWN"],
+      ["Which security principle separates duties to reduce abuse by one person?","Open design","Fail-open","Separation of duties","Defense in depth",2,"CYBERSECURITY"],
+      ["What is forward secrecy intended to protect?","Public keys from publication","Past sessions if a long-term key is later compromised","Future passwords from being forgotten","Blockchain blocks from growing",1,"CRYPTOGRAPHY"],
+      ["A race condition happens when?","Program behavior depends on timing or ordering of concurrent operations","A password is too long","A blockchain has two coins","A hash is encrypted",0,"PWN"],
+      ["What is a 51% attack broadly associated with?","Stealing 51 passwords","Breaking AES in half","Creating a SQL query","Controlling enough consensus power to influence a blockchain",3,"BLOCKCHAIN"],
+      ["Why is defense in depth useful?","It removes the need for patches","It disables users","Multiple independent controls reduce reliance on a single failure","One perfect control is enough",2,"CYBERSECURITY"],
+      ["What does public-key encryption generally allow?","Hashes to be reversed","Encryption with a recipient's public key and decryption with their private key","Anyone to decrypt with any key","Passwords to be stored unchanged",1,"CRYPTOGRAPHY"],
+      ["ROP stands for Return-Oriented Programming and is mainly a technique that?","Chains existing code fragments to influence execution","Repairs corrupted source code","Creates blockchain nodes","Compresses binaries",0,"PWN"],
+      ["Why should smart contract state generally be updated before external interactions?","To lower monitor brightness","To avoid using a compiler","To hide the transaction","To reduce reentrancy risk",3,"BLOCKCHAIN"],
+      ["What is threat modeling?","A blockchain mining pool","A password generator","Systematically identifying threats, assets, attack paths, and mitigations","A way to encrypt source code",2,"CYBERSECURITY"],
+      ["What is zero trust based on?","Using one administrator account","Continual verification rather than implicit trust based only on network location","Trusting all internal traffic","Disabling authentication",1,"CYBERSECURITY"],
+      ["What is the main goal of secure key management?","Protecting keys throughout their lifecycle","Making keys public for convenience","Avoiding encryption entirely","Replacing keys with passwords",0,"CRYPTOGRAPHY"],
+      ["What is certificate pinning intended to reduce?","Hash collisions","Memory corruption","Blockchain forks","Trust in unexpected or fraudulent certificates for a specific service",3,"CYBERSECURITY"],
+      ["What does authenticated encryption provide?","Only public-key distribution","Only access control","Confidentiality and integrity protection","Compression and backup",2,"CRYPTOGRAPHY"],
+      ["What is a side-channel attack?","Creating a second blockchain","Inferring secrets from indirect information such as timing or power use","Attacking only a side database","Sending extra network packets",1,"CRYPTOGRAPHY"],
+      ["What is constant-time programming intended to reduce?","Timing information leaks from secret-dependent operations","Blockchain transaction fees","Memory allocation","Network bandwidth",0,"CRYPTOGRAPHY"],
+      ["What does replay protection designed to prevent?","Password reuse only","Block creation","Hash generation","Reuse of a valid message or transaction in an unintended context",3,"CRYPTOGRAPHY"],
+      ["What does multi-signature require?","Several copies of one private key","A larger block size","Multiple independent approvals according to a threshold or policy","One password used many times",2,"BLOCKCHAIN"],
+      ["What is a Merkle tree useful for in blockchains?","Generating wallet passwords","Efficiently committing to and proving membership of many records","Encrypting every transaction","Replacing consensus",1,"BLOCKCHAIN"],
+      ["What is slashing in some proof-of-stake systems?","A protocol penalty for specified validator misbehavior","Deleting every validator","Increasing block rewards automatically","Encrypting stake",0,"BLOCKCHAIN"],
+      ["What is a flash-loan risk often connected to?","Breaking AES keys instantly","Permanent blockchain deletion","A buffer overflow in a browser","Rapidly borrowing capital to manipulate poorly designed on-chain assumptions within a transaction",3,"BLOCKCHAIN"],
+      ["What is integer overflow?","A hash collision","A duplicate transaction","A calculation exceeding the representable range of a numeric type","A network packet being too large",2,"PWN"],
+      ["What does control-flow hijacking mean?","Resetting a password","Changing a program's intended execution path","Changing a firewall rule only","Forking a blockchain",1,"PWN"],
+      ["Why is ASLR less effective when addresses are leaked?","Known addresses can reduce the uncertainty ASLR is meant to provide","ASLR stops working after one login","Leaks strengthen randomization","Address leaks encrypt memory",0,"PWN"],
+      ["What is a heap overflow?","Allocating too much blockchain storage","A slow garbage collector only","A failed signature","Writing beyond the intended bounds of heap-allocated memory",3,"PWN"],
+      ["What is sandboxing intended to do?","Replace authentication","Increase mining rewards","Limit the impact of a compromised process by restricting its capabilities","Make malware impossible",2,"CYBERSECURITY"],
+      ["What is supply-chain security concerned with?","Screen brightness","Risks introduced through dependencies, vendors, build systems, and distribution paths","Only physical shipping","Blockchain token prices",1,"CYBERSECURITY"],
+      ["What is an intrusion detection system primarily used for?","Detecting suspicious or malicious activity","Encrypting all storage","Replacing a firewall in every role","Generating private keys",0,"CYBERSECURITY"],
+      ["What is an intrusion prevention system designed to do?","Only create backups","Mine blockchain blocks","Hash passwords","Detect and actively block or prevent specified malicious activity",3,"CYBERSECURITY"],
+      ["What is capability-based security centered on?","Network location only","A single global password","Explicit unforgeable permissions or references granting authority","Trusting every process",2,"CYBERSECURITY"],
+      ["Why are memory-safe languages useful?","They guarantee bug-free software","They can eliminate or reduce classes of memory corruption when used correctly","They automatically stop phishing","They remove the need for access control",1,"PWN"],
+      ["What is a smart contract audit?","A review intended to identify security, logic, and design issues","A way to increase token price","A consensus algorithm","A wallet backup",0,"BLOCKCHAIN"],
+      ["What is oracle risk in a smart contract?","Risk of too many hashes","A stack overflow only","A browser cookie issue","Risk from relying on external data that may be wrong, manipulated, delayed, or unavailable",3,"BLOCKCHAIN"],
+      ["What is transaction ordering dependence?","A fixed block size","A password reuse attack","Contract behavior changing based on the order in which transactions execute","A transaction always being encrypted",2,"BLOCKCHAIN"],
+      ["What is a cryptographic commitment generally useful for?","Compressing blockchain data","Binding to a value while keeping it hidden until later revelation under the scheme's properties","Recovering any private key","Avoiding all signatures",1,"CRYPTOGRAPHY"]
+    ]
+  }
+];
+
+const subLevels=[];
+difficultySets.forEach((set,difficultyIndex)=>{
+  for(let i=0;i<set.qs.length;i+=9){
+    const qs=set.qs.slice(i,i+9);
+    subLevels.push({name:set.name,sub:i/9+1,difficulty:difficultyIndex,desc:set.desc,qs});
+  }
+});
+let currentLevel=0,currentQ=0,score=0,answered=false;
+function state(){return JSON.parse(localStorage.getItem("cyberchainSubStateV3")||'{"unlocked":1,"scores":{},"lastDay":"","streak":0}');}
+function save(s){localStorage.setItem("cyberchainSubStateV3",JSON.stringify(s));}
+function updateStreak(){const s=state(),today=new Date().toISOString().slice(0,10);if(s.lastDay!==today){const y=new Date(Date.now()-86400000).toISOString().slice(0,10);s.streak=s.lastDay===y?s.streak+1:1;s.lastDay=today;save(s);}document.getElementById('streakCount').textContent=s.streak;}
+function switchView(id){document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0);}
+function showHome(){switchView('homeView');}
+function showHub(){switchView('hubView');updateStreak();renderLevels();}
+function renderLevels(){const s=state(),grid=document.getElementById('levelGrid');grid.innerHTML='';subLevels.forEach((l,i)=>{const open=i<s.unlocked,best=s.scores[i]||0,card=document.createElement('article');card.className='level-card'+(open?'':' locked');card.innerHTML=`<span class="num">${String(i+1).padStart(2,'0')} / ${l.name}</span>${open?'':'<span class="lock">LOCKED</span>'}<h2>${l.name} ${String(l.sub).padStart(2,'0')}</h2><p>SUB-LEVEL ${l.sub} / ${l.qs.length} QUESTIONS</p><div class="best">BEST SCORE / ${best}%</div><button class="${open?'start':'ghost'}" ${open?'':'disabled'}>${open?'START →':'LOCKED'}</button>`;if(open)card.querySelector('button').onclick=()=>startLevel(i);grid.appendChild(card);});}
+function startLevel(i){currentLevel=i;currentQ=0;score=0;switchView('quizView');renderQuestion();}
+function renderQuestion(){answered=false;const l=subLevels[currentLevel],q=l.qs[currentQ];document.getElementById('quizMeta').textContent=`${l.name} / ${String(l.sub).padStart(2,'0')}`;document.getElementById('progressText').textContent=`${currentQ+1} / ${l.qs.length}`;document.getElementById('progressBar').style.width=`${currentQ/l.qs.length*100}%`;document.getElementById('questionTag').textContent=q[6]+' /';document.getElementById('questionText').textContent=q[0];const a=document.getElementById('answers');a.innerHTML='';q.slice(1,5).forEach((text,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=String.fromCharCode(65+i)+'.  '+text;b.onclick=()=>choose(i);a.appendChild(b);});document.getElementById('nextBtn').classList.add('hidden');}
+function choose(i){if(answered)return;answered=true;const q=subLevels[currentLevel].qs[currentQ],bs=[...document.querySelectorAll('.answer')];bs.forEach((b,n)=>{b.disabled=true;if(n===q[5])b.classList.add('correct');if(n===i&&i!==q[5])b.classList.add('wrong');});if(i===q[5])score++;document.getElementById('nextBtn').classList.remove('hidden');}
+function nextQuestion(){currentQ++;currentQ<subLevels[currentLevel].qs.length?renderQuestion():showResult();}
+function showResult(){switchView('resultView');const l=subLevels[currentLevel],pct=Math.round(score/l.qs.length*100),pass=pct>=60,s=state();s.scores[currentLevel]=Math.max(s.scores[currentLevel]||0,pct);if(pass)s.unlocked=Math.max(s.unlocked,Math.min(subLevels.length,currentLevel+2));save(s);document.getElementById('scoreNum').textContent=score;document.getElementById('scoreTotal').textContent='/ '+l.qs.length;document.getElementById('resultTitle').textContent=pass?'PASSED':'TRY AGAIN';document.getElementById('resultText').textContent=pass?(currentLevel<subLevels.length-1?`${pct}% correct. The next sub-level is now unlocked.`:`${pct}% correct. You completed all sub-levels.`):`${pct}% correct. You need at least 60% to unlock the next sub-level.`;document.getElementById('progressBar').style.width='100%';}
+function retryLevel(){startLevel(currentLevel);}
+
+window.loadCyberQuiz = function() {
+  const container = document.getElementById('quizContainer');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="view home" id="homeView">
+      <h1>CYBERCHAIN</h1>
+      <button class="start" onclick="showHub()">ENTER →</button>
+    </div>
+    <div class="view hidden" id="hubView">
+      <header>
+        <button class="back" onclick="showHome()">← BACK</button>
+        <div class="streak">STREAK <b id="streakCount">0</b></div>
+      </header>
+      <div class="hub-title">
+        <span>SUB-LEVEL HUB</span>
+        <h1>CyberChain Quiz</h1>
+        <p>Complete sub-levels to unlock harder content. 60% to pass.</p>
+      </div>
+      <div class="level-grid" id="levelGrid"></div>
+    </div>
+    <div class="view hidden" id="quizView">
+      <header>
+        <button class="back" onclick="showHub()">← HUB</button>
+        <div id="quizMeta" style="color:var(--red);font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:1px;"></div>
+      </header>
+      <div class="question">
+        <span id="questionTag"></span>
+        <h1 id="questionText"></h1>
+        <div class="progress"><div id="progressBar"></div></div>
+        <div class="answers" id="answers"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:18px;">
+          <span id="progressText" style="font-family:'IBM Plex Mono',monospace;color:var(--muted);"></span>
+          <button class="next hidden" id="nextBtn" onclick="nextQuestion()">NEXT →</button>
+        </div>
+      </div>
+    </div>
+    <div class="view hidden" id="resultView">
+      <header><button class="back" onclick="showHub()">← HUB</button></header>
+      <div class="result">
+        <h1 id="resultTitle"></h1>
+        <div class="score"><b id="scoreNum">0</b><small id="scoreTotal"></small></div>
+        <p id="resultText"></p>
+        <button class="start" onclick="retryLevel()">RETRY</button>
+        <button class="ghost" onclick="showHub()">BACK TO HUB</button>
+      </div>
+    </div>
+  `;
+
+  // Make functions globally accessible
+  window.showHome = showHome;
+  window.showHub = showHub;
+  window.startLevel = startLevel;
+  window.nextQuestion = nextQuestion;
+  window.retryLevel = retryLevel;
+
+  // Initialize
+  showHome();
+};
+</script>
 </body>
 </html>
