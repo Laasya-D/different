@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BYTEVAULT // IMPOSTER</title>
+<style>
+:root{
+  --bg:#050a12;--panel:#081321;--panel2:#0b1726;
+  --white:#f3f7ff;--blue:#5ac8fa;--cyan:#7be3ff;
+  --blue2:#318bc7;--muted:#7895ae;--line:#183a59;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:var(--bg)}
+body{
+  color:var(--white);font-family:"Courier New",monospace;
+  letter-spacing:.2px;overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:40;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(100,180,255,.055) 2px 4px);
+}
+body:after{
+  content:"";position:fixed;inset:0;z-index:39;pointer-events:none;
+  background:radial-gradient(ellipse at center,transparent 48%,rgba(0,4,10,.68) 100%);
+}
+.wrap{width:min(1060px,92vw);margin:auto;padding:18px 0 45px;position:relative;z-index:2}
+.top{
+  display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--line);padding:10px 0 14px;margin-bottom:38px;
+}
+.logo{font-size:20px;font-weight:bold;letter-spacing:4px;color:var(--white)}
+.logo:after{
+  content:"BLOCKCHAIN CLUB  ·  SOCIAL DEDUCTION SYSTEM";
+  display:block;color:var(--muted);font-size:10px;font-weight:normal;
+  letter-spacing:2px;margin-top:8px;
+}
+.status{
+  color:var(--blue);font-size:10px;letter-spacing:2px;
+  border:1px solid var(--line);padding:9px 13px;
+}
+.status:before{content:"● ";color:var(--cyan)}
+.screen{display:none;padding:0 0 25px;animation:appear .4s ease}
+.screen.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{
+  background:linear-gradient(145deg,rgba(12,24,39,.94),rgba(5,13,23,.96));
+  border:1px solid var(--line);border-radius:2px;
+  box-shadow:0 0 35px rgba(0,60,100,.13);padding:30px;
+}
+.center{text-align:center}
+.screen#home .card:first-child{
+  min-height:500px;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;
+  position:relative;overflow:hidden;
+}
+.screen#home .card:first-child:before{
+  content:"";position:absolute;inset:0;border:1px solid #24567d;
+  pointer-events:none;
+}
+.eyebrow{
+  color:var(--cyan);font-size:12px;letter-spacing:4px;
+  font-weight:bold;
+}
+h1{
+  color:var(--white);font-family:Arial,Helvetica,sans-serif;
+  font-weight:800;font-size:clamp(3rem,8vw,5.8rem);
+  line-height:1.15;letter-spacing:7px;margin:25px 0 18px;
+  text-shadow:0 0 12px rgba(255,255,255,.12);
+}
+h2{font-size:22px;letter-spacing:3px;margin-bottom:10px;color:var(--white)}
+h3{letter-spacing:2px;color:var(--white)}
+.sub{color:var(--muted);line-height:1.75;font-size:13px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+.center .actions{justify-content:center}
+button,input{font:inherit}
+button{
+  border:1px solid var(--blue2);background:transparent;color:var(--white);
+  padding:13px 24px;border-radius:2px;cursor:pointer;
+  font-weight:bold;font-size:12px;letter-spacing:2px;
+  transition:.18s;
+}
+button:hover{border-color:var(--cyan);background:#0a2033;box-shadow:0 0 20px rgba(90,200,250,.13)}
+button.primary{background:var(--blue);border-color:var(--blue);color:#04111b}
+button.primary:hover{background:var(--cyan);border-color:var(--cyan)}
+button.danger{border-color:#44708f;color:#9ec4df;background:transparent}
+input{
+  width:100%;background:#040a12;color:var(--white);
+  border:1px solid var(--line);border-radius:2px;padding:13px;outline:none;
+}
+input:focus{border-color:var(--blue);box-shadow:0 0 14px rgba(90,200,250,.08)}
+label{display:block;color:var(--muted);font-size:10px;letter-spacing:2px;margin:18px 0 8px}
+.grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:18px;margin-top:20px;
+}
+.grid .choice{min-height:120px}
+.choice{
+  padding:18px;border:1px solid var(--line);background:var(--panel);
+  border-radius:2px;cursor:pointer;transition:.18s;
+}
+.choice:hover{border-color:var(--blue);background:#0b1c2d}
+.choice.selected{border-color:var(--cyan);background:#0b2438;box-shadow:0 0 18px rgba(90,200,250,.1)}
+.notice{
+  padding:15px;border-left:2px solid var(--blue);
+  background:#091624;color:#9db5c8;margin:18px 0;
+  line-height:1.7;font-size:12px;
+}
+.error{color:#8edcff;margin-top:10px;font-size:12px}
+.clue{
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(22px,4vw,34px);line-height:1.45;
+  margin:30px 0;color:var(--white);
+}
+.secret{
+  border:1px dashed var(--blue);padding:9px;color:var(--cyan);
+  font-size:10px;letter-spacing:2px;background:rgba(90,200,250,.025);
+}
+.big{font-size:22px}.progress{color:var(--muted);font-size:12px;margin-top:8px}
+.scoretable{width:100%;border-collapse:collapse;margin-top:18px;font-size:12px}
+.scoretable th,.scoretable td{padding:12px;border-bottom:1px solid #142a40;text-align:left}
+.scoretable th{color:var(--cyan);font-size:10px;letter-spacing:2px}
+.tag{font-size:9px;padding:4px 7px;border:1px solid var(--line);color:var(--muted)}
+.tag.imp{color:#a9ddf7;border-color:var(--blue)}
+#home .grid{margin-top:20px}
+#home .grid .card{padding:23px;min-height:150px}
+#home .grid .card h3{font-size:17px;margin-bottom:14px}
+#home .grid .card h3:first-letter{color:var(--cyan)}
+#home .grid .card:before{
+  content:"";display:block;height:1px;background:var(--line);margin-bottom:18px;
+}
+@media(max-width:720px){
+  .grid{grid-template-columns:1fr}
+  .wrap{width:min(94vw,600px)}
+  .top{margin-bottom:25px}
+  .status{display:none}
+  h1{font-size:2.8rem;letter-spacing:5px}
+  .screen#home .card:first-child{min-height:430px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="logo">BYTEVAULT // IMPOSTER</div><div class="status" id="status">SINGLE DEVICE</div></div>
+
+  <section id="home" class="screen active"><div class="card center">
+    <div class="eyebrow">CASE CONTROL SYSTEM</div><h1>WHO&#39;S THE<br>IMPOSTER?</h1>
+    <p class="sub">Two mystery files. Secret evidence. One hidden imposter.<br>Investigate, question, bluff and vote before the truth is unlocked.</p>
+    <div class="actions"><button class="primary" onclick="show('login')">OPEN CASE FILES</button></div>
+  </div></section>
+
+  <section id="login" class="screen"><div class="card">
+    <div class="eyebrow">ADMIN ACCESS</div><h2>Game setup</h2>
+    <label>ADMIN KEY</label><input id="adminKey" type="password" placeholder="Enter admin key">
+    <div id="loginErr" class="error"></div><div class="actions"><button onclick="show('home')">BACK</button><button class="primary" onclick="login()">UNLOCK</button></div>
+  </div></section>
+
+  <section id="setup" class="screen"><div class="card">
+    <div class="eyebrow">01  PLAYERS</div><h2>How many players?</h2>
+    <p class="sub">Enter a whole number from 1–50. Leave blank until you're ready.</p>
+    <input id="count" type="number" min="1" max="50" step="1" placeholder="Number of players">
+    <div id="countErr" class="error"></div><div class="actions"><button onclick="show('login')">BACK</button><button class="primary" onclick="makeNames()">CONTINUE</button></div>
+  </div></section>
+
+  <section id="names" class="screen"><div class="card">
+    <div class="eyebrow">02  ROSTER</div><h2>Enter player names</h2><div id="nameFields"></div>
+    <div id="nameErr" class="error"></div><div class="actions"><button onclick="show('setup')">BACK</button><button class="primary" onclick="startGame()">START ROUND 1</button></div>
+  </div></section>
+
+  <section id="round" class="screen"><div class="card center">
+    <div class="eyebrow" id="roundEyebrow">ROUND 1  PUBLIC TOPIC</div>
+    <h2 id="roundTitle"></h2><p class="sub">Everyone may know the topic. <b>No player's private clue is shown here.</b></p>
+    <div class="notice">The device will now be passed one player at a time. Each player sees ONLY their own role-based clue.</div>
+    <div class="actions"><button class="primary" onclick="startReading()">START PRIVATE CLUE PASS</button></div>
+  </div></section>
+
+  <section id="readPass" class="screen"><div class="card center">
+    <div class="eyebrow">PRIVATE CLUE PASS</div><div class="progress" id="readProgress"></div>
+    <h2 id="readPassPlayer"></h2><p class="sub">Take the device. Make sure nobody else is looking.</p>
+    <div class="actions"><button class="primary" onclick="openPrivateClue()">I HAVE THE DEVICE</button></div>
+  </div></section>
+
+  <section id="read" class="screen"><div class="card center">
+    <div class="secret">PRIVATE  DO NOT SHOW OTHER PLAYERS</div>
+    <h2 id="readPlayer"></h2><div id="roleHint" class="progress"></div>
+    <div class="clue" id="privateClue"></div>
+    <p class="sub">Read your clue carefully. Do not tell anyone what you saw.</p>
+    <div class="actions"><button class="primary" onclick="doneReading()">DONE READING</button></div>
+  </div></section>
+
+  <section id="readDone" class="screen"><div class="card center">
+    <div class="eyebrow">CLUE SECURED</div><h2 id="readDoneText"></h2><p class="sub">Pass the device without discussing your clue.</p>
+    <div class="actions"><button class="primary" onclick="nextReader()">PASS DEVICE</button></div>
+  </div></section>
+
+  <section id="pass" class="screen"><div class="card center">
+    <div class="eyebrow">ALL CLUES READ  VOTING UNLOCKED</div><div class="progress" id="voteProgress"></div>
+    <h2 id="passPlayer"></h2><p class="sub">Take the device privately. Your vote will not be shown after you submit it.</p>
+    <div class="actions"><button class="primary" onclick="openVote()">I HAVE THE DEVICE</button></div>
+  </div></section>
+
+  <section id="vote" class="screen"><div class="card">
+    <div class="eyebrow">PRIVATE VOTE</div><h2 id="voteHeading"></h2><p class="sub">Choose who you think the imposter is.</p>
+    <div id="voteChoices" class="grid"></div><div id="voteErr" class="error"></div>
+    <div class="actions"><button class="primary" onclick="submitVote()">SUBMIT SECRET VOTE</button></div>
+  </div></section>
+
+  <section id="between" class="screen"><div class="card center">
+    <div class="eyebrow">VOTE LOCKED</div><h2>Pass device</h2><p class="sub">Your vote is hidden. Do not show the next player what you selected.</p>
+    <div class="actions"><button class="primary" onclick="afterVote()">CONTINUE</button></div>
+  </div></section>
+
+  <section id="finalStart" class="screen"><div class="card center">
+    <div class="eyebrow">ALL FOUR ROUNDS COMPLETE</div><h2>FINAL VOTE</h2><p class="sub">One last private pass. Everyone votes on the player they believe is the imposter.</p>
+    <div class="actions"><button class="primary" onclick="startFinalVote()">START FINAL VOTE</button></div>
+  </div></section>
+
+  <section id="finalPass" class="screen"><div class="card center">
+    <div class="eyebrow">FINAL PRIVATE VOTE</div><div class="progress" id="finalProgress"></div>
+    <h2 id="finalPassPlayer"></h2><p class="sub">Take the device. Your selection is secret.</p>
+    <div class="actions"><button class="primary" onclick="openFinalVote()">I HAVE THE DEVICE</button></div>
+  </div></section>
+
+  <section id="finalVote" class="screen"><div class="card">
+    <div class="eyebrow">FINAL PRIVATE VOTE</div><h2 id="finalHeading"></h2>
+    <div id="finalChoices" class="grid"></div><div id="finalErr" class="error"></div>
+    <div class="actions"><button class="primary" onclick="submitFinalVote()">SUBMIT FINAL VOTE</button></div>
+  </div></section>
+
+  <section id="reveal" class="screen"><div class="card">
+    <div class="eyebrow">GAME COMPLETE</div><h2>THE REVEAL</h2>
+    <div class="notice" id="revealBox"></div>
+    <h3>Scores</h3><table class="scoretable"><thead><tr><th>PLAYER</th><th>ROLE</th><th>ROUND POINTS</th><th>FINAL</th><th>TOTAL</th></tr></thead><tbody id="scores"></tbody></table>
+    <h3>Voting history</h3><div id="history"></div>
+    <div class="actions"><button class="primary" onclick="location.reload()">NEW GAME</button></div>
+  </div></section>
+</div>
+
+<script>
+const KEY="Mysterygameadmin";
+const PUBLIC_TOPICS=[
+  "The Missing Access Card","The Locked Archive","The Vanished Evidence","The Midnight Intruder"
+];
+/* For every round there are TWO possible private clue sets:
+   - normal clues for non-imposters
+   - different clues for the hidden imposter
+   Nobody sees another player's clue. */
+const NORMAL_CLUES=[
+  "You are an investigator. You found a security log showing that the access card was used at 21:10. Look for contradictions in what other players say.",
+  "You are an investigator. You discovered that a spare key was signed out at 20:45 and was never logged back in. Watch for suspicious details.",
+  "You are an investigator. You know the archive access code was discussed before the alarm. Use this information when discussing the case.",
+  "You are an investigator. You saw a floor map with the archive circled. Think about who had a reason to know that location."
+];
+const IMPOSTER_CLUES=[
+  "You are the IMPOSTER. Blend in. Your goal is to avoid being identified. You know only the public topic, so listen carefully and vote strategically.",
+  "You are the IMPOSTER. Pretend you have the same information as everyone else. Do not reveal that your clue is different.",
+  "You are the IMPOSTER. Mislead subtly, but do not make your story unnecessarily complicated. Survive the vote.",
+  "You are the IMPOSTER. This is the final clue round. Stay consistent and make sure suspicion lands somewhere else."
+];
+
+const S={count:0,players:[],imposter:-1,round:0,readIndex:0,voter:0,selected:null,roundVotes:[],finalVotes:[],finalVoter:0,finalSelected:null};
+
+function $(id){return document.getElementById(id)}
+function show(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));$(id).classList.add("active");window.scrollTo(0,0)}
+function login(){if($("adminKey").value===KEY){$("loginErr").textContent="";show("setup")}else $("loginErr").textContent="Incorrect admin key."}
+function makeNames(){
+  const n=Number($("count").value);
+  if(!Number.isInteger(n)||n<1||n>50){$("countErr").textContent="Enter a whole number from 1 to 50.";return}
+  $("countErr").textContent="";S.count=n;
+  $("nameFields").innerHTML=Array.from({length:n},(_,i)=>`<label>PLAYER ${i+1}</label><input class="pname" placeholder="Player ${i+1}">`).join("");
+  show("names");
+}
+function startGame(){
+  const inputs=[...document.querySelectorAll(".pname")], names=inputs.map(x=>x.value.trim());
+  if(names.some(x=>!x)){ $("nameErr").textContent="Please enter every player name.";return }
+  const lower=names.map(x=>x.toLowerCase());
+  if(new Set(lower).size!==names.length){$("nameErr").textContent="Player names must be unique.";return}
+  $("nameErr").textContent="";S.players=names;S.imposter=Math.floor(Math.random()*S.count);S.round=0;S.roundVotes=[];S.finalVotes=[];
+  showRound();
+}
+function showRound(){
+  $("roundEyebrow").textContent=`ROUND ${S.round+1} // PUBLIC TOPIC`;
+  $("roundTitle").textContent=PUBLIC_TOPICS[S.round];
+  show("round");
+}
+function startReading(){S.readIndex=0;showReadPass()}
+function showReadPass(){
+  $("readProgress").textContent=`PLAYER ${S.readIndex+1} OF ${S.count}`;
+  $("readPassPlayer").textContent=S.players[S.readIndex];
+  show("readPass");
+}
+function openPrivateClue(){
+  $("readPlayer").textContent=S.players[S.readIndex];
+  const imp=S.readIndex===S.imposter;
+  $("roleHint").textContent=imp?"Your secret role: IMPOSTER":"Your secret role: INVESTIGATOR";
+  $("privateClue").textContent=imp?IMPOSTER_CLUES[S.round]:NORMAL_CLUES[S.round];
+  show("read");
+}
+function doneReading(){
+  $("readDoneText").textContent=`${S.players[S.readIndex]}'s clue is secured.`;
+  show("readDone");
+}
+function nextReader(){
+  S.readIndex++;
+  if(S.readIndex<S.count) showReadPass();
+  else beginVote();
+}
+function beginVote(){S.voter=0;passVote()}
+function passVote(){
+  $("voteProgress").textContent=`PLAYER ${S.voter+1} OF ${S.count}  ROUND ${S.round+1}`;
+  $("passPlayer").textContent=S.players[S.voter];
+  show("pass");
+}
+function openVote(){
+  S.selected=null;$("voteErr").textContent="";
+  $("voteHeading").textContent=`${S.players[S.voter]} — make your private choice`;
+  $("voteChoices").innerHTML=S.players.map((p,i)=>`<div class="choice" data-i="${i}" onclick="selectChoice(${i})">${escapeHtml(p)}</div>`).join("");
+  show("vote");
+}
+function selectChoice(i){S.selected=i;document.querySelectorAll("#voteChoices .choice").forEach(x=>x.classList.toggle("selected",Number(x.dataset.i)===i))}
+function submitVote(){
+  if(S.selected===null){$("voteErr").textContent="Select a player first.";return}
+  if(!S.roundVotes[S.round])S.roundVotes[S.round]=[];
+  S.roundVotes[S.round][S.voter]=S.selected;
+  show("between");
+}
+function afterVote(){
+  S.voter++;
+  if(S.voter<S.count)passVote();
+  else if(S.round<3){S.round++;showRound()}
+  else show("finalStart");
+}
+function startFinalVote(){S.finalVoter=0;S.finalVotes=[];showFinalPass()}
+function showFinalPass(){
+  $("finalProgress").textContent=`PLAYER ${S.finalVoter+1} OF ${S.count}`;
+  $("finalPassPlayer").textContent=S.players[S.finalVoter];show("finalPass");
+}
+function openFinalVote(){
+  S.finalSelected=null;$("finalErr").textContent="";
+  $("finalHeading").textContent=`${S.players[S.finalVoter]} — final secret vote`;
+  $("finalChoices").innerHTML=S.players.map((p,i)=>`<div class="choice" data-i="${i}" onclick="selectFinal(${i})">${escapeHtml(p)}</div>`).join("");
+  show("finalVote");
+}
+function selectFinal(i){S.finalSelected=i;document.querySelectorAll("#finalChoices .choice").forEach(x=>x.classList.toggle("selected",Number(x.dataset.i)===i))}
+function submitFinalVote(){
+  if(S.finalSelected===null){$("finalErr").textContent="Select a player first.";return}
+  S.finalVotes[S.finalVoter]=S.finalSelected;
+  S.finalVoter++;
+  if(S.finalVoter<S.count)showFinalPass();else reveal();
+}
+function reveal(){
+  const totals=Array(S.count).fill(0), roundPts=Array(S.count).fill(0), finalPts=Array(S.count).fill(0);
+  for(let r=0;r<4;r++)for(let v=0;v<S.count;v++)if(S.roundVotes[r]?.[v]===S.imposter)roundPts[v]+=2;
+  for(let v=0;v<S.count;v++)if(S.finalVotes[v]===S.imposter)finalPts[v]=5;
+  for(let i=0;i<S.count;i++)totals[i]=roundPts[i]+finalPts[i];
+  $("revealBox").innerHTML=`<div class="big">The imposter was <b>${escapeHtml(S.players[S.imposter])}</b>.</div><p>Scoring: +2 for each correct round vote, +5 for a correct final vote.</p>`;
+  const order=[...Array(S.count).keys()].sort((a,b)=>totals[b]-totals[a]);
+  $("scores").innerHTML=order.map(i=>`<tr><td>${escapeHtml(S.players[i])}</td><td><span class="tag ${i===S.imposter?"imp":""}">${i===S.imposter?"IMPOSTER":"INVESTIGATOR"}</span></td><td>${roundPts[i]}</td><td>${finalPts[i]}</td><td><b>${totals[i]}</b></td></tr>`).join("");
+  $("history").innerHTML=Array.from({length:4},(_,r)=>`<div class="notice"><b>Round ${r+1}:</b> ${S.players.map((p,v)=>`${escapeHtml(p)} → ${escapeHtml(S.players[S.roundVotes[r][v]])}`).join(" &nbsp;|&nbsp; ")}</div>`).join("")+
+    `<div class="notice"><b>Final:</b> ${S.players.map((p,v)=>`${escapeHtml(p)} → ${escapeHtml(S.players[S.finalVotes[v]])}`).join(" &nbsp;|&nbsp; ")}</div>`;
+  show("reveal");
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+</script>
+</body>
+</html>
